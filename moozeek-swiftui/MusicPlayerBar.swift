@@ -55,6 +55,7 @@ struct MusicPlayerBar: View {
     private var trackTitle: some View {
         Text("Welcome to the Jungle")
             .font(.headline)
+            .lineLimit(1)
     }
     
     private var spacer: some View {
