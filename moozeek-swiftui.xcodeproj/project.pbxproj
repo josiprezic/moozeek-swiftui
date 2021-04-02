@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D71AC9C1261753440086CD6D /* RootAppCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71AC9C0261753440086CD6D /* RootAppCoordinatorView.swift */; };
+		D71AC9C4261753BA0086CD6D /* DownloadCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71AC9C3261753BA0086CD6D /* DownloadCoordinatorView.swift */; };
 		D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */; };
-		D760FA68260FFBBF0029AA1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA67260FFBBF0029AA1F /* ContentView.swift */; };
+		D760FA68260FFBBF0029AA1F /* PlayerCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA67260FFBBF0029AA1F /* PlayerCoordinatorView.swift */; };
 		D760FA6A260FFBC00029AA1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA69260FFBC00029AA1F /* Assets.xcassets */; };
 		D760FA6D260FFBC00029AA1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */; };
 		D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */; };
 		D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */; };
 		D79E21C42610FC36003DA2D2 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21C32610FC36003DA2D2 /* Style.swift */; };
+		D7FFC7602617572000B05B6F /* SettingsCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFC75F2617572000B05B6F /* SettingsCoordinatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D71AC9C0261753440086CD6D /* RootAppCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAppCoordinatorView.swift; sourceTree = "<group>"; };
+		D71AC9C3261753BA0086CD6D /* DownloadCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCoordinatorView.swift; sourceTree = "<group>"; };
 		D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moozeek-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moozeek_swiftuiApp.swift; sourceTree = "<group>"; };
-		D760FA67260FFBBF0029AA1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D760FA67260FFBBF0029AA1F /* PlayerCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinatorView.swift; sourceTree = "<group>"; };
 		D760FA69260FFBC00029AA1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D760FA6E260FFBC00029AA1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerBar.swift; sourceTree = "<group>"; };
 		D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		D79E21C32610FC36003DA2D2 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		D7FFC75F2617572000B05B6F /* SettingsCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +64,9 @@
 		D760FA64260FFBBF0029AA1F /* moozeek-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */,
-				D760FA67260FFBBF0029AA1F /* ContentView.swift */,
-				D760FA69260FFBC00029AA1F /* Assets.xcassets */,
+				D7FFC7622617597E00B05B6F /* Sources */,
 				D760FA6E260FFBC00029AA1F /* Info.plist */,
 				D760FA6B260FFBC00029AA1F /* Preview Content */,
-				D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */,
-				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
-				D79E21C32610FC36003DA2D2 /* Style.swift */,
 			);
 			path = "moozeek-swiftui";
 			sourceTree = "<group>";
@@ -76,6 +77,70 @@
 				D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7FFC7622617597E00B05B6F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D7FFC76926175A3A00B05B6F /* App */,
+				D7FFC7632617598700B05B6F /* Coordinators */,
+				D7FFC764261759A300B05B6F /* Features */,
+				D7FFC76726175A0500B05B6F /* Resources */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D7FFC7632617598700B05B6F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				D71AC9C0261753440086CD6D /* RootAppCoordinatorView.swift */,
+				D760FA67260FFBBF0029AA1F /* PlayerCoordinatorView.swift */,
+				D71AC9C3261753BA0086CD6D /* DownloadCoordinatorView.swift */,
+				D7FFC75F2617572000B05B6F /* SettingsCoordinatorView.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		D7FFC764261759A300B05B6F /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D7FFC766261759E800B05B6F /* Player */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D7FFC766261759E800B05B6F /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */,
+				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		D7FFC76726175A0500B05B6F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D760FA69260FFBC00029AA1F /* Assets.xcassets */,
+				D7FFC76826175A1100B05B6F /* Style */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D7FFC76826175A1100B05B6F /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21C32610FC36003DA2D2 /* Style.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		D7FFC76926175A3A00B05B6F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +212,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7FFC7602617572000B05B6F /* SettingsCoordinatorView.swift in Sources */,
 				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
 				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
-				D760FA68260FFBBF0029AA1F /* ContentView.swift in Sources */,
+				D760FA68260FFBBF0029AA1F /* PlayerCoordinatorView.swift in Sources */,
+				D71AC9C4261753BA0086CD6D /* DownloadCoordinatorView.swift in Sources */,
+				D71AC9C1261753440086CD6D /* RootAppCoordinatorView.swift in Sources */,
 				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */,
 			);
