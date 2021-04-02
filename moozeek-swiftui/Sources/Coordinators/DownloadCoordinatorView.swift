@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DownloadCoordinatorView: View {
     var body: some View {
-        Text("Hello, download coordinator!")
+        YouTubeView()
     }
 }
 

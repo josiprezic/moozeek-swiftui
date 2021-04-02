@@ -36,7 +36,7 @@ extension Style.Size {
 
 extension Style.Color {
     static let playerTrackControl = Color.black
-    static let playerBackground = Color.gray.opacity(0.4)
+    static let playerBackground = Color.gray
     
     static let playerBarBackground = Color.gray
 }
