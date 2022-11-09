@@ -17,6 +17,7 @@ struct Style {
 
 extension Style.Image {
     static let play: String = "play.fill"
+    static let stop: String = "stop.fill"
     static let forward: String = "forward.fill"
     static let backward = "backward.fill"
 }

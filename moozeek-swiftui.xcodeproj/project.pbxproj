@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
+		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
+		74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4D291C02BC0083417E /* SongListViewModel.swift */; };
 		D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */; };
-		D760FA68260FFBBF0029AA1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA67260FFBBF0029AA1F /* ContentView.swift */; };
 		D760FA6A260FFBC00029AA1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA69260FFBC00029AA1F /* Assets.xcassets */; };
 		D760FA6D260FFBC00029AA1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */; };
 		D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */; };
@@ -17,9 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
+		74A5DC4D291C02BC0083417E /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
 		D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moozeek-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moozeek_swiftuiApp.swift; sourceTree = "<group>"; };
-		D760FA67260FFBBF0029AA1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D760FA69260FFBC00029AA1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D760FA6E260FFBC00029AA1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +43,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74A5DC48291C02300083417E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */,
+				D760FA6E260FFBC00029AA1F /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		74A5DC49291C027A0083417E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC4A291C02950083417E /* SongList */,
+				74A5DC52291C056F0083417E /* MusicPlayerBar */,
+				74A5DC51291C055D0083417E /* MusicPlayer */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		74A5DC4A291C02950083417E /* SongList */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC4B291C02AD0083417E /* SongListView.swift */,
+				74A5DC4D291C02BC0083417E /* SongListViewModel.swift */,
+			);
+			path = SongList;
+			sourceTree = "<group>";
+		};
+		74A5DC4F291C05350083417E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC53291C059C0083417E /* Styles */,
+				74A5DC50291C053C0083417E /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		74A5DC50291C053C0083417E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC46291C017A0083417E /* Song.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74A5DC51291C055D0083417E /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
+			);
+			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
+		74A5DC52291C056F0083417E /* MusicPlayerBar */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */,
+			);
+			path = MusicPlayerBar;
+			sourceTree = "<group>";
+		};
+		74A5DC53291C059C0083417E /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21C32610FC36003DA2D2 /* Style.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		D760FA59260FFBBF0029AA1F = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +131,11 @@
 		D760FA64260FFBBF0029AA1F /* moozeek-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */,
-				D760FA67260FFBBF0029AA1F /* ContentView.swift */,
+				74A5DC48291C02300083417E /* App */,
+				74A5DC4F291C05350083417E /* Shared */,
+				74A5DC49291C027A0083417E /* Features */,
 				D760FA69260FFBC00029AA1F /* Assets.xcassets */,
-				D760FA6E260FFBC00029AA1F /* Info.plist */,
 				D760FA6B260FFBC00029AA1F /* Preview Content */,
-				D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */,
-				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
-				D79E21C32610FC36003DA2D2 /* Style.swift */,
 			);
 			path = "moozeek-swiftui";
 			sourceTree = "<group>";
@@ -147,10 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74A5DC47291C017A0083417E /* Song.swift in Sources */,
+				74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */,
 				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
 				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
-				D760FA68260FFBBF0029AA1F /* ContentView.swift in Sources */,
 				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
+				74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +355,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"moozeek-swiftui/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "moozeek-swiftui/Info.plist";
+				INFOPLIST_FILE = "moozeek-swiftui/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,7 +377,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"moozeek-swiftui/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "moozeek-swiftui/Info.plist";
+				INFOPLIST_FILE = "moozeek-swiftui/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

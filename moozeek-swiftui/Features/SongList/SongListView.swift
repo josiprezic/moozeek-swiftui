@@ -1,35 +1,39 @@
 //
-//  ContentView.swift
+//  SongListView.swift
 //  moozeek-swiftui
 //
-//  Created by Josip Rezić on 3/28/21.
+//  Created by Josip Rezic on 09/11/2022.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct SongListView: View {
     
-    // MARK: - Properties -
+    @ObservedObject var viewModel: SongListViewModel
     
     @Namespace private var namespace
     @State private var showDetails: Bool = false
     
-    // MARK: - Views -
-    
     var body: some View {
-        subviews
-            .gesture(dragGesture)
-    }
-    
-    private var subviews: some View {
         VStack {
-            spacer
             if showDetails {
+                Spacer()
                 musicPlayer
             } else {
-                musicPlayerBar
+                VStack {
+                    songList
+                    musicPlayerBar
+                }
             }
         }
+    }
+    
+    private var songList: some View {
+        List(viewModel.songs) {
+            Text($0.name)
+        }
+        .padding([.leading, .trailing],-20)
+        .padding([.bottom], -8)
     }
     
     private var spacer: some View {
@@ -38,11 +42,13 @@ struct ContentView: View {
     
     private var musicPlayer: some View {
         MusicPlayer(namespace: namespace)
+            .gesture(dragGesture)
     }
     
     private var musicPlayerBar: some View {
         MusicPlayerBar(namespace: namespace)
             .onTapGesture(perform: onMusicPlayerBarTapGesture)
+            .gesture(dragGesture)
     }
     
     private var dragGesture: some Gesture {
@@ -75,10 +81,8 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Previews -
-
-struct ContentView_Previews: PreviewProvider {
+struct SongListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SongListView(viewModel: SongListViewModel())
     }
 }

@@ -11,7 +11,8 @@ import SwiftUI
 struct moozeek_swiftuiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let viewModel = SongListViewModel()
+            SongListView(viewModel: viewModel)
         }
     }
 }

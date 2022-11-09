@@ -16,6 +16,7 @@ struct MusicPlayerBar: View {
         static let iconCornerRadius = Style.Size.playerBarTrackIconRadius
         static let animationId = Identifiers.trackIconAnimationName
         static let playImageName = Style.Image.play
+        static let stopImageName = Style.Image.stop
         static let forwardImageName = Style.Image.forward
         static let height = Style.Size.playerBarHeight
         static let background = Style.Color.playerBarBackground
@@ -24,6 +25,8 @@ struct MusicPlayerBar: View {
     // MARK: - Properties -
     
     let namespace: Namespace.ID
+    
+    @State var isPlaying = false
     
     // MARK: - Views -
     
@@ -63,8 +66,11 @@ struct MusicPlayerBar: View {
     }
     
     private var playButton: some View {
-        Image(systemName: Constants.playImageName)
+        Image(systemName: isPlaying ? Constants.playImageName : Constants.stopImageName)
             .padding()
+            .onTapGesture {
+                isPlaying.toggle()
+            }
     }
     
     private var forwardButton: some View {
