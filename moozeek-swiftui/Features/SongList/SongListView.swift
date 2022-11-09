@@ -10,8 +10,8 @@ import SwiftUI
 struct SongListView: View {
     
     @ObservedObject var viewModel: SongListViewModel
-    
     @Namespace private var namespace
+    
     @State private var showDetails: Bool = false
     
     var body: some View {
@@ -34,11 +34,30 @@ struct SongListView: View {
     }
     
     private var songListView: some View {
-        List(viewModel.songs) {
-            Text($0.name)
+        List {
+            Section(header: songListHeaderView) {
+                ForEach(viewModel.songs) {
+                    Text($0.name)
+                }
+            }
+            
         }
-        .padding([.leading, .trailing],-20)
         .padding([.bottom], -8)
+        .listStyle(GroupedListStyle())
+    }
+    
+    private var songListHeaderView: some View {
+        HStack(spacing: 20) {
+            HeaderButton(
+                title: "Play",
+                imageSystemName: "play.fill"
+            )
+            HeaderButton(
+                title: "Shuffle",
+                imageSystemName: "shuffle"
+            )
+        }
+        .frame(height: 60)
     }
     
     private var musicPlayer: some View {
