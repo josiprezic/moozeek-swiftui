@@ -10,4 +10,6 @@ import Foundation
 struct Song: Identifiable {
     let id = UUID()
     let name: String
+    
+    static let example = Song(name: "Test song name")
 }

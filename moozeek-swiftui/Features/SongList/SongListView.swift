@@ -30,20 +30,19 @@ struct SongListView: View {
             .navigationTitle("Songs")
             .ignoresSafeArea(edges: .bottom)
         }
-        .searchable(text: $viewModel.searchText)
+        .searchable(text: $viewModel.searchText, prompt: "Find in Songs")
     }
     
     private var songListView: some View {
         List {
             Section(header: songListHeaderView) {
-                ForEach(viewModel.songs) {
-                    Text($0.name)
-                }
+                ForEach(viewModel.songs, content: SongCell.init)
             }
-            
+            .listRowBackground(Color.black)
         }
         .padding([.bottom], -8)
         .listStyle(GroupedListStyle())
+        .foregroundColor(Color.white)
     }
     
     private var songListHeaderView: some View {

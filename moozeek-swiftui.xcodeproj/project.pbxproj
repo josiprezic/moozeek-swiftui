@@ -11,6 +11,7 @@
 		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
 		74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4D291C02BC0083417E /* SongListViewModel.swift */; };
 		74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC54291C53FA0083417E /* HeaderButton.swift */; };
+		74A5DC57291C55E60083417E /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC56291C55E60083417E /* SongCell.swift */; };
 		D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */; };
 		D760FA6A260FFBC00029AA1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA69260FFBC00029AA1F /* Assets.xcassets */; };
 		D760FA6D260FFBC00029AA1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		74A5DC4D291C02BC0083417E /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
 		74A5DC54291C53FA0083417E /* HeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderButton.swift; sourceTree = "<group>"; };
+		74A5DC56291C55E60083417E /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moozeek-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moozeek_swiftuiApp.swift; sourceTree = "<group>"; };
 		D760FA69260FFBC00029AA1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				74A5DC4B291C02AD0083417E /* SongListView.swift */,
 				74A5DC4D291C02BC0083417E /* SongListViewModel.swift */,
 				74A5DC54291C53FA0083417E /* HeaderButton.swift */,
+				74A5DC56291C55E60083417E /* SongCell.swift */,
 			);
 			path = SongList;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
 				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
 				74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */,
+				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
