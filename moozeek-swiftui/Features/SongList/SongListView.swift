@@ -15,29 +15,30 @@ struct SongListView: View {
     @State private var showDetails: Bool = false
     
     var body: some View {
-        VStack {
-            if showDetails {
-                Spacer()
-                musicPlayer
-            } else {
-                VStack {
-                    songList
-                    musicPlayerBar
+        NavigationView {
+            VStack {
+                if showDetails {
+                    Spacer()
+                    musicPlayer
+                } else {
+                    VStack {
+                        songListView
+                        musicPlayerBar
+                    }
                 }
             }
+            .navigationTitle("Songs")
+            .ignoresSafeArea(edges: .bottom)
         }
+        .searchable(text: $viewModel.searchText)
     }
     
-    private var songList: some View {
+    private var songListView: some View {
         List(viewModel.songs) {
             Text($0.name)
         }
         .padding([.leading, .trailing],-20)
         .padding([.bottom], -8)
-    }
-    
-    private var spacer: some View {
-        Spacer()
     }
     
     private var musicPlayer: some View {

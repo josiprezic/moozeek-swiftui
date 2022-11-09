@@ -32,7 +32,7 @@ extension Style.Size {
     
     static let playerBarTrackIcon: CGFloat = 50
     static let playerBarTrackIconRadius: CGFloat = 5
-    static let playerBarHeight: CGFloat = 70
+    static let playerBarHeight: CGFloat = 100
 }
 
 extension Style.Color {

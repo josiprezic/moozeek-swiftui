@@ -31,19 +31,18 @@ struct MusicPlayerBar: View {
     // MARK: - Views -
     
     var body: some View {
-        subviews
-            .frame(maxWidth: .infinity, maxHeight: Constants.height)
-            .background(Constants.background)
-    }
-    
-    private var subviews: some View {
-        HStack {
-            trackLogo
-            trackTitle
-            spacer
-            playButton
-            forwardButton
+        VStack {
+            HStack {
+                trackLogo
+                trackTitle
+                spacer
+                playButton
+                forwardButton
+            }
+            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: Constants.height)
+        .background(Constants.background)
     }
     
     private var trackLogo: some View {
