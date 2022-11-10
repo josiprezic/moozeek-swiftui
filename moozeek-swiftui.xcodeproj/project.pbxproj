@@ -7,19 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */; };
-		D760FA68260FFBBF0029AA1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA67260FFBBF0029AA1F /* ContentView.swift */; };
+		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
+		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
+		74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4D291C02BC0083417E /* SongListViewModel.swift */; };
+		74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC54291C53FA0083417E /* HeaderButton.swift */; };
+		74A5DC57291C55E60083417E /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC56291C55E60083417E /* SongCell.swift */; };
+		74A5DC5A291CFF5B0083417E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC59291CFF5B0083417E /* MainTabView.swift */; };
+		74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC5B291CFF9A0083417E /* TabBarItem.swift */; };
+		74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC5F291D334F0083417E /* MusicNoteView.swift */; };
+		D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA65260FFBBF0029AA1F /* MoozeekApp.swift */; };
 		D760FA6A260FFBC00029AA1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA69260FFBC00029AA1F /* Assets.xcassets */; };
 		D760FA6D260FFBC00029AA1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */; };
+		D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */; };
+		D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */; };
+		D79E21C42610FC36003DA2D2 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E21C32610FC36003DA2D2 /* Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
+		74A5DC4D291C02BC0083417E /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
+		74A5DC54291C53FA0083417E /* HeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderButton.swift; sourceTree = "<group>"; };
+		74A5DC56291C55E60083417E /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		74A5DC59291CFF5B0083417E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		74A5DC5B291CFF9A0083417E /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		74A5DC5F291D334F0083417E /* MusicNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicNoteView.swift; sourceTree = "<group>"; };
 		D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moozeek-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moozeek_swiftuiApp.swift; sourceTree = "<group>"; };
-		D760FA67260FFBBF0029AA1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D760FA65260FFBBF0029AA1F /* MoozeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoozeekApp.swift; sourceTree = "<group>"; };
 		D760FA69260FFBC00029AA1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D760FA6E260FFBC00029AA1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerBar.swift; sourceTree = "<group>"; };
+		D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		D79E21C32610FC36003DA2D2 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +53,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74A5DC48291C02300083417E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D760FA65260FFBBF0029AA1F /* MoozeekApp.swift */,
+				D760FA6E260FFBC00029AA1F /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		74A5DC49291C027A0083417E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC58291CFF430083417E /* MainTabView */,
+				74A5DC4A291C02950083417E /* SongList */,
+				74A5DC52291C056F0083417E /* MusicPlayerBar */,
+				74A5DC51291C055D0083417E /* MusicPlayer */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		74A5DC4A291C02950083417E /* SongList */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC4B291C02AD0083417E /* SongListView.swift */,
+				74A5DC4D291C02BC0083417E /* SongListViewModel.swift */,
+				74A5DC54291C53FA0083417E /* HeaderButton.swift */,
+				74A5DC56291C55E60083417E /* SongCell.swift */,
+				74A5DC5F291D334F0083417E /* MusicNoteView.swift */,
+			);
+			path = SongList;
+			sourceTree = "<group>";
+		};
+		74A5DC4F291C05350083417E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC53291C059C0083417E /* Styles */,
+				74A5DC50291C053C0083417E /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		74A5DC50291C053C0083417E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC46291C017A0083417E /* Song.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74A5DC51291C055D0083417E /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
+			);
+			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
+		74A5DC52291C056F0083417E /* MusicPlayerBar */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21BD2610FAAE003DA2D2 /* MusicPlayerBar.swift */,
+			);
+			path = MusicPlayerBar;
+			sourceTree = "<group>";
+		};
+		74A5DC53291C059C0083417E /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D79E21C32610FC36003DA2D2 /* Style.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		74A5DC58291CFF430083417E /* MainTabView */ = {
+			isa = PBXGroup;
+			children = (
+				74A5DC59291CFF5B0083417E /* MainTabView.swift */,
+				74A5DC5B291CFF9A0083417E /* TabBarItem.swift */,
+			);
+			path = MainTabView;
+			sourceTree = "<group>";
+		};
 		D760FA59260FFBBF0029AA1F = {
 			isa = PBXGroup;
 			children = (
@@ -52,10 +154,10 @@
 		D760FA64260FFBBF0029AA1F /* moozeek-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				D760FA65260FFBBF0029AA1F /* moozeek_swiftuiApp.swift */,
-				D760FA67260FFBBF0029AA1F /* ContentView.swift */,
+				74A5DC48291C02300083417E /* App */,
+				74A5DC4F291C05350083417E /* Shared */,
+				74A5DC49291C027A0083417E /* Features */,
 				D760FA69260FFBC00029AA1F /* Assets.xcassets */,
-				D760FA6E260FFBC00029AA1F /* Info.plist */,
 				D760FA6B260FFBC00029AA1F /* Preview Content */,
 			);
 			path = "moozeek-swiftui";
@@ -138,8 +240,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D760FA68260FFBBF0029AA1F /* ContentView.swift in Sources */,
-				D760FA66260FFBBF0029AA1F /* moozeek_swiftuiApp.swift in Sources */,
+				74A5DC47291C017A0083417E /* Song.swift in Sources */,
+				74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */,
+				74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */,
+				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
+				74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */,
+				74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */,
+				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
+				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
+				74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */,
+				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
+				D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */,
+				74A5DC5A291CFF5B0083417E /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -252,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -271,8 +383,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"moozeek-swiftui/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "moozeek-swiftui/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_FILE = "moozeek-swiftui/App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,8 +405,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"moozeek-swiftui/Preview Content\"";
 				DEVELOPMENT_TEAM = TLWQ546V2V;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "moozeek-swiftui/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_FILE = "moozeek-swiftui/App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
