@@ -14,7 +14,12 @@ final class SongListViewModel: ObservableObject {
     @Published var searchText: String
     @Published var isPlaying = false
     @Published var isShuffle = false
+
     @Published var currentSong: Song?
+    @Published var currentSongPercentage: Float = 0.4
+    @Published var currentSongElapsedTime: String = "2:45"
+    @Published var currentSongRemainingTime: String = "-3:11"
+    @Published var volumeLevelPercentage: Float = 0.8
     
     private var allSongs: [Song]
     private var cancellables = Set<AnyCancellable>()
@@ -71,7 +76,11 @@ final class SongListViewModel: ObservableObject {
     }
     
     func handlePlayButtonPressed() {
-        isPlaying.toggle()
+        if currentSong == nil {
+            playFirstAvailableSong()
+        } else {
+            isPlaying.toggle()
+        }
     }
     
     func handleNextButtonPressed() {
@@ -82,6 +91,16 @@ final class SongListViewModel: ObservableObject {
         let nextSongIndex = (currentSongIndex + 1) % songs.count
         let nextSong = songs[nextSongIndex]
         playSong(song: nextSong)
+    }
+    
+    func handlePreviousButtonPressed() {
+        guard let currentSongIndex = songs.firstIndex(where: { $0.id == currentSong?.id }) else {
+            playFirstAvailableSong()
+            return
+        }
+        let previousSongIndex = (currentSongIndex - 1 + songs.count) % songs.count
+        let previousSong = songs[previousSongIndex]
+        playSong(song: previousSong)
     }
     
     func handleHeaderPlayButtonTapped() {

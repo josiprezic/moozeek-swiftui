@@ -14,6 +14,7 @@
 		74A5DC57291C55E60083417E /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC56291C55E60083417E /* SongCell.swift */; };
 		74A5DC5A291CFF5B0083417E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC59291CFF5B0083417E /* MainTabView.swift */; };
 		74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC5B291CFF9A0083417E /* TabBarItem.swift */; };
+		74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC5F291D334F0083417E /* MusicNoteView.swift */; };
 		D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FA65260FFBBF0029AA1F /* MoozeekApp.swift */; };
 		D760FA6A260FFBC00029AA1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA69260FFBC00029AA1F /* Assets.xcassets */; };
 		D760FA6D260FFBC00029AA1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D760FA6C260FFBC00029AA1F /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		74A5DC56291C55E60083417E /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		74A5DC59291CFF5B0083417E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		74A5DC5B291CFF9A0083417E /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		74A5DC5F291D334F0083417E /* MusicNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicNoteView.swift; sourceTree = "<group>"; };
 		D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moozeek-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D760FA65260FFBBF0029AA1F /* MoozeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoozeekApp.swift; sourceTree = "<group>"; };
 		D760FA69260FFBC00029AA1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				74A5DC4D291C02BC0083417E /* SongListViewModel.swift */,
 				74A5DC54291C53FA0083417E /* HeaderButton.swift */,
 				74A5DC56291C55E60083417E /* SongCell.swift */,
+				74A5DC5F291D334F0083417E /* MusicNoteView.swift */,
 			);
 			path = SongList;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */,
 				74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */,
 				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
+				74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */,
 				74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */,
 				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
 				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
