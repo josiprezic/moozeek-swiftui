@@ -96,26 +96,11 @@ struct MusicPlayer: View {
     
     private var songMenuButton: some View {
         Menu {
-            Button(action: {
-                
-            }) {
-                Label("Delete from Library", systemImage: Style.Image.trash)
-                    .tint(Color.red)
-                    .accentColor(.red)
-                    .background(Color.red)
-                    .foregroundColor(.red)
-            }
-            .buttonStyle(.plain)
-            
-            Button(action: {
-                
-            }) {
-                Label("Play Next", systemImage: Style.Image.playNext)
-            }
-            Button(action: {
-                
-            }) {
-                Label("Play Last", systemImage: Style.Image.playLast)
+            ForEach(SongDetailMenuItem.allCases) { item in
+                Button(
+                    action: {},
+                    label: { Label(item.title, systemImage: item.systemImage) }
+                )
             }
         } label: {
             ZStack {
@@ -203,11 +188,11 @@ struct MusicPlayer: View {
     
     private var volumeControlView: some View {
         HStack {
-            Image(systemName: "volume.fill")
+            Image(systemName: Style.Image.speakerLow)
             
             Slider(value: $viewModel.volumeLevelPercentage)
                 .accentColor(.white.opacity(0.5))
-            Image(systemName: "speaker.wave.3.fill")
+            Image(systemName: Style.Image.speakerHigh)
             
         }
         .foregroundColor(.white.opacity(0.5))
@@ -215,11 +200,11 @@ struct MusicPlayer: View {
     
     private var footerControlView: some View {
         HStack {
-            Image(systemName: "quote.bubble")
+            Image(systemName: Style.Image.quoteBubble)
             Spacer()
-            Image(systemName: "airplayaudio")
+            Image(systemName: Style.Image.airplay)
             Spacer()
-            Image(systemName: "list.bullet")
+            Image(systemName: Style.Image.bulletList)
         }
         .foregroundColor(.white.opacity(0.5))
         .frame(maxWidth: .infinity)

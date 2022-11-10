@@ -32,6 +32,11 @@ extension Style.Image {
     static let musicNote = "music.note"
     static let download = "arrow.down.circle.fill"
     static let trash = "trash"
+    static let quoteBubble = "quote.bubble"
+    static let airplay = "airplayaudio"
+    static let bulletList = "list.bullet"
+    static let speakerLow = "volume.fill"
+    static let speakerHigh = "speaker.wave.3.fill"
 }
 
 extension Style.Size {
