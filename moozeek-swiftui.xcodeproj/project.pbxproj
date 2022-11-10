@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74728C15291D54F200DEE243 /* SongDetailMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */; };
 		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
 		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
 		74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4D291C02BC0083417E /* SongListViewModel.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailMenuItem.swift; sourceTree = "<group>"; };
 		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		74A5DC4D291C02BC0083417E /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
+				74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				74A5DC47291C017A0083417E /* Song.swift in Sources */,
 				74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */,
 				74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */,
+				74728C15291D54F200DEE243 /* SongDetailMenuItem.swift in Sources */,
 				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
 				74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */,
 				74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */,

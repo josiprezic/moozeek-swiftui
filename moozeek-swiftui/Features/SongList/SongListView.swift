@@ -64,7 +64,7 @@ struct SongListView: View {
     }
     
     private var musicPlayer: some View {
-        MusicPlayer(viewModel: viewModel, namespace: namespace)
+        MusicPlayer(viewModel: viewModel)
             .gesture(dragGesture)
     }
     

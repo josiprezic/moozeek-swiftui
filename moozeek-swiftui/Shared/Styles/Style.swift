@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct Style {
-    
-    struct Image { }
-    struct Size { }
-    struct Color {
-        
-    }
-    struct Font { }
+    struct Image {}
+    struct Size {}
+    struct Color {}
+    struct Font {}
 }
-
 
 extension Style.Image {
     static let play: String = "play.fill"
@@ -32,6 +28,11 @@ extension Style.Image {
     static let musicNote = "music.note"
     static let download = "arrow.down.circle.fill"
     static let trash = "trash"
+    static let quoteBubble = "quote.bubble"
+    static let airplay = "airplayaudio"
+    static let bulletList = "list.bullet"
+    static let speakerLow = "volume.fill"
+    static let speakerHigh = "speaker.wave.3.fill"
 }
 
 extension Style.Size {
@@ -46,20 +47,9 @@ extension Style.Size {
 }
 
 extension Style.Color {
-//    @Environment(\.colorScheme) private static var colorScheme
-//    private static var isDarkMode: Bool { currentSystemScheme == .dark }
-//
-//    private static var currentSystemScheme: UIUserInterfaceStyle {
-//        UITraitCollection.current.userInterfaceStyle
-//    }
-    
     static let playerTrackControl = Color.black
     static let playerBackground = Color.gray.opacity(0.4)
     static let playerBarBackground = Color.gray.opacity(0.1)
-    
-    // song list
-//    static let songCellBackground = isDarkMode ? Color.black : Color.white
-//    static let songCellForeground = isDarkMode ? Color.white : Color.black
 }
 
 extension Style.Font {
