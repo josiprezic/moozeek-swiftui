@@ -25,7 +25,6 @@ struct MusicPlayerBar: View {
     // MARK: - Properties -
     
     @StateObject var viewModel: SongListViewModel
-    let namespace: Namespace.ID
     
     // MARK: - Views -
     
@@ -44,12 +43,15 @@ struct MusicPlayerBar: View {
     }
     
     private var trackLogo: some View {
-        Image("gnr_logo") // TODO: JR to be removed
-            .resizable()
-            .frame(width: Constants.iconSize, height: Constants.iconSize)
-            .cornerRadius(Constants.iconCornerRadius)
+        MusicNoteView()
             .padding()
-            .matchedGeometryEffect(id: Constants.animationId, in: namespace)
+        
+//        Image("gnr_logo")
+//            .resizable()
+//            .frame(width: Constants.iconSize, height: Constants.iconSize)
+//            .cornerRadius(Constants.iconCornerRadius)
+//            .padding()
+//            .matchedGeometryEffect(id: Constants.animationId, in: namespace)
     }
     
     private var trackTitle: some View {
@@ -76,13 +78,7 @@ struct MusicPlayerBar: View {
 // MARK: - Previews -
 
 struct MusicPlayerBar_Previews: PreviewProvider {
-    
-    @Namespace static var namespace
-    
     static var previews: some View {
-        MusicPlayerBar(
-            viewModel: SongListViewModel(),
-            namespace: namespace
-        )
+        MusicPlayerBar(viewModel: SongListViewModel())
     }
 }

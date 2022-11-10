@@ -20,6 +20,8 @@ struct MusicPlayer: View {
             Color.gray
                 .ignoresSafeArea()
             subviews
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.horizontal, 30)
                 .background(Gradient(colors: [.gray, .black.opacity(0.6)]))
         }
     }
@@ -29,19 +31,13 @@ struct MusicPlayer: View {
             Spacer()
             trackLogo
             Spacer()
-            HStack {
-                trackTitle
-                Spacer()
-                songMenuButton
-            }
+            songControls
             progressView
             timeView
             playerControls
             volumeControlView
             footerControlView
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 30)
     }
     
     private var trackLogo: some View {
@@ -112,6 +108,14 @@ struct MusicPlayer: View {
                 Image(systemName: Style.Image.favorite)
                 Text("Favorite")
             }
+        }
+    }
+    
+    private var songControls: some View {
+        HStack {
+            trackTitle
+            Spacer()
+            songMenuButton
         }
     }
     

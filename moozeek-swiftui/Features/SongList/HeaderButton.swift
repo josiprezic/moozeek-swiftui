@@ -32,6 +32,6 @@ struct HeaderButton: View {
 
 struct HeaderButton_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderButton(title: "Play", imageSystemName: "play.fill", action: { })
+        HeaderButton(title: "Play", imageSystemName: Style.Image.play, action: { })
     }
 }

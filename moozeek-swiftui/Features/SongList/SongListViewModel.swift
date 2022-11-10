@@ -12,6 +12,7 @@ import Combine
 final class SongListViewModel: ObservableObject {
     @Published var songs: [Song]
     @Published var searchText: String
+    
     @Published var isPlaying = false
     @Published var isShuffle = false
 
@@ -33,6 +34,7 @@ final class SongListViewModel: ObservableObject {
         ], at: 0)
         
         songs = allSongs
+        currentSong = allSongs.first
         searchText = ""
         setupPublishers()
     }

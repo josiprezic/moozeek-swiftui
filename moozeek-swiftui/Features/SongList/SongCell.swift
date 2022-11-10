@@ -38,26 +38,10 @@ struct SongCell: View {
     
     var menuButton: some View {
         Menu {
-            Button(action: {
-                
-            }) {
-                Label("Delete from Library", systemImage: Style.Image.trash)
-                    .tint(Color.red)
-                    .accentColor(.red)
-                    .background(Color.red)
-                    .foregroundColor(.red)
-            }
-            .buttonStyle(.plain)
-            
-            Button(action: {
-                
-            }) {
-                Label("Play Next", systemImage: Style.Image.playNext)
-            }
-            Button(action: {
-                
-            }) {
-                Label("Play Last", systemImage: Style.Image.playLast)
+            ForEach(SongDetailMenuItem.allCases) { item in
+                Button(action: {}, label: {
+                    Label(item.title, systemImage: item.systemImage)
+                })
             }
         } label: {
             ZStack {
@@ -69,14 +53,10 @@ struct SongCell: View {
             .frame(width: 25, height: 50)
         }
         .contextMenu {
-            Button(action: {}) {
-                Text("Share")
-                Image(systemName: Style.Image.share)
-            }
-            // 3.
-            Button(action: {}) {
-                Image(systemName: Style.Image.favorite)
-                Text("Favorite")
+            ForEach(SongDetailMenuItem.allCases) { item in
+                Button(action: {}, label: {
+                    Label(item.title, systemImage: item.systemImage)
+                })
             }
         }
     }
@@ -87,3 +67,4 @@ struct SongCell_Previews: PreviewProvider {
         SongCell(song: Song.example)
     }
 }
+

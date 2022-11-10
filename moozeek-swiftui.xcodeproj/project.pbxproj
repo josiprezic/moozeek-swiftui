@@ -99,6 +99,7 @@
 		74A5DC50291C053C0083417E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */,
 				74A5DC46291C017A0083417E /* Song.swift */,
 			);
 			path = Models;
@@ -108,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				D79E21C02610FBCD003DA2D2 /* MusicPlayer.swift */,
-				74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";

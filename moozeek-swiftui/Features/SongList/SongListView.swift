@@ -13,7 +13,7 @@ struct SongListView: View {
     @Namespace private var namespace
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var showDetails: Bool = true
+    @State private var showDetails: Bool = false
     
     var body: some View {
         NavigationView {
@@ -69,10 +69,7 @@ struct SongListView: View {
     }
     
     private var musicPlayerBar: some View {
-        MusicPlayerBar(
-            viewModel: viewModel,
-            namespace: namespace
-        )
+        MusicPlayerBar(viewModel: viewModel)
         .onTapGesture(perform: onMusicPlayerBarTapGesture)
         .gesture(dragGesture)
     }
