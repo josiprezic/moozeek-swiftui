@@ -18,7 +18,7 @@ final class SongListViewModel: ObservableObject {
     
     @Published var isPlaying = false
     @Published var isShuffle = false
-
+    
     @Published var currentSong: Song?
     @Published var currentSongPercentage: Float = 0.4
     @Published var currentSongElapsedTime: String = "2:45"
@@ -41,12 +41,12 @@ final class SongListViewModel: ObservableObject {
         songs = allSongs
         currentSong = allSongs.first
         searchText = ""
-        setupPublishers()
+        setupObservables()
     }
     
     // MARK: - Setup
     
-    private func setupPublishers() {
+    private func setupObservables() {
         $searchText
             .map { return $0.lowercased() }
             .sink(receiveValue: handleSearchTextChanged)
@@ -59,6 +59,19 @@ final class SongListViewModel: ObservableObject {
         audioManager.playerDidFinishPlaying
             .sink(receiveValue: handleSongDidFinishedPlaying)
             .store(in: &cancellables)
+        
+        audioManager.currentSongElapsedTime
+            .map(\.asTimeString)
+            .assign(to: &$currentSongElapsedTime)
+        
+        audioManager.currentSongRemainingTime
+            .map(\.asTimeString)
+            .assign(to: &$currentSongRemainingTime)
+        
+        audioManager.currentSongElapsedTime
+            .map(Float.init)
+            .map { [weak self] in $0 / Float(self?.audioManager.currentSongDuration ?? 1) }
+            .assign(to: &$currentSongPercentage)
     }
     
     // MARK: - Methods

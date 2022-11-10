@@ -12,6 +12,7 @@
 		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
 		7452D52B291D63ED0069008A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452D52A291D63ED0069008A /* AudioManager.swift */; };
 		7452D52D291D78C30069008A /* Intro music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D52C291D78C30069008A /* Intro music.mp3 */; };
+		7452D530291D930F0069008A /* Int+TimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452D52F291D930F0069008A /* Int+TimeString.swift */; };
 		74728C15291D54F200DEE243 /* SongDetailMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */; };
 		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
 		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
@@ -35,6 +36,7 @@
 		7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Guns N’ Roses - Sweet Child O’ Mine.mp3"; sourceTree = "<group>"; };
 		7452D52A291D63ED0069008A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		7452D52C291D78C30069008A /* Intro music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Intro music.mp3"; sourceTree = "<group>"; };
+		7452D52F291D930F0069008A /* Int+TimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeString.swift"; sourceTree = "<group>"; };
 		74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailMenuItem.swift; sourceTree = "<group>"; };
 		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		7452D52E291D93010069008A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7452D52F291D930F0069008A /* Int+TimeString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		74A5DC48291C02300083417E /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		74A5DC4F291C05350083417E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7452D52E291D93010069008A /* Extensions */,
 				7452D529291D63DC0069008A /* Services */,
 				74A5DC53291C059C0083417E /* Styles */,
 				74A5DC50291C053C0083417E /* Models */,
@@ -278,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7452D530291D930F0069008A /* Int+TimeString.swift in Sources */,
 				74A5DC47291C017A0083417E /* Song.swift in Sources */,
 				74A5DC4E291C02BC0083417E /* SongListViewModel.swift in Sources */,
 				74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */,
