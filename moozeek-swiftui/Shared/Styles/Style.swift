@@ -47,7 +47,7 @@ extension Style.Color {
     
     static let playerTrackControl = Color.black
     static let playerBackground = Color.gray.opacity(0.4)
-    static let playerBarBackground = Color.gray.opacity(0.15)
+    static let playerBarBackground = Color.gray.opacity(0.1)
     
     // song list
 //    static let songCellBackground = isDarkMode ? Color.black : Color.white

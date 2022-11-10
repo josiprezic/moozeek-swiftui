@@ -24,9 +24,8 @@ struct MusicPlayerBar: View {
     
     // MARK: - Properties -
     
+    @StateObject var viewModel: SongListViewModel
     let namespace: Namespace.ID
-    
-    @State var isPlaying = false
     
     // MARK: - Views -
     
@@ -35,7 +34,7 @@ struct MusicPlayerBar: View {
             HStack {
                 trackLogo
                 trackTitle
-                spacer
+                Spacer()
                 playButton
                 forwardButton
             }
@@ -54,26 +53,23 @@ struct MusicPlayerBar: View {
     }
     
     private var trackTitle: some View {
-        Text("Welcome to the Jungle")
+        Text(viewModel.currentSong?.name ?? "No song")
             .font(.headline)
             .lineLimit(1)
     }
     
-    private var spacer: some View {
-        Spacer()
-    }
-    
     private var playButton: some View {
-        Image(systemName: isPlaying ? Constants.playImageName : Constants.stopImageName)
-            .padding()
-            .onTapGesture {
-                isPlaying.toggle()
-            }
+        Image(systemName: viewModel.isPlaying ? Constants.stopImageName : Constants.playImageName)
+            .onTapGesture(perform: viewModel.handlePlayButtonPressed)
+            .frame(width: 30)
+            .padding(.trailing, 5)
     }
     
     private var forwardButton: some View {
         Image(systemName: Constants.forwardImageName)
-            .padding()
+            .onTapGesture(perform: viewModel.handleNextButtonPressed)
+            .frame(width: 30)
+            .padding(.trailing, 15)
     }
 }
 
@@ -84,6 +80,9 @@ struct MusicPlayerBar_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        MusicPlayerBar(namespace: namespace)
+        MusicPlayerBar(
+            viewModel: SongListViewModel(),
+            namespace: namespace
+        )
     }
 }

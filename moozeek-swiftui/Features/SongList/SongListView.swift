@@ -18,42 +18,45 @@ struct SongListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if showDetails {
-                    Spacer()
-                    musicPlayer
-                } else {
-                    VStack {
-                        songListView
-                        musicPlayerBar
-                    }
-                }
+                songListView
+                musicPlayerBar
             }
             .navigationTitle("Songs")
         }
         .searchable(text: $viewModel.searchText, prompt: "Find in Songs")
+        .fullScreenCover(isPresented: $showDetails) { musicPlayer }
     }
     
     private var songListView: some View {
         List {
             Section(header: songListHeaderView) {
-                ForEach(viewModel.songs, content: SongCell.init)
+                ForEach(viewModel.songs) { song in
+                    SongCell(song: song)
+                        .onTapGesture { viewModel.handleSongSelected(song) }
+                        .onLongPressGesture {
+                            print("Song item long press gesture")
+                        }
+                }
             }
             .listRowBackground(colorScheme == .dark ? Color.black : Color.white)
         }
         .padding([.bottom], -8)
         .listStyle(GroupedListStyle())
         .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+        
     }
     
     private var songListHeaderView: some View {
         HStack(spacing: 20) {
             HeaderButton(
                 title: "Play",
-                imageSystemName: Style.Image.play
+                imageSystemName: Style.Image.play,
+                action: viewModel.handleHeaderPlayButtonTapped
             )
             HeaderButton(
                 title: "Shuffle",
-                imageSystemName: Style.Image.shuffle
+                imageSystemName: Style.Image.shuffle,
+                action: viewModel.handleHeaderShufflePlayButtonTapped
             )
         }
         .padding(.horizontal, -5)
@@ -66,9 +69,12 @@ struct SongListView: View {
     }
     
     private var musicPlayerBar: some View {
-        MusicPlayerBar(namespace: namespace)
-            .onTapGesture(perform: onMusicPlayerBarTapGesture)
-            .gesture(dragGesture)
+        MusicPlayerBar(
+            viewModel: viewModel,
+            namespace: namespace
+        )
+        .onTapGesture(perform: onMusicPlayerBarTapGesture)
+        .gesture(dragGesture)
     }
     
     private var dragGesture: some Gesture {
@@ -86,17 +92,9 @@ struct SongListView: View {
     
     private func onDragGestureEnded(_ value: DragGesture.Value) {
         if value.translation.height < 0 {
-            // up
-            withAnimation(.spring()) {
-                showDetails = true
-            }
-        }
-        
-        if value.translation.height > 0 {
-            // down
-            withAnimation(.spring()) {
-                showDetails = false
-            }
+            showDetails = true
+        } else if value.translation.height > 0 {
+            showDetails = false
         }
     }
 }
