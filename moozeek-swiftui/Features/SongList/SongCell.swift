@@ -12,8 +12,8 @@ struct SongCell: View {
     
     var body: some View {
         HStack {
-            musicNoteIcon
-            Text(song.name)
+            MusicNoteView()
+            songTitle
             Spacer()
             downloadButton
             menuButton
@@ -22,8 +22,9 @@ struct SongCell: View {
         .buttonStyle(PlainButtonStyle())
     }
     
-    var musicNoteIcon: some View {
-        MusicNoteView()
+    var songTitle: some View {
+        Text(song.name)
+            .lineLimit(1)
     }
     
     var downloadButton: some View {

@@ -30,6 +30,7 @@ struct MusicPlayerBar: View {
     
     var body: some View {
         VStack {
+            separator
             HStack {
                 trackLogo
                 trackTitle
@@ -37,6 +38,8 @@ struct MusicPlayerBar: View {
                 playButton
                 forwardButton
             }
+            .padding(.vertical, -16)
+            separator
         }
         .frame(maxWidth: .infinity, maxHeight: Constants.height)
         .background(Constants.background)
@@ -72,6 +75,13 @@ struct MusicPlayerBar: View {
             .onTapGesture(perform: viewModel.handleNextButtonPressed)
             .frame(width: 30)
             .padding(.trailing, 15)
+    }
+    
+    private var separator: some View {
+        Rectangle()
+            .foregroundColor(.gray.opacity(0.3))
+            .frame(maxWidth: .infinity)
+            .frame(height: 0.5)
     }
 }
 
