@@ -38,28 +38,26 @@ struct SongCell: View {
     }
     
     var menuButton: some View {
-        Menu {
-            ForEach(SongDetailMenuItem.allCases) { item in
-                Button(action: {}, label: {
-                    Label(item.title, systemImage: item.systemImage)
-                })
-            }
-        } label: {
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.clear)
-                Image(systemName: Style.Image.more)
-                    .padding()
-            }
-            .frame(width: 25, height: 50)
+        Menu { menuContent } label: { moreButton }
+            .contextMenu { menuContent }
+    }
+    
+    var menuContent: some View {
+        ForEach(SongDetailMenuItem.allCases) { item in
+            Button(action: {}, label: {
+                Label(item.title, systemImage: item.systemImage)
+            })
         }
-        .contextMenu {
-            ForEach(SongDetailMenuItem.allCases) { item in
-                Button(action: {}, label: {
-                    Label(item.title, systemImage: item.systemImage)
-                })
-            }
+    }
+    
+    var moreButton: some View {
+        ZStack {
+            Rectangle()
+                .foregroundColor(.clear)
+            Image(systemName: Style.Image.more)
+                .padding()
         }
+        .frame(width: 25, height: 50)
     }
 }
 

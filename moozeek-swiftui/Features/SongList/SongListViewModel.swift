@@ -96,6 +96,12 @@ final class SongListViewModel: ObservableObject {
         playSong(song: nextSong)
     }
     
+    private func playShuffleSong() {
+        let songCandidates = self.songs.filter { $0 != currentSong }
+        guard let randomSong = songCandidates.randomElement() else { return }
+        playSong(song: randomSong)
+    }
+    
     // MARK: - Handlers
     
     private func handleSearchTextChanged(_ searchText: String) {
@@ -120,7 +126,11 @@ final class SongListViewModel: ObservableObject {
     }
     
     private func handleSongDidFinishedPlaying() {
-        playNextSong()
+        if isShuffle {
+            playShuffleSong()
+        } else {
+            playNextSong()
+        }
     }
     
     func handleSongSelected(_ song: Song) {
@@ -151,12 +161,12 @@ final class SongListViewModel: ObservableObject {
     }
     
     func handleHeaderPlayButtonTapped() {
+        isShuffle = false
         playFirstAvailableSong()
     }
     
     func handleHeaderShufflePlayButtonTapped() {
-        guard let randomSong = songs.randomElement() else { return }
         isShuffle = true
-        playSong(song: randomSong)
+        playShuffleSong()
     }
 }
