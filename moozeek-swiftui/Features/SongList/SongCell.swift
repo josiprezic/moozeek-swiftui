@@ -19,10 +19,11 @@ struct SongCell: View {
             menuButton
         }
         .padding(-5)
+        .buttonStyle(PlainButtonStyle())
     }
     
     var musicNoteIcon: some View {
-        Image(systemName: "music.note")
+        Image(systemName: Style.Image.musicNote)
             .buttonStyle(PlainButtonStyle())
             .frame(width: 50, height: 50)
             .foregroundColor(Color.gray.opacity(0.6))
@@ -46,7 +47,7 @@ struct SongCell: View {
     var downloadButton: some View {
         Button(action: {},
                label: {
-            Image(systemName: "arrow.down.circle.fill")
+            Image(systemName: Style.Image.download)
                 .resizable()
                 .frame(width: 12, height: 12)
                 .opacity(0.3)
@@ -54,12 +55,48 @@ struct SongCell: View {
     }
     
     var menuButton: some View {
-        Button(
-            action: {},
-            label: {
-                Image(systemName: "ellipsis")
+        Menu {
+            Button(action: {
+                
+            }) {
+                Label("Delete from Library", systemImage: Style.Image.trash)
+                    .tint(Color.red)
+                    .accentColor(.red)
+                    .background(Color.red)
+                    .foregroundColor(.red)
             }
-        )
+            .buttonStyle(.plain)
+            
+            Button(action: {
+                
+            }) {
+                Label("Play Next", systemImage: Style.Image.playNext)
+            }
+            Button(action: {
+                
+            }) {
+                Label("Play Last", systemImage: Style.Image.playLast)
+            }
+        } label: {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.clear)
+                Image(systemName: Style.Image.more)
+                    .padding()
+            }
+            .frame(width: 25, height: 50)
+        }
+        .contextMenu {
+            Button(action: {}) {
+                Text("Share")
+                Image(systemName: Style.Image.share)
+            }
+            // 3.
+            Button(action: {}) {
+                Image(systemName: Style.Image.favorite)
+                Text("Favorite")
+            }
+        }
     }
 }
 

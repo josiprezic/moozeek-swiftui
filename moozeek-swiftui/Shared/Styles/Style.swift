@@ -24,6 +24,14 @@ extension Style.Image {
     static let forward: String = "forward.fill"
     static let backward = "backward.fill"
     static let shuffle = "shuffle"
+    static let playNext = "text.line.first.and.arrowtriangle.forward"
+    static let playLast = "text.line.last.and.arrowtriangle.forward"
+    static let more = "ellipsis"
+    static let share = "square.and.arrow.up"
+    static let favorite = "heart.fill"
+    static let musicNote = "music.note"
+    static let download = "arrow.down.circle.fill"
+    static let trash = "trash"
 }
 
 extension Style.Size {
