@@ -25,7 +25,7 @@ struct SongCell: View {
         Image(systemName: "music.note")
             .buttonStyle(PlainButtonStyle())
             .frame(width: 50, height: 50)
-            .foregroundColor(Color.white.opacity(0.4))
+            .foregroundColor(Color.gray.opacity(0.6))
             .background(
                 RoundedRectangle(
                     cornerRadius: 5,
@@ -38,7 +38,7 @@ struct SongCell: View {
                     cornerRadius: 5,
                     style: .continuous
                 )
-                .strokeBorder(Color.white.opacity(0.2), lineWidth: 1)
+                .strokeBorder(Color.gray.opacity(0.2), lineWidth: 1)
             )
             .padding(.trailing, 12)
     }

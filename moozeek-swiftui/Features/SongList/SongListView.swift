@@ -11,6 +11,7 @@ struct SongListView: View {
     
     @ObservedObject var viewModel: SongListViewModel
     @Namespace private var namespace
+    @Environment(\.colorScheme) var colorScheme
     
     @State private var showDetails: Bool = false
     
@@ -28,7 +29,6 @@ struct SongListView: View {
                 }
             }
             .navigationTitle("Songs")
-            .ignoresSafeArea(edges: .bottom)
         }
         .searchable(text: $viewModel.searchText, prompt: "Find in Songs")
     }
@@ -38,22 +38,22 @@ struct SongListView: View {
             Section(header: songListHeaderView) {
                 ForEach(viewModel.songs, content: SongCell.init)
             }
-            .listRowBackground(Color.black)
+            .listRowBackground(colorScheme == .dark ? Color.black : Color.white)
         }
         .padding([.bottom], -8)
         .listStyle(GroupedListStyle())
-        .foregroundColor(Color.white)
+        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
     }
     
     private var songListHeaderView: some View {
         HStack(spacing: 20) {
             HeaderButton(
                 title: "Play",
-                imageSystemName: "play.fill"
+                imageSystemName: Style.Image.play
             )
             HeaderButton(
                 title: "Shuffle",
-                imageSystemName: "shuffle"
+                imageSystemName: Style.Image.shuffle
             )
         }
         .padding(.horizontal, -5)

@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct Style {
+    
     struct Image { }
     struct Size { }
-    struct Color { }
+    struct Color {
+        
+    }
     struct Font { }
 }
 
@@ -20,26 +23,35 @@ extension Style.Image {
     static let stop: String = "stop.fill"
     static let forward: String = "forward.fill"
     static let backward = "backward.fill"
+    static let shuffle = "shuffle"
 }
 
 extension Style.Size {
-    
     static let playerTrackIconRadius: CGFloat = 10
     static let playerTrackIconPadding: CGFloat = 40
     static let playerTrackTitleLineLimit = 1
     static let playerTrackControlSize: CGFloat = 30
     static let playerTrackControlsPadding: CGFloat = 30
-    
     static let playerBarTrackIcon: CGFloat = 50
     static let playerBarTrackIconRadius: CGFloat = 5
-    static let playerBarHeight: CGFloat = 100
+    static let playerBarHeight: CGFloat = 65
 }
 
 extension Style.Color {
+//    @Environment(\.colorScheme) private static var colorScheme
+//    private static var isDarkMode: Bool { currentSystemScheme == .dark }
+//
+//    private static var currentSystemScheme: UIUserInterfaceStyle {
+//        UITraitCollection.current.userInterfaceStyle
+//    }
+    
     static let playerTrackControl = Color.black
     static let playerBackground = Color.gray.opacity(0.4)
+    static let playerBarBackground = Color.gray.opacity(0.15)
     
-    static let playerBarBackground = Color.gray
+    // song list
+//    static let songCellBackground = isDarkMode ? Color.black : Color.white
+//    static let songCellForeground = isDarkMode ? Color.white : Color.black
 }
 
 extension Style.Font {

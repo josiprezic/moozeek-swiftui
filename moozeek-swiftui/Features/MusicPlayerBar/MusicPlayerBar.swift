@@ -39,7 +39,6 @@ struct MusicPlayerBar: View {
                 playButton
                 forwardButton
             }
-            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: Constants.height)
         .background(Constants.background)
