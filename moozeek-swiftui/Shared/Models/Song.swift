@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Song: Identifiable {
+struct Song: Identifiable, Equatable {
     let id = UUID()
     let name: String
     

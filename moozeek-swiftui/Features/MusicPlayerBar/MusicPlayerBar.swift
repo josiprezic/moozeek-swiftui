@@ -61,7 +61,7 @@ struct MusicPlayerBar: View {
     }
     
     private var playButton: some View {
-        Image(systemName: viewModel.isPlaying ? Constants.stopImageName : Constants.playImageName)
+        Image(systemName: viewModel.isPlaying ? Style.Image.pause : Style.Image.play)
             .onTapGesture(perform: viewModel.handlePlayButtonPressed)
             .frame(width: 30)
             .padding(.trailing, 5)

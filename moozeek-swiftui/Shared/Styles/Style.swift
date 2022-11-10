@@ -33,6 +33,7 @@ extension Style.Image {
     static let bulletList = "list.bullet"
     static let speakerLow = "volume.fill"
     static let speakerHigh = "speaker.wave.3.fill"
+    static let pause = "pause.fill"
 }
 
 extension Style.Size {

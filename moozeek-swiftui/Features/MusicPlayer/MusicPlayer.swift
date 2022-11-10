@@ -158,7 +158,7 @@ struct MusicPlayer: View {
     
     private var playButton: some View {
         Button(action: viewModel.handlePlayButtonPressed) {
-            Image(systemName: viewModel.isPlaying ? Style.Image.stop : Style.Image.play)
+            Image(systemName: viewModel.isPlaying ? Style.Image.pause : Style.Image.play)
                 .foregroundColor(.white)
                 .font(.system(size: Style.Size.playerTrackControlSize))
                 .frame(width: 30, height: 30)

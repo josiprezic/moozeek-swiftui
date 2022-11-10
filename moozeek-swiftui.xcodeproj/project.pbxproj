@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */; };
+		7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */; };
+		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
+		7452D52B291D63ED0069008A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452D52A291D63ED0069008A /* AudioManager.swift */; };
+		7452D52D291D78C30069008A /* Intro music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D52C291D78C30069008A /* Intro music.mp3 */; };
 		74728C15291D54F200DEE243 /* SongDetailMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */; };
 		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
 		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
@@ -25,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "It's My Life - Bon Jovi.mp3"; sourceTree = "<group>"; };
+		7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Billy Joel- Vienna.mp3"; sourceTree = "<group>"; };
+		7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Guns N’ Roses - Sweet Child O’ Mine.mp3"; sourceTree = "<group>"; };
+		7452D52A291D63ED0069008A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		7452D52C291D78C30069008A /* Intro music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Intro music.mp3"; sourceTree = "<group>"; };
 		74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailMenuItem.swift; sourceTree = "<group>"; };
 		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
@@ -55,10 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7452D522291D63500069008A /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */,
+				7452D52C291D78C30069008A /* Intro music.mp3 */,
+				7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */,
+				7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		7452D529291D63DC0069008A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7452D52A291D63ED0069008A /* AudioManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		74A5DC48291C02300083417E /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7452D522291D63500069008A /* Songs */,
 				D760FA65260FFBBF0029AA1F /* MoozeekApp.swift */,
+				D760FA69260FFBC00029AA1F /* Assets.xcassets */,
 				D760FA6E260FFBC00029AA1F /* Info.plist */,
 			);
 			path = App;
@@ -90,6 +121,7 @@
 		74A5DC4F291C05350083417E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7452D529291D63DC0069008A /* Services */,
 				74A5DC53291C059C0083417E /* Styles */,
 				74A5DC50291C053C0083417E /* Models */,
 			);
@@ -160,7 +192,6 @@
 				74A5DC48291C02300083417E /* App */,
 				74A5DC4F291C05350083417E /* Shared */,
 				74A5DC49291C027A0083417E /* Features */,
-				D760FA69260FFBC00029AA1F /* Assets.xcassets */,
 				D760FA6B260FFBC00029AA1F /* Preview Content */,
 			);
 			path = "moozeek-swiftui";
@@ -231,7 +262,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7452D52D291D78C30069008A /* Intro music.mp3 in Resources */,
+				7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */,
 				D760FA6D260FFBC00029AA1F /* Preview Assets.xcassets in Resources */,
+				7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */,
+				7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */,
 				D760FA6A260FFBC00029AA1F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +291,7 @@
 				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */,
 				74A5DC5A291CFF5B0083417E /* MainTabView.swift in Sources */,
+				7452D52B291D63ED0069008A /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

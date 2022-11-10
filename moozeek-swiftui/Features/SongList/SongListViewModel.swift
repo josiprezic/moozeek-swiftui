@@ -10,6 +10,9 @@ import Combine
 
 
 final class SongListViewModel: ObservableObject {
+    
+    // MARK: - Properties
+    
     @Published var songs: [Song]
     @Published var searchText: String
     
@@ -22,27 +25,39 @@ final class SongListViewModel: ObservableObject {
     @Published var currentSongRemainingTime: String = "-3:11"
     @Published var volumeLevelPercentage: Float = 0.8
     
-    private var allSongs: [Song]
+    private let allSongs: [Song]
+    private let audioManager: AudioManager = AudioManager()
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Initializers
+    
     init() {
-        allSongs = (1...30).map { Song.init(name: "My super song \($0)") }
-        allSongs.insert(contentsOf: [
-            Song(name: "Bon Jovi - It's my life"),
-            Song(name: "Alan Walker - The Spectre"),
-            Song(name: "ATC - All Around the World")
-        ], at: 0)
-        
+        allSongs = [
+            Song(name: "Intro music"),
+            Song(name: "Billy Joel- Vienna"),
+            Song(name: "Guns N’ Roses - Sweet Child O’ Mine"),
+            Song(name: "It's My Life - Bon Jovi")
+        ]
         songs = allSongs
         currentSong = allSongs.first
         searchText = ""
         setupPublishers()
     }
     
+    // MARK: - Setup
+    
     private func setupPublishers() {
         $searchText
             .map { return $0.lowercased() }
             .sink(receiveValue: handleSearchTextChanged)
+            .store(in: &cancellables)
+        
+        $isPlaying
+            .sink(receiveValue: handleIsPlayingValueChanged)
+            .store(in: &cancellables)
+        
+        audioManager.playerDidFinishPlaying
+            .sink(receiveValue: handleSongDidFinishedPlaying)
             .store(in: &cancellables)
     }
     
@@ -56,6 +71,16 @@ final class SongListViewModel: ObservableObject {
     private func playSong(song: Song) {
         currentSong = song
         isPlaying = true
+    }
+    
+    private func playNextSong() {
+        guard let currentSongIndex = songs.firstIndex(where: { $0.id == currentSong?.id }) else {
+            playFirstAvailableSong()
+            return
+        }
+        let nextSongIndex = (currentSongIndex + 1) % songs.count
+        let nextSong = songs[nextSongIndex]
+        playSong(song: nextSong)
     }
     
     // MARK: - Handlers
@@ -72,6 +97,19 @@ final class SongListViewModel: ObservableObject {
         }
     }
     
+    private func handleIsPlayingValueChanged(_ isPlaying: Bool) {
+        if isPlaying {
+            guard let currentSong else { return }
+            audioManager.resumeOrPlay(currentSong)
+        } else {
+            audioManager.pause()
+        }
+    }
+    
+    private func handleSongDidFinishedPlaying() {
+        playNextSong()
+    }
+    
     func handleSongSelected(_ song: Song) {
         currentSong = song
         isPlaying = true
@@ -86,13 +124,7 @@ final class SongListViewModel: ObservableObject {
     }
     
     func handleNextButtonPressed() {
-        guard let currentSongIndex = songs.firstIndex(where: { $0.id == currentSong?.id }) else {
-            playFirstAvailableSong()
-            return
-        }
-        let nextSongIndex = (currentSongIndex + 1) % songs.count
-        let nextSong = songs[nextSongIndex]
-        playSong(song: nextSong)
+        playNextSong()
     }
     
     func handlePreviousButtonPressed() {
