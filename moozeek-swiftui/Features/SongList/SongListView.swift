@@ -91,9 +91,9 @@ struct SongListView: View {
     }
     
     private func onDragGestureEnded(_ value: DragGesture.Value) {
-        if value.translation.height < 0 {
+        if value.translation.height < 20 {
             showDetails = true
-        } else if value.translation.height > 0 {
+        } else if value.translation.height > 50 {
             showDetails = false
         }
     }

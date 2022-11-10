@@ -24,7 +24,7 @@ final class SongListViewModel: ObservableObject {
         allSongs.insert(contentsOf: [
             Song(name: "Bon Jovi - It's my life"),
             Song(name: "Alan Walker - The Spectre"),
-            Song(name: "ATC - All Arround the World")
+            Song(name: "ATC - All Around the World")
         ], at: 0)
         
         songs = allSongs
