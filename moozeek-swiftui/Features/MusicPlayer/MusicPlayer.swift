@@ -9,27 +9,12 @@ import SwiftUI
 
 struct MusicPlayer: View {
     
-    // MARK: - Constants -
-    
-    enum Constants {
-        static let backwardImageName = Style.Image.backward
-        static let playImageName = Style.Image.play
-        static let forwardImageName = Style.Image.forward
-        static let imageCornerRadius = Style.Size.playerTrackIconRadius
-        static let animationId = Identifiers.trackIconAnimationName
-        static let trackTitleFont = Style.Font.playerTrackTitleFont
-        static let trackTitleLineLimit = Style.Size.playerTrackTitleLineLimit
-        static let trackControlColor = Color.white
-        static let trackControlSize = Style.Size.playerTrackControlSize
-        static let controlsViewPadding = Style.Size.playerTrackControlsPadding
-    }
-    
     // MARK: - Properties
+    
     @StateObject var viewModel: SongListViewModel
-    
-    let namespace: Namespace.ID
-    
+        
     // MARK: - Views -
+    
     var body: some View {
         ZStack {
             Color.gray
@@ -82,16 +67,16 @@ struct MusicPlayer: View {
                 .strokeBorder(Color.gray.opacity(0.2), lineWidth: 1)
             )
             .padding(.horizontal, -5)
-            .cornerRadius(Constants.imageCornerRadius)
+            .cornerRadius(Style.Size.playerTrackIconRadius)
             .padding(.vertical, 20)
     }
     
     private var trackTitle: some View {
         Text(viewModel.currentSong?.name ?? "No song")
             .foregroundColor(.white)
-            .font(Constants.trackTitleFont)
+            .font(Style.Font.playerTrackTitleFont)
             .bold()
-            .lineLimit(Constants.trackTitleLineLimit)
+            .lineLimit(Style.Size.playerTrackTitleLineLimit)
     }
     
     private var songMenuButton: some View {
@@ -160,9 +145,9 @@ struct MusicPlayer: View {
     
     private var backwardButton: some View {
         Button(action: viewModel.handlePreviousButtonPressed) {
-            Image(systemName: Constants.backwardImageName)
-                .foregroundColor(Constants.trackControlColor)
-                .font(.system(size: Constants.trackControlSize))
+            Image(systemName: Style.Image.backward)
+                .foregroundColor(.white)
+                .font(.system(size: Style.Size.playerTrackControlSize))
                 .padding()
         }
     }
@@ -170,8 +155,8 @@ struct MusicPlayer: View {
     private var playButton: some View {
         Button(action: viewModel.handlePlayButtonPressed) {
             Image(systemName: viewModel.isPlaying ? Style.Image.stop : Style.Image.play)
-                .foregroundColor(Constants.trackControlColor)
-                .font(.system(size: Constants.trackControlSize))
+                .foregroundColor(.white)
+                .font(.system(size: Style.Size.playerTrackControlSize))
                 .frame(width: 30, height: 30)
                 .padding()
         }
@@ -179,9 +164,9 @@ struct MusicPlayer: View {
     
     private var forwardButton: some View {
         Button(action: viewModel.handleNextButtonPressed) {
-            Image(systemName: Constants.forwardImageName)
-                .foregroundColor(Constants.trackControlColor)
-                .font(.system(size: Constants.trackControlSize))
+            Image(systemName: Style.Image.forward)
+                .foregroundColor(.white)
+                .font(.system(size: Style.Size.playerTrackControlSize))
                 .padding()
         }
     }
@@ -215,10 +200,7 @@ struct MusicPlayer: View {
 // MARK: - Previews -
 
 struct MusicPlayer_Previews: PreviewProvider {
-    
-    @Namespace static var namespace
-    
     static var previews: some View {
-        MusicPlayer(viewModel: SongListViewModel(), namespace: namespace)
+        MusicPlayer(viewModel: SongListViewModel())
     }
 }
