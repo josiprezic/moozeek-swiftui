@@ -56,6 +56,7 @@ struct SongListView: View {
                 imageSystemName: "shuffle"
             )
         }
+        .padding(.horizontal, -5)
         .frame(height: 60)
     }
     

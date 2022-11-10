@@ -12,7 +12,7 @@ struct SongCell: View {
     
     var body: some View {
         HStack {
-            musicNote
+            musicNoteIcon
             Text(song.name)
             Spacer()
             downloadButton
@@ -21,15 +21,24 @@ struct SongCell: View {
         .padding(-5)
     }
     
-    var musicNote: some View {
+    var musicNoteIcon: some View {
         Image(systemName: "music.note")
             .buttonStyle(PlainButtonStyle())
             .frame(width: 50, height: 50)
-            .background(Color.white.opacity(0.17))
             .foregroundColor(Color.white.opacity(0.4))
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 5,
+                    style: .continuous
+                )
+                .fill(Color.gray.opacity(0.17))
+            )
             .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.white.opacity(0.3))
+                RoundedRectangle(
+                    cornerRadius: 5,
+                    style: .continuous
+                )
+                .strokeBorder(Color.white.opacity(0.2), lineWidth: 1)
             )
             .padding(.trailing, 12)
     }

@@ -20,7 +20,7 @@ struct HeaderButton: View {
             }
             .frame(height: 50)
             .frame(maxWidth: .infinity)
-            .background(Color.white.opacity(0.15))
+            .background(Color.gray.opacity(0.2))
             .foregroundColor(.pink)
             .cornerRadius(10)
             .fontWeight(.bold)
