@@ -147,7 +147,11 @@ final class SongListViewModel: ObservableObject {
     }
     
     func handleNextButtonPressed() {
-        playNextSong()
+        if isShuffle {
+            playShuffleSong()
+        } else {
+            playNextSong()
+        }
     }
     
     func handlePreviousButtonPressed() {

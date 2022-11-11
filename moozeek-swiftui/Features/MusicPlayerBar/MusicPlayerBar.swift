@@ -9,19 +9,6 @@ import SwiftUI
 
 struct MusicPlayerBar: View {
     
-    // MARK: - Constants -
-    
-    enum Constants {
-        static let iconSize = Style.Size.playerBarTrackIcon
-        static let iconCornerRadius = Style.Size.playerBarTrackIconRadius
-        static let animationId = Identifiers.trackIconAnimationName
-        static let playImageName = Style.Image.play
-        static let stopImageName = Style.Image.stop
-        static let forwardImageName = Style.Image.forward
-        static let height = Style.Size.playerBarHeight
-        static let background = Style.Color.playerBarBackground
-    }
-    
     // MARK: - Properties -
     
     @StateObject var viewModel: SongListViewModel
@@ -41,20 +28,20 @@ struct MusicPlayerBar: View {
             .padding(.vertical, -16)
             separator
         }
-        .frame(maxWidth: .infinity, maxHeight: Constants.height)
-        .background(Constants.background)
+        .frame(maxWidth: .infinity, maxHeight: Style.Size.playerBarHeight)
+        .background(Style.Color.playerBarBackground)
     }
     
     private var trackLogo: some View {
         MusicNoteView()
             .padding()
         
-//        Image("gnr_logo")
-//            .resizable()
-//            .frame(width: Constants.iconSize, height: Constants.iconSize)
-//            .cornerRadius(Constants.iconCornerRadius)
-//            .padding()
-//            .matchedGeometryEffect(id: Constants.animationId, in: namespace)
+        //        Image("gnr_logo")
+        //            .resizable()
+        //            .frame(width: Constants.iconSize, height: Constants.iconSize)
+        //            .cornerRadius(Constants.iconCornerRadius)
+        //            .padding()
+        //            .matchedGeometryEffect(id: Constants.animationId, in: namespace)
     }
     
     private var trackTitle: some View {
@@ -71,7 +58,7 @@ struct MusicPlayerBar: View {
     }
     
     private var forwardButton: some View {
-        Image(systemName: Constants.forwardImageName)
+        Image(systemName: Style.Image.forward)
             .onTapGesture(perform: viewModel.handleNextButtonPressed)
             .frame(width: 30)
             .padding(.trailing, 15)
