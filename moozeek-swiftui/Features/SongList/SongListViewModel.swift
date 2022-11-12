@@ -61,11 +61,11 @@ final class SongListViewModel: ObservableObject {
             .store(in: &cancellables)
         
         audioManager.currentSongElapsedTime
-            .map(\.asTimeString)
+            .map(\.timeString)
             .assign(to: &$currentSongElapsedTime)
         
         audioManager.currentSongRemainingTime
-            .map(\.asTimeString)
+            .map(\.timeString)
             .assign(to: &$currentSongRemainingTime)
         
         audioManager.currentSongElapsedTime
