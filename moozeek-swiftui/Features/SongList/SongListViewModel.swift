@@ -21,8 +21,8 @@ final class SongListViewModel: ObservableObject {
     
     @Published var currentSong: Song?
     @Published var currentSongPercentage: Float = 0.4
-    @Published var currentSongElapsedTime: String = "2:45"
-    @Published var currentSongRemainingTime: String = "-3:11"
+    @Published var currentSongElapsedTime: String = ""
+    @Published var currentSongRemainingTime: String = ""
     @Published var volumeLevelPercentage: Float = 0.8
     
     private let allSongs: [Song]
@@ -66,6 +66,7 @@ final class SongListViewModel: ObservableObject {
         
         audioManager.currentSongRemainingTime
             .map(\.timeString)
+            .map { "-" + $0 }
             .assign(to: &$currentSongRemainingTime)
         
         audioManager.currentSongElapsedTime
