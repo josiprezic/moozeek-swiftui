@@ -160,8 +160,8 @@ struct MusicPlayer: View {
         Button(action: viewModel.handlePlayButtonPressed) {
             Image(systemName: viewModel.isPlaying ? Style.Image.pause : Style.Image.play)
                 .foregroundColor(.white)
-                .font(.system(size: Style.Size.playerTrackControlSize))
-                .frame(width: 30, height: 30)
+                .font(.system(size: 45))
+                .frame(width: 55, height: 30)
                 .padding()
         }
     }
