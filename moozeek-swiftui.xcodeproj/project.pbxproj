@@ -15,6 +15,7 @@
 		740824222924C4A400B42E81 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824212924C4A400B42E81 /* DependencyResolver.swift */; };
 		740824242924CAC200B42E81 /* View+Resolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824232924CAC200B42E81 /* View+Resolved.swift */; };
 		740824262924CEA300B42E81 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824252924CEA300B42E81 /* ViewModel.swift */; };
+		7408242A2924EBB700B42E81 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 740824292924EBB700B42E81 /* XCDYouTubeKit */; };
 		7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */; };
 		7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */; };
 		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
@@ -77,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7408241F2924C41C00B42E81 /* Resolver in Frameworks */,
+				7408242A2924EBB700B42E81 /* XCDYouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +307,7 @@
 			name = "moozeek-swiftui";
 			packageProductDependencies = (
 				7408241E2924C41C00B42E81 /* Resolver */,
+				740824292924EBB700B42E81 /* XCDYouTubeKit */,
 			);
 			productName = "moozeek-swiftui";
 			productReference = D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */;
@@ -335,6 +338,7 @@
 			mainGroup = D760FA59260FFBBF0029AA1F;
 			packageReferences = (
 				7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */,
+				740824282924EBB700B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
 			);
 			productRefGroup = D760FA63260FFBBF0029AA1F /* Products */;
 			projectDirPath = "";
@@ -586,6 +590,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		740824282924EBB700B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xced/XCDYouTubeKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -593,6 +605,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
+		};
+		740824292924EBB700B42E81 /* XCDYouTubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 740824282924EBB700B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
+			productName = XCDYouTubeKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
