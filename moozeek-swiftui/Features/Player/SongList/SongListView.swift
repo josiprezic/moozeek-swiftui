@@ -64,14 +64,14 @@ struct SongListView: View {
     }
     
     private var musicPlayer: some View {
-        MusicPlayer(viewModel: viewModel)
+        MusicPlayer.resolved
             .gesture(dragGesture)
     }
     
     private var musicPlayerBar: some View {
-        MusicPlayerBar(viewModel: viewModel)
-        .onTapGesture(perform: onMusicPlayerBarTapGesture)
-        .gesture(dragGesture)
+        MusicPlayerBar.resolved
+            .onTapGesture(perform: onMusicPlayerBarTapGesture)
+            .gesture(dragGesture)
     }
     
     private var dragGesture: some Gesture {

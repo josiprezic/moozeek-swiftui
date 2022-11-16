@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		740824142924BF1F00B42E81 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824132924BF1F00B42E81 /* SearchViewModel.swift */; };
 		740824162924C1E300B42E81 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824152924C1E300B42E81 /* WebView.swift */; };
 		7408241A2924C24700B42E81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824192924C24700B42E81 /* Constant.swift */; };
+		7408241F2924C41C00B42E81 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7408241E2924C41C00B42E81 /* Resolver */; };
+		740824222924C4A400B42E81 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824212924C4A400B42E81 /* DependencyResolver.swift */; };
+		740824242924CAC200B42E81 /* View+Resolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824232924CAC200B42E81 /* View+Resolved.swift */; };
 		7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */; };
 		7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */; };
 		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
@@ -39,6 +42,8 @@
 		740824132924BF1F00B42E81 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		740824152924C1E300B42E81 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		740824192924C24700B42E81 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		740824212924C4A400B42E81 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
+		740824232924CAC200B42E81 /* View+Resolved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Resolved.swift"; sourceTree = "<group>"; };
 		7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "It's My Life - Bon Jovi.mp3"; sourceTree = "<group>"; };
 		7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Billy Joel- Vienna.mp3"; sourceTree = "<group>"; };
 		7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Guns N’ Roses - Sweet Child O’ Mine.mp3"; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7408241F2924C41C00B42E81 /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +117,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		740824202924C48F00B42E81 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				740824212924C4A400B42E81 /* DependencyResolver.swift */,
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
 		7452D522291D63500069008A /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				7452D52F291D930F0069008A /* Int+TimeString.swift */,
+				740824232924CAC200B42E81 /* View+Resolved.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -173,6 +188,7 @@
 		74A5DC4F291C05350083417E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				740824202924C48F00B42E81 /* Resolver */,
 				740824182924C23800B42E81 /* Constants */,
 				740824172924C1EE00B42E81 /* UIViewRepresentables */,
 				7452D52E291D93010069008A /* Extensions */,
@@ -276,6 +292,9 @@
 			dependencies = (
 			);
 			name = "moozeek-swiftui";
+			packageProductDependencies = (
+				7408241E2924C41C00B42E81 /* Resolver */,
+			);
 			productName = "moozeek-swiftui";
 			productReference = D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */;
 			productType = "com.apple.product-type.application";
@@ -303,6 +322,9 @@
 				Base,
 			);
 			mainGroup = D760FA59260FFBBF0029AA1F;
+			packageReferences = (
+				7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			productRefGroup = D760FA63260FFBBF0029AA1F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,12 +355,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740824222924C4A400B42E81 /* DependencyResolver.swift in Sources */,
 				7452D530291D930F0069008A /* Int+TimeString.swift in Sources */,
 				74A5DC47291C017A0083417E /* Song.swift in Sources */,
 				74A5DC4E291C02BC0083417E /* PlayerViewModel.swift in Sources */,
 				74A5DC55291C53FA0083417E /* HeaderButton.swift in Sources */,
 				74728C15291D54F200DEE243 /* SongDetailMenuItem.swift in Sources */,
 				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
+				740824242924CAC200B42E81 /* View+Resolved.swift in Sources */,
 				74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */,
 				74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */,
 				7408241A2924C24700B42E81 /* Constant.swift in Sources */,
@@ -540,6 +564,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7408241E2924C41C00B42E81 /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D760FA5A260FFBBF0029AA1F /* Project object */;
 }

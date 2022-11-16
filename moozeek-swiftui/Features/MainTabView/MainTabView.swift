@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct MainTabView: View {
     var body: some View {
         TabView {
-            SongListView(viewModel: PlayerViewModel())
+            SongListView.resolved
                 .tabItem { TabBarItem(
                     title: "Player",
                     imageSystemName: "music.note.list"
@@ -21,8 +22,8 @@ struct MainTabView: View {
                     title: "Radio",
                     imageSystemName: "dot.radiowaves.left.and.right"
                 )}
-
-            SearchView(viewModel: SearchViewModel())
+            
+            SearchView.resolved
                 .tabItem { TabBarItem(
                     title: "Search",
                     imageSystemName: "magnifyingglass"
