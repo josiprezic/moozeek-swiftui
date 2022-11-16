@@ -14,6 +14,7 @@
 		7408241F2924C41C00B42E81 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7408241E2924C41C00B42E81 /* Resolver */; };
 		740824222924C4A400B42E81 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824212924C4A400B42E81 /* DependencyResolver.swift */; };
 		740824242924CAC200B42E81 /* View+Resolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824232924CAC200B42E81 /* View+Resolved.swift */; };
+		740824262924CEA300B42E81 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824252924CEA300B42E81 /* ViewModel.swift */; };
 		7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */; };
 		7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */; };
 		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
@@ -44,6 +45,7 @@
 		740824192924C24700B42E81 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		740824212924C4A400B42E81 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		740824232924CAC200B42E81 /* View+Resolved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Resolved.swift"; sourceTree = "<group>"; };
+		740824252924CEA300B42E81 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "It's My Life - Bon Jovi.mp3"; sourceTree = "<group>"; };
 		7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Billy Joel- Vienna.mp3"; sourceTree = "<group>"; };
 		7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Guns N’ Roses - Sweet Child O’ Mine.mp3"; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 			path = Resolver;
 			sourceTree = "<group>";
 		};
+		740824272924CEAE00B42E81 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				740824252924CEA300B42E81 /* ViewModel.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		7452D522291D63500069008A /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 				7452D529291D63DC0069008A /* Services */,
 				74A5DC53291C059C0083417E /* Styles */,
 				74A5DC50291C053C0083417E /* Models */,
+				740824272924CEAE00B42E81 /* Protocols */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -369,6 +380,7 @@
 				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
 				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
 				74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */,
+				740824262924CEA300B42E81 /* ViewModel.swift in Sources */,
 				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
 				740824122924BAD900B42E81 /* SearchView.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */,

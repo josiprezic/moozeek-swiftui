@@ -203,6 +203,6 @@ struct MusicPlayer: View {
 
 struct MusicPlayer_Previews: PreviewProvider {
     static var previews: some View {
-        MusicPlayer(viewModel: PlayerViewModel())
+        MusicPlayer.resolved
     }
 }

@@ -76,6 +76,8 @@ struct MusicPlayerBar: View {
 
 struct MusicPlayerBar_Previews: PreviewProvider {
     static var previews: some View {
-        MusicPlayerBar(viewModel: PlayerViewModel())
+        MusicPlayerBar.resolved
     }
 }
+
+

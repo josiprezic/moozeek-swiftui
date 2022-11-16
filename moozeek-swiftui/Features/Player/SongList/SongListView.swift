@@ -98,6 +98,6 @@ struct SongListView: View {
 
 struct SongListView_Previews: PreviewProvider {
     static var previews: some View {
-        SongListView(viewModel: PlayerViewModel())
+        SongListView.resolved
     }
 }

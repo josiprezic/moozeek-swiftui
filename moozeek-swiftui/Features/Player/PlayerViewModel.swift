@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-final class PlayerViewModel: ObservableObject {
+final class PlayerViewModel: ViewModel, ObservableObject {
     
     // MARK: - Properties
     
@@ -26,12 +26,14 @@ final class PlayerViewModel: ObservableObject {
     @Published var volumeLevelPercentage: Float = 0.8
     
     private let allSongs: [Song]
-    private let audioManager: AudioManager = AudioManager()
+    private let audioManager: AudioManager
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initializers
     
-    init() {
+    init(audioManager: AudioManager) {
+        self.audioManager = audioManager
+        
         allSongs = [
             Song(name: "Intro music"),
             Song(name: "Billy Joel- Vienna"),
@@ -41,12 +43,12 @@ final class PlayerViewModel: ObservableObject {
         songs = allSongs
         currentSong = allSongs.first
         searchText = ""
-        setupObservables()
+        super.init()
     }
     
     // MARK: - Setup
     
-    private func setupObservables() {
+    override func setupObservables() {
         $searchText
             .map { return $0.lowercased() }
             .sink(receiveValue: handleSearchTextChanged)
