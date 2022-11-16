@@ -11,7 +11,20 @@ struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
     
     var body: some View {
-        WebView(url: viewModel.url)
+        Button(
+            action: {
+                viewModel.handlePasteSelected()
+            },
+            label: {
+                HStack {
+                    Text("Paste")
+                    Image(systemName: "doc.on.clipboard.fill")
+                }
+                .font(.system(size: 50))
+                
+            }
+        )
+        
     }
 }
 

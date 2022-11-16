@@ -15,7 +15,10 @@
 		740824222924C4A400B42E81 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824212924C4A400B42E81 /* DependencyResolver.swift */; };
 		740824242924CAC200B42E81 /* View+Resolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824232924CAC200B42E81 /* View+Resolved.swift */; };
 		740824262924CEA300B42E81 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824252924CEA300B42E81 /* ViewModel.swift */; };
-		7408242A2924EBB700B42E81 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 740824292924EBB700B42E81 /* XCDYouTubeKit */; };
+		7408242D2924F2A500B42E81 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7408242C2924F2A500B42E81 /* XCDYouTubeKit */; };
+		7408242F2925119600B42E81 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7408242E2925119600B42E81 /* DownloadManager.swift */; };
+		74082431292511D500B42E81 /* LibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74082430292511D500B42E81 /* LibraryManager.swift */; };
+		740824332925120B00B42E81 /* LocalFilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824322925120B00B42E81 /* LocalFilesManager.swift */; };
 		7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */; };
 		7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */; };
 		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
@@ -47,6 +50,9 @@
 		740824212924C4A400B42E81 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		740824232924CAC200B42E81 /* View+Resolved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Resolved.swift"; sourceTree = "<group>"; };
 		740824252924CEA300B42E81 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7408242E2925119600B42E81 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		74082430292511D500B42E81 /* LibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryManager.swift; sourceTree = "<group>"; };
+		740824322925120B00B42E81 /* LocalFilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFilesManager.swift; sourceTree = "<group>"; };
 		7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "It's My Life - Bon Jovi.mp3"; sourceTree = "<group>"; };
 		7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Billy Joel- Vienna.mp3"; sourceTree = "<group>"; };
 		7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Guns N’ Roses - Sweet Child O’ Mine.mp3"; sourceTree = "<group>"; };
@@ -78,7 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7408241F2924C41C00B42E81 /* Resolver in Frameworks */,
-				7408242A2924EBB700B42E81 /* XCDYouTubeKit in Frameworks */,
+				7408242D2924F2A500B42E81 /* XCDYouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				7452D52A291D63ED0069008A /* AudioManager.swift */,
+				7408242E2925119600B42E81 /* DownloadManager.swift */,
+				74082430292511D500B42E81 /* LibraryManager.swift */,
+				740824322925120B00B42E81 /* LocalFilesManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -307,7 +316,7 @@
 			name = "moozeek-swiftui";
 			packageProductDependencies = (
 				7408241E2924C41C00B42E81 /* Resolver */,
-				740824292924EBB700B42E81 /* XCDYouTubeKit */,
+				7408242C2924F2A500B42E81 /* XCDYouTubeKit */,
 			);
 			productName = "moozeek-swiftui";
 			productReference = D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */;
@@ -338,7 +347,7 @@
 			mainGroup = D760FA59260FFBBF0029AA1F;
 			packageReferences = (
 				7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */,
-				740824282924EBB700B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
+				7408242B2924F2A500B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
 			);
 			productRefGroup = D760FA63260FFBBF0029AA1F /* Products */;
 			projectDirPath = "";
@@ -387,11 +396,14 @@
 				740824262924CEA300B42E81 /* ViewModel.swift in Sources */,
 				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
 				740824122924BAD900B42E81 /* SearchView.swift in Sources */,
+				740824332925120B00B42E81 /* LocalFilesManager.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */,
 				740824142924BF1F00B42E81 /* SearchViewModel.swift in Sources */,
+				7408242F2925119600B42E81 /* DownloadManager.swift in Sources */,
 				740824162924C1E300B42E81 /* WebView.swift in Sources */,
 				74A5DC5A291CFF5B0083417E /* MainTabView.swift in Sources */,
 				7452D52B291D63ED0069008A /* AudioManager.swift in Sources */,
+				74082431292511D500B42E81 /* LibraryManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,9 +602,9 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		740824282924EBB700B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
+		7408242B2924F2A500B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/0xced/XCDYouTubeKit.git";
+			repositoryURL = "https://github.com/cbg-dev-k/XCDYouTubeKit";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
@@ -606,9 +618,9 @@
 			package = 7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
 		};
-		740824292924EBB700B42E81 /* XCDYouTubeKit */ = {
+		7408242C2924F2A500B42E81 /* XCDYouTubeKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 740824282924EBB700B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
+			package = 7408242B2924F2A500B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
 			productName = XCDYouTubeKit;
 		};
 /* End XCSwiftPackageProductDependency section */
