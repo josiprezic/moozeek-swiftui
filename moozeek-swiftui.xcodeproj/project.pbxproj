@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740824122924BAD900B42E81 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824112924BAD900B42E81 /* SearchView.swift */; };
+		740824142924BF1F00B42E81 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824132924BF1F00B42E81 /* SearchViewModel.swift */; };
+		740824162924C1E300B42E81 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824152924C1E300B42E81 /* WebView.swift */; };
+		7408241A2924C24700B42E81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824192924C24700B42E81 /* Constant.swift */; };
 		7452D526291D63640069008A /* It's My Life - Bon Jovi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */; };
 		7452D527291D63640069008A /* Billy Joel- Vienna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */; };
 		7452D528291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */; };
@@ -31,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		740824112924BAD900B42E81 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		740824132924BF1F00B42E81 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		740824152924C1E300B42E81 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		740824192924C24700B42E81 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7452D523291D63640069008A /* It's My Life - Bon Jovi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "It's My Life - Bon Jovi.mp3"; sourceTree = "<group>"; };
 		7452D524291D63640069008A /* Billy Joel- Vienna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Billy Joel- Vienna.mp3"; sourceTree = "<group>"; };
 		7452D525291D63640069008A /* Guns N’ Roses - Sweet Child O’ Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Guns N’ Roses - Sweet Child O’ Mine.mp3"; sourceTree = "<group>"; };
@@ -78,6 +86,31 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		7408240C2924BAA600B42E81 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				740824132924BF1F00B42E81 /* SearchViewModel.swift */,
+				740824112924BAD900B42E81 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		740824172924C1EE00B42E81 /* UIViewRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				740824152924C1E300B42E81 /* WebView.swift */,
+			);
+			path = UIViewRepresentables;
+			sourceTree = "<group>";
+		};
+		740824182924C23800B42E81 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				740824192924C24700B42E81 /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		7452D522291D63500069008A /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +154,7 @@
 			children = (
 				74A5DC58291CFF430083417E /* MainTabView */,
 				7408240B2924BA0100B42E81 /* Player */,
+				7408240C2924BAA600B42E81 /* Search */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -139,6 +173,8 @@
 		74A5DC4F291C05350083417E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				740824182924C23800B42E81 /* Constants */,
+				740824172924C1EE00B42E81 /* UIViewRepresentables */,
 				7452D52E291D93010069008A /* Extensions */,
 				7452D529291D63DC0069008A /* Services */,
 				74A5DC53291C059C0083417E /* Styles */,
@@ -305,11 +341,15 @@
 				D79E21C42610FC36003DA2D2 /* Style.swift in Sources */,
 				74A5DC60291D334F0083417E /* MusicNoteView.swift in Sources */,
 				74A5DC5C291CFF9A0083417E /* TabBarItem.swift in Sources */,
+				7408241A2924C24700B42E81 /* Constant.swift in Sources */,
 				D79E21BE2610FAAE003DA2D2 /* MusicPlayerBar.swift in Sources */,
 				D79E21C12610FBCD003DA2D2 /* MusicPlayer.swift in Sources */,
 				74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */,
 				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
+				740824122924BAD900B42E81 /* SearchView.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */,
+				740824142924BF1F00B42E81 /* SearchViewModel.swift in Sources */,
+				740824162924C1E300B42E81 /* WebView.swift in Sources */,
 				74A5DC5A291CFF5B0083417E /* MainTabView.swift in Sources */,
 				7452D52B291D63ED0069008A /* AudioManager.swift in Sources */,
 			);

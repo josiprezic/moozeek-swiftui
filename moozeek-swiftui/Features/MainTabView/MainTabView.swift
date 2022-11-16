@@ -22,7 +22,7 @@ struct MainTabView: View {
                     imageSystemName: "dot.radiowaves.left.and.right"
                 )}
 
-            PlaceholderView()
+            SearchView(viewModel: SearchViewModel())
                 .tabItem { TabBarItem(
                     title: "Search",
                     imageSystemName: "magnifyingglass"
