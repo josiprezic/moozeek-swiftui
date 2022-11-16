@@ -40,13 +40,10 @@ final class SearchViewModel: ObservableObject {
                     // play
                     self.manager.play2(url: url)
                 })
-                
-                
             }
             catch {
                 print(error.localizedDescription)
             }
-            
         }
     }
     
