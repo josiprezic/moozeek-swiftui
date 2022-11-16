@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            SongListView(viewModel: SongListViewModel())
+            SongListView(viewModel: PlayerViewModel())
                 .tabItem { TabBarItem(
                     title: "Player",
                     imageSystemName: "music.note.list"

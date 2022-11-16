@@ -11,7 +11,7 @@ struct MusicPlayerBar: View {
     
     // MARK: - Properties -
     
-    @StateObject var viewModel: SongListViewModel
+    @StateObject var viewModel: PlayerViewModel
     
     // MARK: - Views -
     
@@ -76,6 +76,6 @@ struct MusicPlayerBar: View {
 
 struct MusicPlayerBar_Previews: PreviewProvider {
     static var previews: some View {
-        MusicPlayerBar(viewModel: SongListViewModel())
+        MusicPlayerBar(viewModel: PlayerViewModel())
     }
 }

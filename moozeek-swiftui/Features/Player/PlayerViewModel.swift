@@ -1,5 +1,5 @@
 //
-//  SongListViewModel.swift
+//  PlayerViewModel.swift
 //  moozeek-swiftui
 //
 //  Created by Josip Rezic on 09/11/2022.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-final class SongListViewModel: ObservableObject {
+final class PlayerViewModel: ObservableObject {
     
     // MARK: - Properties
     

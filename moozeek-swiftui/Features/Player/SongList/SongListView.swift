@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SongListView: View {
     
-    @ObservedObject var viewModel: SongListViewModel
+    @ObservedObject var viewModel: PlayerViewModel
     @Namespace private var namespace
     @Environment(\.colorScheme) var colorScheme
     
@@ -98,6 +98,6 @@ struct SongListView: View {
 
 struct SongListView_Previews: PreviewProvider {
     static var previews: some View {
-        SongListView(viewModel: SongListViewModel())
+        SongListView(viewModel: PlayerViewModel())
     }
 }
