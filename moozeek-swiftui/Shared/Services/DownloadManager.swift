@@ -15,7 +15,14 @@ enum AudioError: Error {
 
 // TODO: JR To be refactored
 final class DownloadManager {
+    
+    private let libraryManager: LibraryManager
+    
     private var cancellables = Set<AnyCancellable>()
+    
+    init(libraryManager: LibraryManager) {
+        self.libraryManager = libraryManager
+    }
     
     func downloadYouTubeSong(from urlString: String) {
         let videoId = getVideoId(from: urlString)
@@ -37,7 +44,7 @@ final class DownloadManager {
     private func downloadYouTubeVideo(videoID: String) -> AnyPublisher<Bool, AudioError> {
         let publisher = PassthroughSubject<Bool, AudioError>()
         
-        XCDYouTubeClient.default().getVideoWithIdentifier(videoID) { (video, error) in
+        XCDYouTubeClient.default().getVideoWithIdentifier(videoID) { [weak self] (video, error) in
             if error != nil || video == nil {
                 publisher.send(completion: .failure(.videoNotAvailable(error: error)))
                 return
@@ -45,7 +52,7 @@ final class DownloadManager {
             
             guard let video else { return }
             
-            LibraryManager().addSongToLibrary(
+            self?.libraryManager.addSongToLibrary(
                 songTitle: video.title,
                 songUrl: video.streamURL!,
                 songExtension: "mp4",
@@ -62,8 +69,7 @@ final class DownloadManager {
     
     func convertVideosToSongs() {
         do {
-            let documentURL = URL(string: LocalFilesManager.documentDirectory())!
-            let path = documentURL.absoluteURL
+            let path = LocalFilesManager.documentDirectoryUrl.absoluteURL
             let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
             
             let filesToConvert = directoryContents.filter {
@@ -135,7 +141,7 @@ final class DownloadManager {
                     publisher.send(completion: .failure(.unableToConvertVideo(error: nil)))
                     return
                 }
-                var newURL = URL(string: LocalFilesManager.documentDirectory())!
+                var newURL = LocalFilesManager.documentDirectoryUrl
                 newURL.appendPathComponent(outputURL.lastPathComponent)
                 
                 do {

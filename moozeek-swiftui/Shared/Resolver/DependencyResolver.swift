@@ -11,9 +11,14 @@ extension Resolver: ResolverRegistering, Resolving {
     public static func registerAllServices() {
         register { MainTabView() }
         
-        register { LibraryManager() }
+        register { LocalFilesManager() }
+            .scope(.application)
+        
+        register { LibraryManager(localFilesManager: resolve()) }
         
         register { AudioManager() }
+        
+        register { DownloadManager(libraryManager: resolve()) }
         
         register { PlayerViewModel(libraryManager: resolve(), audioManager: resolve()) }
             .scope(.application)
@@ -24,7 +29,7 @@ extension Resolver: ResolverRegistering, Resolving {
         
         register { MusicPlayer(viewModel: resolve()) }
         
-        register { SearchViewModel() }
+        register { SearchViewModel(downloadManager: resolve()) }
         
         register { SearchView(viewModel: resolve()) }
     }
