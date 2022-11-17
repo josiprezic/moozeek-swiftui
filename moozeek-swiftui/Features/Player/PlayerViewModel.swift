@@ -35,12 +35,12 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     init(libraryManager: LibraryManager, audioManager: AudioManager) {
         self.libraryManager = libraryManager
         self.audioManager = audioManager
-        currentSong = allSongs.first
         searchText = ""
         super.init()
         
         allSongs = libraryManager.getLocalSongList()
         filteredSongs = allSongs
+        currentSong = filteredSongs.first
     }
     
     // MARK: - Setup
