@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class LibraryManager {
-    static let loggingEnabled = false
+    static let loggingEnabled = true
     private let localFilesManager: LocalFilesManager
     
     init(localFilesManager: LocalFilesManager) {
@@ -58,22 +58,7 @@ final class LibraryManager {
     }
     
     func getLocalSongList() -> [Song] {
-        do {
-            let path = LocalFilesManager.documentDirectoryUrl.absoluteURL
-            let directoryContents = try FileManager.default.contentsOfDirectory(
-                at: path,
-                includingPropertiesForKeys: nil,
-                options: []
-            )
-            
-            let songList = directoryContents
-                .filter { $0.lastPathComponent.split(separator: ".").last! == "m4a" }
-                .map(Song.init)
-            return songList
-        } catch {
-            log("Error: \(error)") // TODO: JR
-            return []
-        }
+        localFilesManager.getUrlsForFiles(withExtension: "m4a").map(Song.init)
     }
     
     private func log(_ message: String) {

@@ -12,7 +12,7 @@ struct SongCell: View {
     
     var body: some View {
         HStack {
-            MusicNoteView()
+            thumbnailView
             songTitle
             Spacer()
             downloadButton
@@ -20,6 +20,10 @@ struct SongCell: View {
         }
         .padding(-5)
         .buttonStyle(PlainButtonStyle())
+    }
+    
+    var thumbnailView: some View {
+        ThumbnailView(song: song)
     }
     
     var songTitle: some View {
