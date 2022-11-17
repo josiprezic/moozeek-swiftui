@@ -7,6 +7,7 @@
 
 //import Foundation
 import UIKit
+import Combine
 
 
 final class SearchViewModel: ObservableObject {
@@ -15,40 +16,56 @@ final class SearchViewModel: ObservableObject {
     }
     
     let manager = AudioManager()
+    let downloadManager = DownloadManager()
+    var cancellables = Set<AnyCancellable>()
     
     func handlePasteSelected() {
         
         // save youtube video
         let url = UIPasteboard.general.string ?? ""
-        print("Checking url: \(url)")
-        loadYouTubeVideo(videoID: url)
+        let videoId = String(url.suffix(11))
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+        downloadManager.downloadYouTubeVideo(videoID: videoId)
+            .sink(receiveCompletion: { error in
+                // handleError
+            }, receiveValue: { finished in
+                // handle completion
+                guard finished else { return } // TODO: JR
+                
+                self.getLocalSongList()
+                
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getLocalSongList() {
+        do {
+            let documentURL = URL(string: LocalFilesManager.documentDirectory())!
+            let path = documentURL.absoluteURL
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
             
-            // read all files
-            do {
-                let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let Path = documentURL.absoluteURL
-                let directoryContents = try FileManager.default.contentsOfDirectory(at: Path, includingPropertiesForKeys: nil, options: [])
-                print(directoryContents)
-                
-                
-                // convert
-                self.manager.convertToAudio(url: directoryContents[1], completion: { url in
+            let songs = directoryContents.filter {
+                $0.lastPathComponent.split(separator: ".").last! == "mp4"
+            }
+            
+            print(songs)
+            // end
+            
+            
+            // convert
+            self.downloadManager.convertToAudio(url: songs.first!)
+                .sink(receiveCompletion: { error in
+                    // handle error
+                    print(error)
+                }, receiveValue: { url in
+                    // handle url
                     print("URL: \(url)")
-                    
                     // play
                     self.manager.play2(url: url)
                 })
-            }
-            catch {
-                print(error.localizedDescription)
-            }
+                .store(in: &self.cancellables)
+        } catch {
+            
         }
-    }
-    
-    func loadYouTubeVideo(videoID: String) {
-        let manager = DownloadManager()
-        manager.loadYouTubeVideo(videoID: videoID)
     }
 }

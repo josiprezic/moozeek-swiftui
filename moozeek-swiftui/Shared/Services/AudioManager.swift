@@ -8,6 +8,7 @@
 import AVFoundation
 import Combine
 
+// TODO: JR Refactor
 final class AudioManager: NSObject {
     let playerDidFinishPlaying = PassthroughSubject<Void, Never>()
     let currentSongElapsedTime = CurrentValueSubject<Int, Never>(0)
@@ -63,81 +64,7 @@ final class AudioManager: NSObject {
         }
     }
     
-    // TODO: JR MOVE
-    func convertToAudio(url: URL, completion: @escaping (_ url: URL) -> Void) {
-        let composition = AVMutableComposition()
-        do {
-            let sourceUrl = url//Bundle.main.url(forResource: "Movie", withExtension: "mov")!
-            
-            let asset = AVURLAsset(url: sourceUrl)
-            guard let audioAssetTrack = asset.tracks(withMediaType: AVMediaType.audio).first else { return  }
-            guard let audioCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: kCMPersistentTrackID_Invalid) else { return  }
-            try audioCompositionTrack.insertTimeRange(audioAssetTrack.timeRange, of: audioAssetTrack, at: CMTime.zero)
-        } catch {
-            print(error)
-        }
-        
-        // Get url for output
-        let outputUrl = URL(fileURLWithPath: NSTemporaryDirectory() + "out.m4a")
-        if FileManager.default.fileExists(atPath: outputUrl.path) {
-            try? FileManager.default.removeItem(atPath: outputUrl.path)
-        }
-        
-        // Create an export session
-        let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetPassthrough)!
-        exportSession.outputFileType = AVFileType.m4a
-        exportSession.outputURL = outputUrl
-        
-        // Export file
-        exportSession.exportAsynchronously {
-            guard case exportSession.status = AVAssetExportSession.Status.completed else { return }
-            
-            DispatchQueue.main.async {
-                // Present a UIActivityViewController to share audio file
-                guard let outputURL = exportSession.outputURL else { return }
-                
-                //                return outputURL
-                
-                //                let activityViewController = UIActivityViewController(activityItems: [outputURL], applicationActivities: [])
-                //                self.present(activityViewController, animated: true, completion: nil)
-                print("Jupiiiii")
-                
-                
-                
-                func getDocumentsDirectory() -> URL {
-                       let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                       let documentsDirectory = paths[0]
-                       return documentsDirectory
-                }
-                
-                
-                
-                
-                
-                var newURL = getDocumentsDirectory()
-                
-//                let newName = outputURL.lastPathComponent.split(separator: ".").first! + ".mp3"
-//                print("NEW NAME: \(newName)")
-                
-                newURL.appendPathComponent(outputURL.lastPathComponent)
-//                newURL.appendPathComponent(outputURL.lastPathComponent)
-                
-                do {
-                    if FileManager.default.fileExists(atPath: newURL.path) {
-                        try FileManager.default.removeItem(atPath: newURL.path)
-                    }
-                    try FileManager.default.moveItem(atPath: outputURL.path, toPath: newURL.path)
-                    print("The new URL: \(newURL)")
-                    
-                    completion(newURL)
-                } catch {
-                    print(error.localizedDescription)
-                
-            
-                }
-            }
-        }
-    }
+    
     
     // TODO: JR
     
@@ -162,45 +89,6 @@ final class AudioManager: NSObject {
         
         
         return;
-        
-        
-        
-        
-//        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//        print("File Location: ",url.path)
-//
-//        if(FileManager.default.fileExists(atPath: url.path)) {
-//           do {
-//               audioPlayer = try AVAudioPlayer(contentsOf: url)
-//               guard let player = audioPlayer else { return }
-//
-//               player.prepareToPlay()
-//           } catch let error {
-//               print(error.localizedDescription)
-//           }
-//
-//        } else {
-//            print("file not found")
-//        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         cancellables.removeAll()
         //guard let url = Bundle.main.url(forResource: song.name, withExtension: "mp3") else { return }
