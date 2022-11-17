@@ -11,9 +11,11 @@ extension Resolver: ResolverRegistering, Resolving {
     public static func registerAllServices() {
         register { MainTabView() }
         
+        register { LibraryManager() }
+        
         register { AudioManager() }
         
-        register { PlayerViewModel(audioManager: resolve()) }
+        register { PlayerViewModel(libraryManager: resolve(), audioManager: resolve()) }
             .scope(.application)
         
         register { SongListView(viewModel: resolve()) }

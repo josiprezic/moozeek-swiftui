@@ -27,14 +27,17 @@ final class AudioManager: NSObject {
     
     func play(_ song: Song) {
         cancellables.removeAll()
-        guard let url = Bundle.main.url(forResource: song.name, withExtension: "mp3") else { return }
+        let url = song.url
+        //guard let url = Bundle.main.url(forResource: song.name, withExtension: "mp3") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player = try AVAudioPlayer(contentsOf: url)//, fileTypeHint: AVFileType.mp3.rawValue)
             guard let player = player else { return }
+            player.prepareToPlay()
+            player.volume = 1.0 // TODO: JR
             player.play()
             currentSong = song
             
@@ -60,6 +63,7 @@ final class AudioManager: NSObject {
                 .sink(receiveValue: currentSongRemainingTime.send)
                 .store(in: &cancellables)
         } catch let error {
+            player = nil
             print(error.localizedDescription)
         }
     }
@@ -67,66 +71,66 @@ final class AudioManager: NSObject {
     
     
     // TODO: JR
-    
-    var audioPlayer: AVAudioPlayer!
-    
-    func play2(url: URL) {
-        
-       
-
-                        do {
-                            self.audioPlayer = try AVAudioPlayer(contentsOf: url)
-                            self.audioPlayer.prepareToPlay()
-                            self.audioPlayer.volume = 1.0
-                            self.audioPlayer.play()
-                        } catch {
-                            self.audioPlayer = nil
-                            print(error.localizedDescription)
-                            print("AVAudioPlayer init failed")
-                        }
+//
+//    var audioPlayer: AVAudioPlayer!
+//
+//    func play2(url: URL) {
+//
+//
+//
+//                        do {
+//                            self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+//                            self.audioPlayer.prepareToPlay()
+//                            self.audioPlayer.volume = 1.0
+//                            self.audioPlayer.play()
+//                        } catch {
+//                            self.audioPlayer = nil
+//                            print(error.localizedDescription)
+//                            print("AVAudioPlayer init failed")
+//                        }
+////        }
+//
+//
+//
+//        return;
+//
+//        cancellables.removeAll()
+//        //guard let url = Bundle.main.url(forResource: song.name, withExtension: "mp3") else { return }
+//
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//
+//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+//            guard let player = player else { return }
+//            player.play()
+//            //currentSong = song
+//
+//            let duration = Int(player.duration)
+//            self.currentSongDuration = duration
+//
+//            // initial values
+//            currentSongElapsedTime.send(0)
+//            currentSongRemainingTime.send(duration)
+//
+//            Timer.publish(every: 1, on: .main, in: .default)
+//                .autoconnect()
+//                .compactMap { [weak self] _ in return self?.player?.currentTime }
+//                .map(Int.init)
+//                .sink(receiveValue: currentSongElapsedTime.send)
+//                .store(in: &cancellables)
+//
+//            Timer.publish(every: 1, on: .main, in: .default)
+//                .autoconnect()
+//                .compactMap { [weak self] _ in return self?.player?.currentTime }
+//                .map(Int.init)
+//                .map { duration - $0 }
+//                .sink(receiveValue: currentSongRemainingTime.send)
+//                .store(in: &cancellables)
+//        } catch let error {
+//            print(error.localizedDescription)
 //        }
-        
-        
-        
-        return;
-        
-        cancellables.removeAll()
-        //guard let url = Bundle.main.url(forResource: song.name, withExtension: "mp3") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-            guard let player = player else { return }
-            player.play()
-            //currentSong = song
-            
-            let duration = Int(player.duration)
-            self.currentSongDuration = duration
-            
-            // initial values
-            currentSongElapsedTime.send(0)
-            currentSongRemainingTime.send(duration)
-            
-            Timer.publish(every: 1, on: .main, in: .default)
-                .autoconnect()
-                .compactMap { [weak self] _ in return self?.player?.currentTime }
-                .map(Int.init)
-                .sink(receiveValue: currentSongElapsedTime.send)
-                .store(in: &cancellables)
-            
-            Timer.publish(every: 1, on: .main, in: .default)
-                .autoconnect()
-                .compactMap { [weak self] _ in return self?.player?.currentTime }
-                .map(Int.init)
-                .map { duration - $0 }
-                .sink(receiveValue: currentSongRemainingTime.send)
-                .store(in: &cancellables)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+//    }
     
     func stop() {
         cancellables.removeAll()

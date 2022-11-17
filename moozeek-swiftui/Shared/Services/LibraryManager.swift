@@ -35,11 +35,30 @@ final class LibraryManager {
         dispatchGroup.notify(queue: DispatchQueue.main) {  // All async download in the group completed
             if errorStr == nil {
                 print("All async download in the group completed")
-                let duration = LocalFilesManager.extractDurationForSong(songID: songID, songExtension: "mp4")
                 completion?()
             } else {
                 _ = LocalFilesManager.deleteFile(withNameAndExtension: "\(songID).jpg")  // Delete the downloaded thumbnail if available
             }
+        }
+    }
+    
+    func getLocalSongList() -> [Song] {
+        do {
+            let documentURL = URL(string: LocalFilesManager.documentDirectory())!
+            let path = documentURL.absoluteURL
+            let directoryContents = try FileManager.default.contentsOfDirectory(
+                at: path,
+                includingPropertiesForKeys: nil,
+                options: []
+            )
+            
+            let songList = directoryContents
+                .filter { $0.lastPathComponent.split(separator: ".").last! == "m4a" }
+                .map(Song.init)
+            return songList
+        } catch {
+            print("Error: \(error)") // TODO: JR
+            return []
         }
     }
 }
