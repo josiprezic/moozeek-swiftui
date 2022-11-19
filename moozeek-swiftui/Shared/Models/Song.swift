@@ -9,7 +9,19 @@ import Foundation
 
 struct Song: Identifiable, Equatable {
     let id = UUID()
-    let name: String
+    let url: URL
     
-    static let example = Song(name: "Test song name")
+    var name: String {
+        var songName = url.lastPathComponent
+        songName.removeLast(4)
+        return songName
+    }
+    
+    var thumbnailUrl: URL? {
+        var urlCopy = url.absoluteString
+        urlCopy.removeLast(3)
+        return URL(string: urlCopy + "jpg")
+    }
+    
+    static let example = Song(url: URL(string: "www.google.com")!)
 }

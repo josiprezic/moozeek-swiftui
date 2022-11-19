@@ -13,7 +13,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     
     // MARK: - Properties
     
-    @Published var songs: [Song]
+    @Published var filteredSongs: [Song] = []
     @Published var searchText: String
     
     @Published var isPlaying = false
@@ -25,25 +25,22 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     @Published var currentSongRemainingTime: String = ""
     @Published var volumeLevelPercentage: Float = 0.8
     
-    private let allSongs: [Song]
+    private var allSongs: [Song] = []
     private let audioManager: AudioManager
+    private let libraryManager: LibraryManager
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initializers
     
-    init(audioManager: AudioManager) {
+    init(libraryManager: LibraryManager, audioManager: AudioManager) {
+        self.libraryManager = libraryManager
         self.audioManager = audioManager
-        
-        allSongs = [
-            Song(name: "Intro music"),
-            Song(name: "Billy Joel- Vienna"),
-            Song(name: "Guns N’ Roses - Sweet Child O’ Mine"),
-            Song(name: "It's My Life - Bon Jovi")
-        ]
-        songs = allSongs
-        currentSong = allSongs.first
         searchText = ""
         super.init()
+        
+        allSongs = libraryManager.getLocalSongList()
+        filteredSongs = allSongs
+        currentSong = filteredSongs.first
     }
     
     // MARK: - Setup
@@ -80,7 +77,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     // MARK: - Methods
     
     private func playFirstAvailableSong() {
-        guard let firstSong = songs.first else { return }
+        guard let firstSong = filteredSongs.first else { return }
         playSong(song: firstSong)
     }
     
@@ -90,17 +87,17 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     }
     
     private func playNextSong() {
-        guard let currentSongIndex = songs.firstIndex(where: { $0.id == currentSong?.id }) else {
+        guard let currentSongIndex = filteredSongs.firstIndex(where: { $0.id == currentSong?.id }) else {
             playFirstAvailableSong()
             return
         }
-        let nextSongIndex = (currentSongIndex + 1) % songs.count
-        let nextSong = songs[nextSongIndex]
+        let nextSongIndex = (currentSongIndex + 1) % filteredSongs.count
+        let nextSong = filteredSongs[nextSongIndex]
         playSong(song: nextSong)
     }
     
     private func playShuffleSong() {
-        let songCandidates = self.songs.filter { $0 != currentSong }
+        let songCandidates = self.filteredSongs.filter { $0 != currentSong }
         guard let randomSong = songCandidates.randomElement() else { return }
         playSong(song: randomSong)
     }
@@ -109,10 +106,10 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     
     private func handleSearchTextChanged(_ searchText: String) {
         if searchText.isEmpty {
-            songs = allSongs
+            filteredSongs = allSongs
             return
         }
-        songs = allSongs.filter {
+        filteredSongs = allSongs.filter {
             $0.name
                 .lowercased()
                 .contains(searchText)
@@ -158,12 +155,12 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     }
     
     func handlePreviousButtonPressed() {
-        guard let currentSongIndex = songs.firstIndex(where: { $0.id == currentSong?.id }) else {
+        guard let currentSongIndex = filteredSongs.firstIndex(where: { $0.id == currentSong?.id }) else {
             playFirstAvailableSong()
             return
         }
-        let previousSongIndex = (currentSongIndex - 1 + songs.count) % songs.count
-        let previousSong = songs[previousSongIndex]
+        let previousSongIndex = (currentSongIndex - 1 + filteredSongs.count) % filteredSongs.count
+        let previousSong = filteredSongs[previousSongIndex]
         playSong(song: previousSong)
     }
     

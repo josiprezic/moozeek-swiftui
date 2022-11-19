@@ -8,6 +8,7 @@
 import AVFoundation
 import Combine
 
+// TODO: JR Refactor
 final class AudioManager: NSObject {
     let playerDidFinishPlaying = PassthroughSubject<Void, Never>()
     let currentSongElapsedTime = CurrentValueSubject<Int, Never>(0)
@@ -16,6 +17,7 @@ final class AudioManager: NSObject {
     private var cancellables = Set<AnyCancellable>()
     private(set) var currentSongDuration: Int?
     
+    private let audioSession = AVAudioSession.sharedInstance()
     private var player: AVAudioPlayer? {
         didSet {
             player?.delegate = self
@@ -26,21 +28,22 @@ final class AudioManager: NSObject {
     
     func play(_ song: Song) {
         cancellables.removeAll()
-        guard let url = Bundle.main.url(forResource: song.name, withExtension: "mp3") else { return }
+        let url = song.url
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
+            try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setActive(true)
             
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player = try AVAudioPlayer(contentsOf: url)
             guard let player = player else { return }
+            
+            player.prepareToPlay()
             player.play()
             currentSong = song
-            
             let duration = Int(player.duration)
             self.currentSongDuration = duration
             
-            // initial values
+            // initial publisher values
             currentSongElapsedTime.send(0)
             currentSongRemainingTime.send(duration)
             
@@ -59,6 +62,7 @@ final class AudioManager: NSObject {
                 .sink(receiveValue: currentSongRemainingTime.send)
                 .store(in: &cancellables)
         } catch let error {
+            player = nil
             print(error.localizedDescription)
         }
     }

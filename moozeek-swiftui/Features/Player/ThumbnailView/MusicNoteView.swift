@@ -27,7 +27,6 @@ struct MusicNoteView: View {
                 )
                 .strokeBorder(Color.gray.opacity(0.2), lineWidth: 1)
             )
-            .padding(.trailing, 12)
     }
 }
 

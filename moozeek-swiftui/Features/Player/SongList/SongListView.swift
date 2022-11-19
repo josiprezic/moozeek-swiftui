@@ -30,7 +30,7 @@ struct SongListView: View {
     private var songListView: some View {
         List {
             Section(header: songListHeaderView) {
-                ForEach(viewModel.songs) { song in
+                ForEach(viewModel.filteredSongs) { song in
                     SongCell(song: song)
                         .onTapGesture { viewModel.handleSongSelected(song) }
                         .onLongPressGesture {

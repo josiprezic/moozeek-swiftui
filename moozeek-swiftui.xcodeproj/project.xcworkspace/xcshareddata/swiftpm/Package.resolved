@@ -12,10 +12,10 @@
     {
       "identity" : "xcdyoutubekit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/0xced/XCDYouTubeKit.git",
+      "location" : "https://github.com/cbg-dev-k/XCDYouTubeKit",
       "state" : {
-        "revision" : "23f765941b36d6d28215ab81a37af1039d29138b",
-        "version" : "2.15.2"
+        "revision" : "f2b1b685c375edca711cc2b229f6bf2bb4588611",
+        "version" : "2.16.0"
       }
     }
   ],

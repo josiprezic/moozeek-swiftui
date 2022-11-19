@@ -19,7 +19,7 @@ struct MusicPlayerBar: View {
         VStack {
             separator
             HStack {
-                trackLogo
+                songThumbnail
                 trackTitle
                 Spacer()
                 playButton
@@ -32,16 +32,9 @@ struct MusicPlayerBar: View {
         .background(Style.Color.playerBarBackground)
     }
     
-    private var trackLogo: some View {
-        MusicNoteView()
+    private var songThumbnail: some View {
+        ThumbnailView(song: viewModel.currentSong)
             .padding()
-        
-        //        Image("gnr_logo")
-        //            .resizable()
-        //            .frame(width: Constants.iconSize, height: Constants.iconSize)
-        //            .cornerRadius(Constants.iconCornerRadius)
-        //            .padding()
-        //            .matchedGeometryEffect(id: Constants.animationId, in: namespace)
     }
     
     private var trackTitle: some View {
