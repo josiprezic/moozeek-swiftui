@@ -37,7 +37,7 @@ final class DownloadManager {
     }
     
     private func getVideoId(from urlString: String) -> String {
-        // TODO: JR add checks
+        // TODO: JR add missing checks
         String(urlString.suffix(11))
     }
     

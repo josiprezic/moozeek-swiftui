@@ -7,13 +7,17 @@
 
 import XCDYouTubeKit
 
+// TODO: JR update error handling
+
 class LocalFilesManager {
     
     // MARK: - Properties
     
     static var loggingEnabled = true
     
-    static var documentDirectoryPath: String {
+    private let fileManager = FileManager.default
+    
+    private static var documentDirectoryPath: String {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(
             .documentDirectory,
             .userDomainMask,
@@ -43,25 +47,24 @@ class LocalFilesManager {
     
     func getUrlsForFiles(withExtension ext: String) -> [URL] {
         do {
-            let path = Self.documentDirectoryUrl.absoluteURL
-            let directoryContents = try FileManager.default.contentsOfDirectory(
-                at: path,
+            let directoryContents = try fileManager.contentsOfDirectory(
+                at: Self.documentDirectoryUrl.absoluteURL,
                 includingPropertiesForKeys: nil,
                 options: []
             )
             return directoryContents.filter { $0.lastPathComponent.split(separator: ".").last! == ext }
         } catch {
-            log("Error: \(error)") // TODO: JR
+            log("Error: \(error)")
             return []
         }
     }
     
     @discardableResult
     func deleteFile(withNameAndExtension fileName: String) -> Bool {
-        let dataPathStr = Self.documentDirectoryPath + "/" + fileName
-        guard FileManager.default.fileExists(atPath: dataPathStr) else { return true }
+        let dataPathStr = Self.documentDirectoryPath + "/" + fileName // TODO: JR
+        guard fileManager.fileExists(atPath: dataPathStr) else { return true }
         do {
-            try FileManager.default.removeItem(atPath: dataPathStr)
+            try fileManager.removeItem(atPath: dataPathStr)
             log("Removed file: \(dataPathStr)")
         } catch let removeError {
             log("Couldn't remove file at path: \(removeError.localizedDescription)")
