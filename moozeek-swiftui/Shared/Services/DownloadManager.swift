@@ -131,30 +131,29 @@ final class DownloadManager {
         exportSession.outputURL = outputUrl
         
         // Export file
-        exportSession.exportAsynchronously {
-            guard case exportSession.status = AVAssetExportSession.Status.completed else {
+        await exportSession.export()
+        guard case exportSession.status = AVAssetExportSession.Status.completed else {
+            publisher.send(completion: .failure(.unableToConvertVideo(error: nil)))
+            return publisher.eraseToAnyPublisher()
+        }
+        
+        DispatchQueue.main.async {
+            guard let outputURL = exportSession.outputURL else {
                 publisher.send(completion: .failure(.unableToConvertVideo(error: nil)))
                 return
             }
+            var newURL = LocalFilesManager.documentDirectoryUrl
+            newURL.appendPathComponent(outputURL.lastPathComponent)
             
-            DispatchQueue.main.async {
-                guard let outputURL = exportSession.outputURL else {
-                    publisher.send(completion: .failure(.unableToConvertVideo(error: nil)))
-                    return
+            do {
+                if FileManager.default.fileExists(atPath: newURL.path) {
+                    try FileManager.default.removeItem(atPath: newURL.path)
                 }
-                var newURL = LocalFilesManager.documentDirectoryUrl
-                newURL.appendPathComponent(outputURL.lastPathComponent)
-                
-                do {
-                    if FileManager.default.fileExists(atPath: newURL.path) {
-                        try FileManager.default.removeItem(atPath: newURL.path)
-                    }
-                    try FileManager.default.moveItem(atPath: outputURL.path, toPath: newURL.path)
-                    try FileManager.default.removeItem(atPath: url.path)
-                    publisher.send(newURL)
-                } catch {
-                    publisher.send(completion: .failure(.unableToConvertVideo(error: error)))
-                }
+                try FileManager.default.moveItem(atPath: outputURL.path, toPath: newURL.path)
+                try FileManager.default.removeItem(atPath: url.path)
+                publisher.send(newURL)
+            } catch {
+                publisher.send(completion: .failure(.unableToConvertVideo(error: error)))
             }
         }
         return publisher.eraseToAnyPublisher()
