@@ -29,9 +29,11 @@ final class DownloadManager {
         downloadYouTubeVideo(videoID: videoId)
             .sink(receiveCompletion: { completion in
                 // TODO: JR handle
-            }, receiveValue: { [weak self] finished in
-                // handle completion
-                self?.convertVideosToSongs()
+            }, receiveValue: { _ in
+                Task { [weak self] in
+                    // handle completion
+                    await self?.convertVideosToSongs()
+                }
             })
             .store(in: &cancellables)
     }
@@ -67,7 +69,7 @@ final class DownloadManager {
     }
     
     
-    func convertVideosToSongs() {
+    func convertVideosToSongs() async {
         do {
             let path = LocalFilesManager.documentDirectoryUrl.absoluteURL
             let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
@@ -76,7 +78,7 @@ final class DownloadManager {
                 $0.lastPathComponent.split(separator: ".").last! == "mp4"
             }
             
-            convertToAudio(url: filesToConvert.first!)
+            await convertToAudio(url: filesToConvert.first!)
                 .sink(receiveCompletion: { error in
                     // handle error
                     print(error)
@@ -90,14 +92,13 @@ final class DownloadManager {
     }
     
     
-    func convertToAudio(url: URL) -> AnyPublisher<URL, AudioError> {
+    func convertToAudio(url: URL) async -> AnyPublisher<URL, AudioError> {
         let publisher = PassthroughSubject<URL, AudioError>()
         
         let composition = AVMutableComposition()
         do {
             let asset = AVURLAsset(url: url)
-            
-            guard let audioAssetTrack = asset.tracks(withMediaType: AVMediaType.audio).first else {
+            guard let audioAssetTrack = try await asset.loadTracks(withMediaType: AVMediaType.audio).first else {
                 throw AudioError.unableToConvertVideo(error: nil)
             }
             
@@ -108,8 +109,8 @@ final class DownloadManager {
                 throw AudioError.unableToConvertVideo(error: nil)
             }
             
-            try audioCompositionTrack.insertTimeRange(
-                audioAssetTrack.timeRange,
+            try await audioCompositionTrack.insertTimeRange(
+                audioAssetTrack.load(.timeRange),
                 of: audioAssetTrack, at: CMTime.zero
             )
         } catch {
