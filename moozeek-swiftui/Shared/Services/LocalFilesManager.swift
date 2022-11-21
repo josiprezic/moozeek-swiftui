@@ -79,7 +79,7 @@ class LocalFilesManager {
         let filePath = Self.documentDirectoryUrl.appendingPathComponent(fileName).absoluteString
         do {
             try data.write(to: URL(string: filePath)!)
-            log("Save successful")
+            log("Save successful, path: \(filePath)")
         } catch {
             log("Error: \(error)")
         }
