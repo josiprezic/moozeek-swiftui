@@ -52,7 +52,8 @@ final class LibraryManager {
                 print("All async download in the group completed")
                 completion?()
             } else {
-                self?.localFilesManager.deleteFile(withNameAndExtension: "\(songTitle).jpg")  // Delete the downloaded thumbnail if available
+                // Delete the downloaded thumbnail if available
+                self?.localFilesManager.deleteFile(withNameAndExtension: "\(songTitle).jpg")
             }
         }
     }
