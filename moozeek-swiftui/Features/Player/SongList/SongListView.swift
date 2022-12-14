@@ -24,7 +24,7 @@ struct SongListView: View {
             .navigationTitle("Songs")
         }
         .searchable(text: $viewModel.searchText, prompt: "Find in Songs")
-        .fullScreenCover(isPresented: $showDetails) { musicPlayer }
+        .fullScreenCover(isPresented: $showDetails) { MusicPlayer.resolved }
     }
     
     private var songListView: some View {
@@ -61,11 +61,6 @@ struct SongListView: View {
         }
         .padding(.horizontal, -5)
         .frame(height: 60)
-    }
-    
-    private var musicPlayer: some View {
-        MusicPlayer.resolved
-            .gesture(dragGesture)
     }
     
     private var musicPlayerBar: some View {

@@ -12,6 +12,7 @@ struct MusicPlayer: View {
     // MARK: - Properties
     
     @StateObject var viewModel: PlayerViewModel
+    @Environment(\.dismiss) var dismiss
         
     // MARK: - Views -
     
@@ -65,6 +66,18 @@ struct MusicPlayer: View {
             .padding(.horizontal, -5)
             .cornerRadius(Style.Size.playerTrackIconRadius)
             .padding(.vertical, 20)
+            .gesture(dragGesture)
+    }
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded(onDragGestureEnded)
+    }
+    
+    private func onDragGestureEnded(_ value: DragGesture.Value) {
+        if value.translation.height > 60 {
+            dismiss()
+        }
     }
     
     private var trackTitle: some View {
