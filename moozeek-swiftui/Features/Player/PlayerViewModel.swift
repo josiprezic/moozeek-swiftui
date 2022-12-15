@@ -23,7 +23,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     @Published var currentSongPercentage: Float = 0.4
     @Published var currentSongElapsedTime: String = ""
     @Published var currentSongRemainingTime: String = ""
-    @Published var volumeLevelPercentage: Float = 0.8
+    @Published var volumeLevelPercentage: Float = 80
     
     private var allSongs: [Song] = []
     private let audioManager: AudioManager

@@ -191,7 +191,7 @@ struct MusicPlayer: View {
     private var volumeControlView: some View {
         HStack {
             Image(systemName: Style.Image.speakerLow)
-            Slider(value: $viewModel.volumeLevelPercentage)
+            Slider(value: $viewModel.volumeLevelPercentage, in: 1...100, step: 1)
                 .accentColor(.white.opacity(0.5))
             Image(systemName: Style.Image.speakerHigh)
         }
