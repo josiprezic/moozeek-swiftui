@@ -89,6 +89,10 @@ final class AudioManager: NSObject {
             resume()
         }
     }
+    
+    func setVolumePercentage(_ value: Float) {
+        player?.setVolume(value / 100.0, fadeDuration: 1)
+    }
 }
 
 extension AudioManager: AVAudioPlayerDelegate {

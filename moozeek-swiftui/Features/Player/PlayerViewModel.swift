@@ -23,7 +23,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     @Published var currentSongPercentage: Float = 0.4
     @Published var currentSongElapsedTime: String = ""
     @Published var currentSongRemainingTime: String = ""
-    @Published var volumeLevelPercentage: Float = 80
+    @Published var volumeLevelPercentage: Float = 0.8
     
     private var allSongs: [Song] = []
     private let audioManager: AudioManager
@@ -72,6 +72,10 @@ final class PlayerViewModel: ViewModel, ObservableObject {
             .map(Float.init)
             .map { [weak self] in $0 / Float(self?.audioManager.currentSongDuration ?? 1) }
             .assign(to: &$currentSongPercentage)
+        
+        $volumeLevelPercentage
+            .sink(receiveValue: audioManager.setVolumePercentage)
+            .store(in: &cancellables)
     }
     
     // MARK: - Methods
