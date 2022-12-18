@@ -9,17 +9,27 @@ import SwiftUI
 
 struct SongCell: View {
     let song: Song
+    let songAction: () -> Void
     
     var body: some View {
         HStack {
-            thumbnailView
-            songTitle
-            Spacer()
+            songView
             downloadButton
             menuButton
         }
         .padding(-5)
         .buttonStyle(PlainButtonStyle())
+    }
+    
+    var songView: some View {
+        Button(action: songAction) {
+            HStack {
+                thumbnailView
+                songTitle
+                Spacer()
+            }
+            .contentShape(Rectangle())
+        }
     }
     
     var thumbnailView: some View {
@@ -67,7 +77,7 @@ struct SongCell: View {
 
 struct SongCell_Previews: PreviewProvider {
     static var previews: some View {
-        SongCell(song: Song.example)
+        SongCell(song: Song.example, songAction: { })
     }
 }
 

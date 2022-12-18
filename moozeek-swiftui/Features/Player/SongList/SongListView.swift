@@ -31,11 +31,8 @@ struct SongListView: View {
         List {
             Section(header: songListHeaderView) {
                 ForEach(viewModel.filteredSongs) { song in
-                    SongCell(song: song)
-                        .onTapGesture { viewModel.handleSongSelected(song) }
-                        .onLongPressGesture {
-                            print("Song item long press gesture")
-                        }
+                    SongCell(song: song, songAction: { viewModel.handleSongSelected(song) })
+                        .onLongPressGesture { print("Song item long press gesture") }
                 }
             }
             .listRowBackground(colorScheme == .dark ? Color.black : Color.white)
@@ -43,7 +40,6 @@ struct SongListView: View {
         .padding([.bottom], -8)
         .listStyle(GroupedListStyle())
         .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-        
     }
     
     private var songListHeaderView: some View {
