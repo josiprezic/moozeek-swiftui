@@ -42,6 +42,28 @@ struct MusicPlayer: View {
     }
     
     private var trackLogo: some View {
+        HStack {
+            AsyncImage(
+                url: viewModel.currentSong?.thumbnailUrl,
+                content: { image in
+                    HStack {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .frame(minHeight: 0, maxHeight: .infinity)
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .background(Color.black)
+                    .cornerRadius(Style.Size.playerTrackIconRadius)
+                },
+                placeholder: { trackLogoPlaceholder }
+            )
+        }
+    }
+    
+    private var trackLogoPlaceholder: some View {
         Image(systemName: Style.Image.musicNote)
             .resizable()
             .aspectRatio(contentMode: .fit)
