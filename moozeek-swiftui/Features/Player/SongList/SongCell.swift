@@ -10,6 +10,7 @@ import SwiftUI
 struct SongCell: View {
     let song: Song
     let songAction: () -> Void
+    let menuAction: (_ item: SongDetailMenuItem) -> Void
     
     var body: some View {
         HStack {
@@ -58,9 +59,10 @@ struct SongCell: View {
     
     var menuContent: some View {
         ForEach(SongDetailMenuItem.allCases) { item in
-            Button(action: {}, label: {
-                Label(item.title, systemImage: item.systemImage)
-            })
+            Button(
+                action: { menuAction(item) },
+                label: { Label(item.title, systemImage: item.systemImage) }
+            )
         }
     }
     
@@ -77,7 +79,10 @@ struct SongCell: View {
 
 struct SongCell_Previews: PreviewProvider {
     static var previews: some View {
-        SongCell(song: Song.example, songAction: { })
+        SongCell(
+            song: Song.example,
+            songAction: { },
+            menuAction: { _ in })
     }
 }
 

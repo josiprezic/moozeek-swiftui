@@ -26,6 +26,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     @Published var volumeLevelPercentage: Float = 0.8
     
     private var allSongs: [Song] = []
+    private var playNextSongs: [Song] = [] // TODO: Make use of list
     private let audioManager: AudioManager
     private let libraryManager: LibraryManager
     private var cancellables = Set<AnyCancellable>()
@@ -140,6 +141,17 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     func handleSongSelected(_ song: Song) {
         currentSong = song
         isPlaying = true
+    }
+    
+    func handleMenuItemSelected(_ item: SongDetailMenuItem, for song: Song) {
+        switch item {
+        case .deleteFromLibrary:
+            print("Handle deleteFromLibrary") // TODO: JR
+        case .playNext:
+            playNextSongs.insert(song, at: 0) // TODO: Make use of list
+        case .playLast:
+            playNextSongs.append(song) // TODO: JR make use of list
+        }
     }
     
     func handlePlayButtonPressed() {

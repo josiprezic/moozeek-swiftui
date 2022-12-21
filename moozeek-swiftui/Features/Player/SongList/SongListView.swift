@@ -31,7 +31,9 @@ struct SongListView: View {
         List {
             Section(header: songListHeaderView) {
                 ForEach(viewModel.filteredSongs) { song in
-                    SongCell(song: song, songAction: { viewModel.handleSongSelected(song) })
+                    SongCell(song: song,
+                             songAction: { viewModel.handleSongSelected(song) },
+                             menuAction: { viewModel.handleMenuItemSelected($0, for: song) })
                         .onLongPressGesture { print("Song item long press gesture") }
                 }
             }

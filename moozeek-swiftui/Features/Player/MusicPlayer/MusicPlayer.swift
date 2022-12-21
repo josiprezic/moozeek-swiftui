@@ -61,6 +61,7 @@ struct MusicPlayer: View {
                 placeholder: { trackLogoPlaceholder }
             )
         }
+        .gesture(dragGesture)
     }
     
     private var trackLogoPlaceholder: some View {
@@ -88,7 +89,6 @@ struct MusicPlayer: View {
             .padding(.horizontal, -5)
             .cornerRadius(Style.Size.playerTrackIconRadius)
             .padding(.vertical, 20)
-            .gesture(dragGesture)
     }
     
     private var dragGesture: some Gesture {
