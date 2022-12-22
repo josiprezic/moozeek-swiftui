@@ -114,7 +114,10 @@ struct MusicPlayer: View {
         Menu {
             ForEach(SongDetailMenuItem.allCases) { item in
                 Button(
-                    action: {},
+                    action: {
+                        guard let currentSong = viewModel.currentSong else { return }
+                        viewModel.handleMenuItemSelected(item, for: currentSong)
+                    },
                     label: { Label(item.title, systemImage: item.systemImage) }
                 )
             }

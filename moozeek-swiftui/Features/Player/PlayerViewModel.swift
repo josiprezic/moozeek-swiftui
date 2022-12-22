@@ -163,6 +163,11 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     }
     
     func handleNextButtonPressed() {
+        guard playNextSongs.isEmpty else {
+            playNextFromThePlayNextList()
+            return
+        }
+        
         if isShuffle {
             playShuffleSong()
         } else {
@@ -188,5 +193,11 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     func handleHeaderShufflePlayButtonTapped() {
         isShuffle = true
         playShuffleSong()
+    }
+    
+    private func playNextFromThePlayNextList() {
+        if playNextSongs.isEmpty { return }
+        let nextSong = playNextSongs.removeFirst()
+        playSong(song: nextSong)
     }
 }
