@@ -62,6 +62,12 @@ final class LibraryManager {
         localFilesManager.getUrlsForFiles(withExtension: "m4a").map(Song.init)
     }
     
+    func delete(_ song: Song) {
+        let name = song.name
+        localFilesManager.deleteFile(withNameAndExtension: name + ".m4a")
+        localFilesManager.deleteFile(withNameAndExtension: name + ".jpg")
+    }
+    
     private func log(_ message: String) {
         guard Self.loggingEnabled else { return }
         print(message)

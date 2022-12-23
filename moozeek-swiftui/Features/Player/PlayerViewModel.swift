@@ -146,7 +146,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     func handleMenuItemSelected(_ item: SongDetailMenuItem, for song: Song) {
         switch item {
         case .deleteFromLibrary:
-            print("Handle deleteFromLibrary") // TODO: JR
+            deleteSong(song)
         case .playNext:
             playNextSongs.insert(song, at: 0)
         case .playLast:
@@ -196,8 +196,20 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     }
     
     private func playNextFromThePlayNextList() {
-        if playNextSongs.isEmpty { return }
+        if playNextSongs.isEmpty {
+            playNextSong()
+            return
+        }
         let nextSong = playNextSongs.removeFirst()
         playSong(song: nextSong)
+    }
+    
+    private func deleteSong(_ song: Song) {
+        if song == currentSong {
+            playNextFromThePlayNextList()
+        }
+        libraryManager.delete(song)
+        allSongs.removeAll { $0 == song } // TODO: Use library manager publisher instead
+        filteredSongs.removeAll { $0 == song }
     }
 }
