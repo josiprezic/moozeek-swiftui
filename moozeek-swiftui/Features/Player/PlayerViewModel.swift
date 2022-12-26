@@ -77,9 +77,18 @@ final class PlayerViewModel: ViewModel, ObservableObject {
         $volumeLevelPercentage
             .sink(receiveValue: audioManager.setVolumePercentage)
             .store(in: &cancellables)
+        
+        DownloadManager.didDownloadPublisher
+            .sink(receiveValue: updateSongList)
+            .store(in: &cancellables)
     }
     
     // MARK: - Methods
+    
+    private func updateSongList() {
+        allSongs = libraryManager.getLocalSongList()
+        handleSearchTextChanged(searchText)
+    }
     
     private func playFirstAvailableSong() {
         guard let firstSong = filteredSongs.first else { return }

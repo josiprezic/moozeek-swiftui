@@ -18,6 +18,7 @@ final class DownloadManager {
     
     private let libraryManager: LibraryManager
     
+    static let didDownloadPublisher = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     init(libraryManager: LibraryManager) {
@@ -83,7 +84,7 @@ final class DownloadManager {
                     // handle error
                     print(error)
                 }, receiveValue: { url in
-                    // handle url, but probably not needed
+                    Self.didDownloadPublisher.send(())
                 })
                 .store(in: &self.cancellables)
         } catch {

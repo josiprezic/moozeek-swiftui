@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class SearchViewModel: ObservableObject {
+protocol SearchViewModelDelegate: AnyObject {
+    func didDownloadSong()
+}
+
+final class SearchViewModel: ViewModel, ObservableObject {
     private let downloadManager: DownloadManager
     
     init(downloadManager: DownloadManager) {
