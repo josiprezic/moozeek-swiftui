@@ -11,20 +11,37 @@ struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
     
     var body: some View {
+        VStack {
+            Spacer()
+            pasteButton
+            Spacer()
+            title
+            description
+            Spacer()
+            
+        }
+    }
+    
+    private var title: some View {
+        Text(viewModel.titleText)
+            .font(.system(size: 40))
+    }
+    
+    private var description: some View {
+        Text(.init(viewModel.descriptionText))
+    }
+    
+    private var pasteButton: some View {
         Button(
-            action: {
-                viewModel.handlePasteSelected()
-            },
+            action: viewModel.handlePasteSelected,
             label: {
                 HStack {
                     Text("Paste")
                     Image(systemName: "doc.on.clipboard.fill")
                 }
                 .font(.system(size: 50))
-                
             }
         )
-        
     }
 }
 
