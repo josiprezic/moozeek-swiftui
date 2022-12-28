@@ -11,15 +11,20 @@ struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
     
     var body: some View {
-        VStack {
-            Spacer()
-            pasteButton
-            Spacer()
-            title
-            description
-            Spacer()
-            
+        ScrollView {
+            VStack {
+                spacer
+                pasteButton
+                spacer
+                title
+                description
+            }
         }
+    }
+    
+    private var spacer: some View {
+        Spacer()
+            .frame(height: 100)
     }
     
     private var title: some View {
@@ -40,6 +45,9 @@ struct SearchView: View {
                     Image(systemName: "doc.on.clipboard.fill")
                 }
                 .font(.system(size: 50))
+                .padding(20)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
             }
         )
     }
