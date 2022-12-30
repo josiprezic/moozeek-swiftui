@@ -36,6 +36,7 @@ struct SongListView: View {
                         songAction: { viewModel.handleSongSelected(song) },
                         menuAction: { viewModel.handleMenuItemSelected($0, for: song) }
                     )
+                    .swipeActions(edge: .leading, content: { leadingSwipeActions(for: song) })
                     .swipeActions(edge: .trailing, content: { trailingSwipeActions(for: song) })
                     .onLongPressGesture { print("Song item long press gesture") }
                 }
@@ -72,10 +73,27 @@ struct SongListView: View {
     
     private func trailingSwipeActions(for song: Song) -> some View {
         Button(
-            action: { withAnimation { viewModel.deleteSong(song) } },
+            action: { withAnimation { viewModel.handleMenuItemSelected(.deleteFromLibrary, for: song) } },
             label: { Image(systemName: "trash.fill") }
         )
         .tint(.red)
+    }
+    
+    private func leadingSwipeActions(for song: Song) -> some View {
+        Group {
+            Button(
+                action: { viewModel.handleMenuItemSelected(.playNext, for: song) },
+                label: { Image(systemName: Style.Image.playNext) }
+            )
+            .tint(Color.purple)
+            
+            Button(
+                action: { viewModel.handleMenuItemSelected(.playLast, for: song) },
+                label: { Image(systemName: Style.Image.playLast) }
+            )
+            .tint(Color.orange)
+        }
+        
     }
     
     private var dragGesture: some Gesture {
