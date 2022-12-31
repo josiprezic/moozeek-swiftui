@@ -213,7 +213,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
         playSong(song: nextSong)
     }
     
-    func deleteSong(_ song: Song) {
+    private func deleteSong(_ song: Song) {
         if song == currentSong {
             playNextFromThePlayNextList()
         }
