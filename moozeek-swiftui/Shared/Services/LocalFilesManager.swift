@@ -61,11 +61,10 @@ class LocalFilesManager {
     
     @discardableResult
     func deleteFile(withNameAndExtension fileName: String) -> Bool {
-        let dataPathStr = Self.documentDirectoryPath + "/" + fileName // TODO: JR
-        guard fileManager.fileExists(atPath: dataPathStr) else { return true }
+        let dataPath = Self.documentDirectoryUrl.appendingPathComponent(fileName)
         do {
-            try fileManager.removeItem(atPath: dataPathStr)
-            log("Removed file: \(dataPathStr)")
+            try fileManager.removeItem(at: dataPath)
+            log("Removed file: \(dataPath.absoluteString)")
         } catch let removeError {
             log("Couldn't remove file at path: \(removeError.localizedDescription)")
             return false
