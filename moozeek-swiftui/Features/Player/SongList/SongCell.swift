@@ -60,6 +60,7 @@ struct SongCell: View {
     var menuContent: some View {
         ForEach(SongDetailMenuItem.allCases) { item in
             Button(
+                role: item == .deleteFromLibrary ? .destructive : nil,
                 action: { menuAction(item) },
                 label: { Label(item.title, systemImage: item.systemImage) }
             )
