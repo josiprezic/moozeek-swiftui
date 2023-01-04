@@ -8,7 +8,6 @@
 import AVFoundation
 import Combine
 
-// TODO: JR Refactor
 final class AudioManager: NSObject {
     let playerDidFinishPlaying = PassthroughSubject<Void, Never>()
     let currentSongElapsedTime = CurrentValueSubject<Int, Never>(0)
@@ -92,6 +91,12 @@ final class AudioManager: NSObject {
     
     func setVolumePercentage(_ value: Float) {
         player?.setVolume(value / 100.0, fadeDuration: 1)
+    }
+    
+    func setCurrentSongTime(inPercentage: Double) {
+        let songDuration = player?.duration ?? 0.0
+        let selectedTime = songDuration * inPercentage
+        player?.currentTime = selectedTime
     }
 }
 

@@ -158,13 +158,15 @@ struct MusicPlayer: View {
     }
     
     private var progressView: some View {
-        ProgressView(value: viewModel.currentSongPercentage)
-            .frame(height: 5)
-            .background(Color.gray)
-            .foregroundColor(.white)
-            .accentColor(.white.opacity(0.6))
-            .cornerRadius(2)
-        
+        Slider(
+            value: $viewModel.currentSongPercentage,
+            in: 0...1, step: 0.01,
+            onEditingChanged: viewModel.handleSongCurrentTimeChanged
+        )
+        .frame(height: 5)
+        .background(Color.gray)
+        .foregroundColor(.white)
+        .accentColor(.white.opacity(0.6))
     }
     
     private var timeView: some View {

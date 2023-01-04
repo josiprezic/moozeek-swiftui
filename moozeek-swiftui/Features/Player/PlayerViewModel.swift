@@ -152,6 +152,11 @@ final class PlayerViewModel: ViewModel, ObservableObject {
         isPlaying = true
     }
     
+    func handleSongCurrentTimeChanged(_ isEditing: Bool) {
+        // TODO: JR Handle editing
+        audioManager.setCurrentSongTime(inPercentage: Double(currentSongPercentage))
+    }
+    
     func handleMenuItemSelected(_ item: SongDetailMenuItem, for song: Song) {
         switch item {
         case .deleteFromLibrary:
