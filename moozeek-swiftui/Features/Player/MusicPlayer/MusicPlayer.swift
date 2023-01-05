@@ -161,7 +161,7 @@ struct MusicPlayer: View {
         Slider(
             value: $viewModel.currentSongPercentage,
             in: 0...1, step: 0.01,
-            onEditingChanged: viewModel.handleSongCurrentTimeChanged
+            onEditingChanged: viewModel.handleSongCurrentTimeChangedByUser
         )
         .frame(height: 5)
         .background(Color.gray)

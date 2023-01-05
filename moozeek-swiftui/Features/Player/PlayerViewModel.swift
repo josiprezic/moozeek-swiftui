@@ -18,6 +18,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     
     @Published var isPlaying = false
     @Published var isShuffle = false
+    @Published var isSongCurrentTimeEditMode = false
     
     @Published var currentSong: Song?
     @Published var currentSongPercentage: Float = 0.4
@@ -72,6 +73,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
         audioManager.currentSongElapsedTime
             .map(Float.init)
             .map { [weak self] in $0 / Float(self?.audioManager.currentSongDuration ?? 1) }
+            .filter { [weak self] _ in !(self?.isSongCurrentTimeEditMode ?? false) }
             .assign(to: &$currentSongPercentage)
         
         $volumeLevelPercentage
@@ -152,8 +154,9 @@ final class PlayerViewModel: ViewModel, ObservableObject {
         isPlaying = true
     }
     
-    func handleSongCurrentTimeChanged(_ isEditing: Bool) {
-        // TODO: JR Handle editing
+    func handleSongCurrentTimeChangedByUser(_ isEditing: Bool) {
+        isSongCurrentTimeEditMode = isEditing
+        if isEditing { return }
         audioManager.setCurrentSongTime(inPercentage: Double(currentSongPercentage))
     }
     
