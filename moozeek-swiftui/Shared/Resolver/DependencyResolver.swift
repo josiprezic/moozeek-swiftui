@@ -32,5 +32,7 @@ extension Resolver: ResolverRegistering, Resolving {
         register { SearchViewModel(downloadManager: resolve()) }
         
         register { SearchView(viewModel: resolve()) }
+        
+        register { YouAreOfflineView() }
     }
 }
