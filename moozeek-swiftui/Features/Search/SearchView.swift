@@ -11,29 +11,18 @@ struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
     
     var body: some View {
-        ScrollView {
+        if Reachability.isConnected {
             VStack {
-                spacer
+                Spacer()
                 pasteButton
-                spacer
+                Spacer()
                 title
                 description
+                Spacer()
             }
+        } else {
+            YouAreOfflineView()
         }
-    }
-    
-    private var spacer: some View {
-        Spacer()
-            .frame(height: 100)
-    }
-    
-    private var title: some View {
-        Text(viewModel.titleText)
-            .font(.system(size: 40))
-    }
-    
-    private var description: some View {
-        Text(.init(viewModel.descriptionText))
     }
     
     private var pasteButton: some View {
@@ -50,6 +39,17 @@ struct SearchView: View {
                 .cornerRadius(10)
             }
         )
+    }
+    
+    private var title: some View {
+        Text(viewModel.titleText)
+            .font(.title)
+            .padding(.bottom, 5)
+    }
+    
+    private var description: some View {
+        Text(.init(viewModel.descriptionText))
+            .font(.body)
     }
 }
 
