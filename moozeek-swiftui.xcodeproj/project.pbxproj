@@ -25,6 +25,7 @@
 		74728C15291D54F200DEE243 /* SongDetailMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */; };
 		7491830229689BCA00639E41 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491830129689BCA00639E41 /* Reachability.swift */; };
 		749183052969D85500639E41 /* YouAreOfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749183042969D85500639E41 /* YouAreOfflineView.swift */; };
+		74918308296C2FA200639E41 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74918307296C2FA200639E41 /* RadioView.swift */; };
 		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
 		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
 		74A5DC4E291C02BC0083417E /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4D291C02BC0083417E /* PlayerViewModel.swift */; };
@@ -58,6 +59,7 @@
 		74728C14291D54F200DEE243 /* SongDetailMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailMenuItem.swift; sourceTree = "<group>"; };
 		7491830129689BCA00639E41 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		749183042969D85500639E41 /* YouAreOfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouAreOfflineView.swift; sourceTree = "<group>"; };
+		74918307296C2FA200639E41 /* RadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioView.swift; sourceTree = "<group>"; };
 		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		74A5DC4D291C02BC0083417E /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +189,14 @@
 			path = YouAreOffline;
 			sourceTree = "<group>";
 		};
+		74918306296C2F8E00639E41 /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				74918307296C2FA200639E41 /* RadioView.swift */,
+			);
+			path = Radio;
+			sourceTree = "<group>";
+		};
 		74A5DC48291C02300083417E /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,10 +211,11 @@
 		74A5DC49291C027A0083417E /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				749183032969D81B00639E41 /* YouAreOffline */,
 				74A5DC58291CFF430083417E /* MainTabView */,
+				74918306296C2F8E00639E41 /* Radio */,
 				7408240B2924BA0100B42E81 /* Player */,
 				7408240C2924BAA600B42E81 /* Search */,
+				749183032969D81B00639E41 /* YouAreOffline */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -408,6 +419,7 @@
 				740824262924CEA300B42E81 /* ViewModel.swift in Sources */,
 				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
 				740824122924BAD900B42E81 /* SearchView.swift in Sources */,
+				74918308296C2FA200639E41 /* RadioView.swift in Sources */,
 				740824332925120B00B42E81 /* LocalFilesManager.swift in Sources */,
 				D760FA66260FFBBF0029AA1F /* MoozeekApp.swift in Sources */,
 				740824142924BF1F00B42E81 /* SearchViewModel.swift in Sources */,
