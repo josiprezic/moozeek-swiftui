@@ -9,11 +9,16 @@ import SwiftUI
 
 struct RadioView: View {
     var body: some View {
-        if Reachability.isConnected {
-            Text("Radio View")
-                .font(.title)
-        } else {
-            YouAreOfflineView()
+        NavigationView {
+            VStack {
+                if Reachability.isConnected {
+                    Text("Radio View")
+                        .font(.title)
+                } else {
+                    YouAreOfflineView()
+                }
+            }
+            .navigationTitle("Radio")
         }
     }
 }

@@ -212,8 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				74A5DC58291CFF430083417E /* MainTabView */,
-				74918306296C2F8E00639E41 /* Radio */,
 				7408240B2924BA0100B42E81 /* Player */,
+				74918306296C2F8E00639E41 /* Radio */,
 				7408240C2924BAA600B42E81 /* Search */,
 				749183032969D81B00639E41 /* YouAreOffline */,
 			);
