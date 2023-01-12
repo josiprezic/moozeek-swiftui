@@ -25,6 +25,6 @@ struct RadioView: View {
 
 struct RadioView_Previews: PreviewProvider {
     static var previews: some View {
-        RadioView()
+        RadioView.resolved
     }
 }

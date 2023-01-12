@@ -34,5 +34,7 @@ extension Resolver: ResolverRegistering, Resolving {
         register { SearchView(viewModel: resolve()) }
         
         register { YouAreOfflineView() }
+        
+        register { RadioView() }
     }
 }
