@@ -12,13 +12,39 @@ struct RadioView: View {
         NavigationView {
             VStack {
                 if Reachability.isConnected {
-                    Text("Radio View")
-                        .font(.title)
+                    ScrollView {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                radioHCollectionView
+                                radioHCollectionView
+                                radioHCollectionView
+                                radioHCollectionView
+                            }
+                            
+                        }
+//                        Text("Radio View")
+                    }
                 } else {
                     YouAreOfflineView()
                 }
             }
             .navigationTitle("Radio")
+        }
+    }
+    
+    private var radioHCollectionView: some View {
+        VStack(alignment: .leading) {
+            Text("Exclusive")
+                .font(.callout)
+            Text("Apple Music 1")
+                .font(.headline)
+            Text("The new music that matters.")
+                .font(.headline)
+            Image("gnr_logo")
+                .resizable()
+                .scaledToFill()
+                .frame(width: UIScreen.main.bounds.width - 50, height: 300)
+                .cornerRadius(10)
         }
     }
 }
