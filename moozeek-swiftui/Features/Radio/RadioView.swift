@@ -22,7 +22,17 @@ struct RadioView: View {
                                     radioHCollectionViewItem
                                 }
                             }
+                            
                             localBroadcastersTitle
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    radioListHCollectionViewList
+                                    radioListHCollectionViewList
+                                    radioListHCollectionViewList
+                                }
+                            }
+                            
+                            internationalBroadcastersTitle
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     radioListHCollectionViewList
@@ -61,6 +71,12 @@ struct RadioView: View {
     
     private var localBroadcastersTitle: some View {
         Text("Local Broadcasters")
+            .font(.title2)
+            .fontWeight(.bold)
+    }
+    
+    private var internationalBroadcastersTitle: some View {
+        Text("International Broadcasters")
             .font(.title2)
             .fontWeight(.bold)
     }
