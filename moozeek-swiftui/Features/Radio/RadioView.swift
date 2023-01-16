@@ -12,41 +12,59 @@ struct RadioView: View {
         NavigationView {
             VStack {
                 if Reachability.isConnected {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 24) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    radioHCollectionViewItem
-                                    radioHCollectionViewItem
-                                    radioHCollectionViewItem
-                                    radioHCollectionViewItem
-                                }
-                            }
-                            
-                            localBroadcastersTitle
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    radioListHCollectionViewList
-                                    radioListHCollectionViewList
-                                    radioListHCollectionViewList
-                                }
-                            }
-                            
-                            internationalBroadcastersTitle
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    radioListHCollectionViewList
-                                    radioListHCollectionViewList
-                                    radioListHCollectionViewList
-                                }
-                            }
-                        }
-                    }
+                    contentView
                 } else {
                     YouAreOfflineView()
                 }
             }
             .navigationTitle("Radio")
+        }
+    }
+    
+    private var contentView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                exclusiveSection
+                localBroadcastersSection
+                internationalBroadcastersSection
+            }
+        }
+    }
+    
+    private var exclusiveSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                radioHCollectionViewItem
+                radioHCollectionViewItem
+                radioHCollectionViewItem
+                radioHCollectionViewItem
+            }
+        }
+    }
+    
+    private var localBroadcastersSection: some View {
+        VStack(alignment: .leading) {
+            localBroadcastersTitle
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    radioListHCollectionViewList
+                    radioListHCollectionViewList
+                    radioListHCollectionViewList
+                }
+            }
+        }
+    }
+    
+    private var internationalBroadcastersSection: some View {
+        VStack(alignment: .leading) {
+            internationalBroadcastersTitle
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    radioListHCollectionViewList
+                    radioListHCollectionViewList
+                    radioListHCollectionViewList
+                }
+            }
         }
     }
     
