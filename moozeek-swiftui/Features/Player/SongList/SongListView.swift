@@ -43,7 +43,7 @@ struct SongListView: View {
             }
             .listRowBackground(colorScheme == .dark ? Color.black : Color.white)
         }
-        .padding([.bottom], -8)
+        .padding(.bottom, -8)
         .listStyle(GroupedListStyle())
         .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
     }

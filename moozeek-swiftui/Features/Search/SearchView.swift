@@ -10,18 +10,51 @@ import SwiftUI
 struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
     
+    @State private var showDetails: Bool = false
+    
     var body: some View {
-        if Reachability.isConnected {
+        NavigationView {
             VStack {
-                Spacer()
-                pasteButton
-                Spacer()
-                title
-                description
-                Spacer()
+                if Reachability.isConnected {
+                    VStack {
+                        Spacer()
+                        pasteButton
+                        Spacer()
+                        title
+                        description
+                        Spacer()
+                    }
+                } else {
+                    YouAreOfflineView()
+                }
+                musicPlayerBar
             }
-        } else {
-            YouAreOfflineView()
+        }
+        .fullScreenCover(isPresented: $showDetails) { MusicPlayer.resolved }
+    }
+    
+    private var musicPlayerBar: some View {
+        MusicPlayerBar.resolved
+            .onTapGesture(perform: onMusicPlayerBarTapGesture)
+            .gesture(dragGesture)
+    }
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded(onDragGestureEnded)
+    }
+    
+    private func onMusicPlayerBarTapGesture() {
+        withAnimation {
+            showDetails.toggle()
+        }
+    }
+    
+    private func onDragGestureEnded(_ value: DragGesture.Value) {
+        if value.translation.height < 20 {
+            showDetails = true
+        } else if value.translation.height > 60 {
+            showDetails = false
         }
     }
     

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RadioView: View {
+    
+    @State private var showDetails: Bool = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -16,8 +19,35 @@ struct RadioView: View {
                 } else {
                     YouAreOfflineView()
                 }
+                musicPlayerBar
             }
             .navigationTitle("Radio")
+        }
+        .fullScreenCover(isPresented: $showDetails) { MusicPlayer.resolved }
+    }
+    
+    private var musicPlayerBar: some View {
+        MusicPlayerBar.resolved
+            .onTapGesture(perform: onMusicPlayerBarTapGesture)
+            .gesture(dragGesture)
+    }
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded(onDragGestureEnded)
+    }
+    
+    private func onMusicPlayerBarTapGesture() {
+        withAnimation {
+            showDetails.toggle()
+        }
+    }
+    
+    private func onDragGestureEnded(_ value: DragGesture.Value) {
+        if value.translation.height < 20 {
+            showDetails = true
+        } else if value.translation.height > 60 {
+            showDetails = false
         }
     }
     
@@ -29,6 +59,7 @@ struct RadioView: View {
                 internationalBroadcastersSection
             }
         }
+        .padding(.bottom, -8)
     }
     
     private var exclusiveSection: some View {
