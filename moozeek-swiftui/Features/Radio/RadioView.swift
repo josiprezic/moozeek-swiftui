@@ -26,40 +26,21 @@ struct RadioView: View {
         .fullScreenCover(isPresented: $showDetails) { MusicPlayer.resolved }
     }
     
-    private var musicPlayerBar: some View {
-        MusicPlayerBar.resolved
-            .onTapGesture(perform: onMusicPlayerBarTapGesture)
-            .gesture(dragGesture)
-    }
-    
-    private var dragGesture: some Gesture {
-        DragGesture(minimumDistance: 0, coordinateSpace: .local)
-            .onEnded(onDragGestureEnded)
-    }
-    
-    private func onMusicPlayerBarTapGesture() {
-        withAnimation {
-            showDetails.toggle()
-        }
-    }
-    
-    private func onDragGestureEnded(_ value: DragGesture.Value) {
-        if value.translation.height < 20 {
-            showDetails = true
-        } else if value.translation.height > 60 {
-            showDetails = false
-        }
-    }
-    
     private var contentView: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 exclusiveSection
-                localBroadcastersSection
-                internationalBroadcastersSection
+                broadcastersSection(named: "Local Broadcasters")
+                broadcastersSection(named: "International Broadcasters")
             }
         }
         .padding(.bottom, -8)
+    }
+    
+    private var musicPlayerBar: some View {
+        MusicPlayerBar.resolved
+            .onTapGesture(perform: onMusicPlayerBarTapGesture)
+            .gesture(dragGesture)
     }
     
     private var exclusiveSection: some View {
@@ -69,32 +50,6 @@ struct RadioView: View {
                 radioHCollectionViewItem
                 radioHCollectionViewItem
                 radioHCollectionViewItem
-            }
-        }
-    }
-    
-    private var localBroadcastersSection: some View {
-        VStack(alignment: .leading) {
-            localBroadcastersTitle
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    radioListHCollectionViewList
-                    radioListHCollectionViewList
-                    radioListHCollectionViewList
-                }
-            }
-        }
-    }
-    
-    private var internationalBroadcastersSection: some View {
-        VStack(alignment: .leading) {
-            internationalBroadcastersTitle
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    radioListHCollectionViewList
-                    radioListHCollectionViewList
-                    radioListHCollectionViewList
-                }
             }
         }
     }
@@ -118,16 +73,19 @@ struct RadioView: View {
         }
     }
     
-    private var localBroadcastersTitle: some View {
-        Text("Local Broadcasters")
-            .font(.title2)
-            .fontWeight(.bold)
-    }
-    
-    private var internationalBroadcastersTitle: some View {
-        Text("International Broadcasters")
-            .font(.title2)
-            .fontWeight(.bold)
+    private func broadcastersSection(named title: String) -> some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.title2)
+                .fontWeight(.bold)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    radioListHCollectionViewList
+                    radioListHCollectionViewList
+                    radioListHCollectionViewList
+                }
+            }
+        }
     }
     
     private var radioListHCollectionViewList: some View {
@@ -160,6 +118,27 @@ struct RadioView: View {
             }
         }
         .frame(width: UIScreen.main.bounds.width - 30)
+    }
+    
+    // MARK: - Drag gesture
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded(onDragGestureEnded)
+    }
+    
+    private func onMusicPlayerBarTapGesture() {
+        withAnimation {
+            showDetails.toggle()
+        }
+    }
+    
+    private func onDragGestureEnded(_ value: DragGesture.Value) {
+        if value.translation.height < 20 {
+            showDetails = true
+        } else if value.translation.height > 60 {
+            showDetails = false
+        }
     }
 }
 
