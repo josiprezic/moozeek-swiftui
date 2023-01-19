@@ -16,14 +16,7 @@ struct SearchView: View {
         NavigationView {
             VStack {
                 if Reachability.isConnected {
-                    VStack {
-                        Spacer()
-                        pasteButton
-                        Spacer()
-                        title
-                        description
-                        Spacer()
-                    }
+                    contentView
                 } else {
                     YouAreOfflineView()
                 }
@@ -33,28 +26,14 @@ struct SearchView: View {
         .fullScreenCover(isPresented: $showDetails) { MusicPlayer.resolved }
     }
     
-    private var musicPlayerBar: some View {
-        MusicPlayerBar.resolved
-            .onTapGesture(perform: onMusicPlayerBarTapGesture)
-            .gesture(dragGesture)
-    }
-    
-    private var dragGesture: some Gesture {
-        DragGesture(minimumDistance: 0, coordinateSpace: .local)
-            .onEnded(onDragGestureEnded)
-    }
-    
-    private func onMusicPlayerBarTapGesture() {
-        withAnimation {
-            showDetails.toggle()
-        }
-    }
-    
-    private func onDragGestureEnded(_ value: DragGesture.Value) {
-        if value.translation.height < 20 {
-            showDetails = true
-        } else if value.translation.height > 60 {
-            showDetails = false
+    private var contentView: some View {
+        VStack {
+            Spacer()
+            pasteButton
+            Spacer()
+            title
+            description
+            Spacer()
         }
     }
     
@@ -83,6 +62,33 @@ struct SearchView: View {
     private var description: some View {
         Text(.init(viewModel.descriptionText))
             .font(.body)
+    }
+    
+    private var musicPlayerBar: some View {
+        MusicPlayerBar.resolved
+            .onTapGesture(perform: onMusicPlayerBarTapGesture)
+            .gesture(dragGesture)
+    }
+    
+    // MARK: - Gestures
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded(onDragGestureEnded)
+    }
+    
+    private func onMusicPlayerBarTapGesture() {
+        withAnimation {
+            showDetails.toggle()
+        }
+    }
+    
+    private func onDragGestureEnded(_ value: DragGesture.Value) {
+        if value.translation.height < 20 {
+            showDetails = true
+        } else if value.translation.height > 60 {
+            showDetails = false
+        }
     }
 }
 
