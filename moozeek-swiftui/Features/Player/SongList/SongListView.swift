@@ -93,7 +93,6 @@ struct SongListView: View {
             )
             .tint(Color.orange)
         }
-        
     }
     
     private var dragGesture: some Gesture {
