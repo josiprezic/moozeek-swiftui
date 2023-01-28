@@ -9,4 +9,7 @@ import Foundation
 
 final class RadioViewModel: ViewModel, ObservableObject {
     
+    var isOnline: Bool {
+        Reachability.isConnected
+    }
 }

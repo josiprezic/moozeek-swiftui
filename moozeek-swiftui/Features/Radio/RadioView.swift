@@ -15,7 +15,7 @@ struct RadioView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if Reachability.isConnected {
+                if viewModel.isOnline {
                     contentView
                 } else {
                     YouAreOfflineView()
