@@ -17,7 +17,7 @@ struct MainTabView: View {
                     imageSystemName: "music.note.list"
                 )}
             
-            RadioView()
+            RadioView.resolved
                 .tabItem { TabBarItem(
                     title: "Radio",
                     imageSystemName: "dot.radiowaves.left.and.right"

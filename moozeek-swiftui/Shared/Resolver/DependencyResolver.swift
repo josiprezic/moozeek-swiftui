@@ -35,6 +35,8 @@ extension Resolver: ResolverRegistering, Resolving {
         
         register { YouAreOfflineView() }
         
-        register { RadioView() }
+        register { RadioViewModel() }
+        
+        register { RadioView(viewModel: resolve()) }
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RadioView: View {
+    @StateObject var viewModel: RadioViewModel
     
     @State private var showDetails: Bool = false
     
