@@ -13,3 +13,8 @@ struct Radio: Identifiable {
     let description = "From TuneIn"
     let logo: String = "gnr_logo"
 }
+
+struct RadioSection: Identifiable {
+    let id = UUID()
+    let items: [Radio]
+}

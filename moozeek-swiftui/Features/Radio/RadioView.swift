@@ -73,18 +73,18 @@ struct RadioView: View {
         }
     }
     
-    private var radioHCollectionViewItem: some View {
+    private func radioHCollectionViewItem(for radio: Radio) -> some View {
         VStack(alignment: .leading) {
             Text("Exclusive".uppercased())
                 .font(.caption2)
                 .opacity(0.5)
-            Text("Apple Music 1")
+            Text(radio.name)
                 .font(.headline)
-            Text("The new music that matters.")
+            Text(radio.description)
                 .font(.headline)
                 .fontWeight(.regular)
                 .opacity(0.5)
-            Image("gnr_logo")
+            Image(radio.logo)
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width - 30, height: 300)
@@ -98,24 +98,23 @@ struct RadioView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    radioListHCollectionViewList
-                    radioListHCollectionViewList
-                    radioListHCollectionViewList
+                ForEach(viewModel.localBroadcasterSections) { section in
+                    radioListHCollectionViewList(section)
                 }
             }
         }
     }
     
-    private var radioListHCollectionViewList: some View {
+    private func radioListHCollectionViewList(_ array: RadioSection) -> some View {
         VStack {
-            radioListHCollectionViewItem
-            radioListHCollectionViewItem
-            radioListHCollectionViewItem
+            ForEach(array.items) {
+                radioListHCollectionViewItem($0)
+                
+            }
         }
     }
     
-    private var radioListHCollectionViewItem: some View {
+    private func radioListHCollectionViewItem(_ radio: Radio) -> some View {
         HStack {
             Image("gnr_logo")
                 .resizable()

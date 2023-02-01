@@ -17,11 +17,15 @@ final class RadioViewModel: ViewModel, ObservableObject {
         Array(repeating: Radio(), count: 9)
     }
     
-    var localBroadcasters: [Radio] {
-        Array(repeating: Radio(), count: 9)
+    var localBroadcasterSections: [RadioSection] {
+        let items = Array(repeating: Radio(), count: 3)
+        let section = RadioSection(items: items)
+        return Array(repeating: section, count: 3)
     }
     
-    var internationalBroadcasters: [Radio] {
-        Array(repeating: Radio(), count: 9)
+    var internationalBroadcasterSections: [RadioSection] {
+        let items = Array(repeating: Radio(), count: 3)
+        let section = RadioSection(items: items)
+        return Array(repeating: section, count: 3)
     }
 }
