@@ -47,9 +47,7 @@ struct RadioView: View {
     private var exclusiveSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(viewModel.exclusiveSection) { radio in
-                    exclusiveView(for: radio)
-                }
+                ForEach(viewModel.exclusiveSection, content: exclusiveView)
             }
         }
     }
@@ -107,10 +105,7 @@ struct RadioView: View {
     
     private func radioListHCollectionViewList(_ array: RadioSection) -> some View {
         VStack {
-            ForEach(array.items) {
-                radioListHCollectionViewItem($0)
-                
-            }
+            ForEach(array.items, content: radioListHCollectionViewItem)
         }
     }
     
