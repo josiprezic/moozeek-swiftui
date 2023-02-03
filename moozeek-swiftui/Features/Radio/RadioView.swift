@@ -96,8 +96,10 @@ struct RadioView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             ScrollView(.horizontal, showsIndicators: false) {
-                ForEach(viewModel.localBroadcasterSections) { section in
-                    radioListHCollectionViewList(section)
+                HStack {
+                    ForEach(viewModel.localBroadcasterSections) { section in
+                        radioListHCollectionViewList(section)
+                    }
                 }
             }
         }
