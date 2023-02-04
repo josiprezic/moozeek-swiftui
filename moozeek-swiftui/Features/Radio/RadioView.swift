@@ -12,6 +12,8 @@ struct RadioView: View {
     
     @State private var showDetails: Bool = false
     
+    let collectionLeadingOffset: CGFloat = 15.0
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -47,6 +49,8 @@ struct RadioView: View {
     private var exclusiveSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
+                Spacer()
+                    .frame(width: collectionLeadingOffset)
                 ForEach(viewModel.exclusiveSection, content: exclusiveView)
             }
         }
@@ -95,11 +99,16 @@ struct RadioView: View {
             Text(title)
                 .font(.title2)
                 .fontWeight(.bold)
+                .padding(.leading, collectionLeadingOffset)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
+                    Spacer()
+                        .frame(width: collectionLeadingOffset)
                     ForEach(viewModel.localBroadcasterSections) { section in
                         radioListHCollectionViewList(section)
                     }
+                    Spacer()
+                        .frame(width: collectionLeadingOffset)
                 }
             }
         }
