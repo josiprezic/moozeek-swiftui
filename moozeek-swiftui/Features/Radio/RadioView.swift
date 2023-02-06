@@ -20,7 +20,7 @@ struct RadioView: View {
                 if viewModel.isOnline {
                     contentView
                 } else {
-                    YouAreOfflineView()
+                    offlineView
                 }
                 musicPlayerBar
             }
@@ -38,6 +38,10 @@ struct RadioView: View {
             }
         }
         .padding(.bottom, -8)
+    }
+    
+    private var offlineView: some View {
+        YouAreOfflineView()
     }
     
     private var musicPlayerBar: some View {
