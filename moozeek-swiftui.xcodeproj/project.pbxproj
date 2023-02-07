@@ -28,6 +28,7 @@
 		74918308296C2FA200639E41 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74918307296C2FA200639E41 /* RadioView.swift */; };
 		7491830B29855D2100639E41 /* RadioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491830A29855D2100639E41 /* RadioViewModel.swift */; };
 		7491830D2987049D00639E41 /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491830C2987049D00639E41 /* Radio.swift */; };
+		7491830F2992E07700639E41 /* ExclusiveRadioSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491830E2992E07700639E41 /* ExclusiveRadioSection.swift */; };
 		74A5DC47291C017A0083417E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC46291C017A0083417E /* Song.swift */; };
 		74A5DC4C291C02AD0083417E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4B291C02AD0083417E /* SongListView.swift */; };
 		74A5DC4E291C02BC0083417E /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5DC4D291C02BC0083417E /* PlayerViewModel.swift */; };
@@ -64,6 +65,7 @@
 		74918307296C2FA200639E41 /* RadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioView.swift; sourceTree = "<group>"; };
 		7491830A29855D2100639E41 /* RadioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioViewModel.swift; sourceTree = "<group>"; };
 		7491830C2987049D00639E41 /* Radio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio.swift; sourceTree = "<group>"; };
+		7491830E2992E07700639E41 /* ExclusiveRadioSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExclusiveRadioSection.swift; sourceTree = "<group>"; };
 		74A5DC46291C017A0083417E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		74A5DC4B291C02AD0083417E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		74A5DC4D291C02BC0083417E /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				74918307296C2FA200639E41 /* RadioView.swift */,
 				7491830A29855D2100639E41 /* RadioViewModel.swift */,
 				7491830C2987049D00639E41 /* Radio.swift */,
+				7491830E2992E07700639E41 /* ExclusiveRadioSection.swift */,
 			);
 			path = Radio;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				740824262924CEA300B42E81 /* ViewModel.swift in Sources */,
 				7491830D2987049D00639E41 /* Radio.swift in Sources */,
 				74A5DC57291C55E60083417E /* SongCell.swift in Sources */,
+				7491830F2992E07700639E41 /* ExclusiveRadioSection.swift in Sources */,
 				740824122924BAD900B42E81 /* SearchView.swift in Sources */,
 				74918308296C2FA200639E41 /* RadioView.swift in Sources */,
 				740824332925120B00B42E81 /* LocalFilesManager.swift in Sources */,
