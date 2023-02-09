@@ -33,8 +33,8 @@ struct RadioView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 ExclusiveRadioSection(radioList: viewModel.exclusiveSection)
-                broadcastersSection(named: "Local Broadcasters")
-                broadcastersSection(named: "International Broadcasters")
+                BroadcastRadioSection(title: "Local Broadcasters", radioSections: viewModel.localBroadcasterSections)
+                BroadcastRadioSection(title: "International Broadcasters", radioSections: viewModel.internationalBroadcasterSections)
             }
         }
         .padding(.bottom, -8)
@@ -50,26 +50,41 @@ struct RadioView: View {
             .gesture(dragGesture)
     }
     
-    private func radioHCollectionViewItem(for radio: Radio) -> some View {
-        VStack(alignment: .leading) {
-            Text("Exclusive".uppercased())
-                .font(.caption2)
-                .opacity(0.5)
-            Text(radio.name)
-                .font(.headline)
-            Text(radio.description)
-                .font(.headline)
-                .fontWeight(.regular)
-                .opacity(0.5)
-            Image(radio.logo)
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width - 30, height: 300)
-                .cornerRadius(10)
+    // MARK: - Drag gesture
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded(onDragGestureEnded)
+    }
+    
+    private func onMusicPlayerBarTapGesture() {
+        withAnimation {
+            showDetails.toggle()
         }
     }
     
-    private func broadcastersSection(named title: String) -> some View {
+    private func onDragGestureEnded(_ value: DragGesture.Value) {
+        if value.translation.height < 20 {
+            showDetails = true
+        } else if value.translation.height > 60 {
+            showDetails = false
+        }
+    }
+}
+
+struct RadioView_Previews: PreviewProvider {
+    static var previews: some View {
+        RadioView.resolved
+    }
+}
+
+// TODO: JR MOVE
+struct BroadcastRadioSection: View {
+    let title: String
+    let radioSections: [RadioSection]
+    let collectionLeadingOffset: CGFloat = 15.0
+    
+    var body: some View {
         VStack(alignment: .leading) {
             Text(title)
                 .font(.title2)
@@ -79,7 +94,7 @@ struct RadioView: View {
                 HStack {
                     Spacer()
                         .frame(width: collectionLeadingOffset)
-                    ForEach(viewModel.localBroadcasterSections) { section in
+                    ForEach(radioSections) { section in
                         radioListHCollectionViewList(section)
                     }
                     Spacer()
@@ -117,32 +132,5 @@ struct RadioView: View {
             }
         }
         .frame(width: UIScreen.main.bounds.width - 30)
-    }
-    
-    // MARK: - Drag gesture
-    
-    private var dragGesture: some Gesture {
-        DragGesture(minimumDistance: 0, coordinateSpace: .local)
-            .onEnded(onDragGestureEnded)
-    }
-    
-    private func onMusicPlayerBarTapGesture() {
-        withAnimation {
-            showDetails.toggle()
-        }
-    }
-    
-    private func onDragGestureEnded(_ value: DragGesture.Value) {
-        if value.translation.height < 20 {
-            showDetails = true
-        } else if value.translation.height > 60 {
-            showDetails = false
-        }
-    }
-}
-
-struct RadioView_Previews: PreviewProvider {
-    static var previews: some View {
-        RadioView.resolved
     }
 }
