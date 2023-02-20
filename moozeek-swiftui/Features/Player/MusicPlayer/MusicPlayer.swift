@@ -227,11 +227,17 @@ struct MusicPlayer: View {
     
     private var footerControlView: some View {
         HStack {
-            Image(systemName: Style.Image.quoteBubble)
+            Button(action: { }) {
+                Image(systemName: Style.Image.quoteBubble)
+            }
             Spacer()
-            Image(systemName: Style.Image.airplay)
+            Button(action: { }) {
+                Image(systemName: Style.Image.airplay)
+            }
             Spacer()
-            Image(systemName: Style.Image.bulletList)
+            Button(action: viewModel.handleBulletListTapped) {
+                Image(systemName: Style.Image.bulletList)
+            }
         }
         .foregroundColor(.white.opacity(0.5))
         .frame(maxWidth: .infinity)

@@ -15,6 +15,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     
     @Published var filteredSongs: [Song] = []
     @Published var searchText: String
+    @Published var showBulletList = false
     
     @Published var isPlaying = false
     @Published var isShuffle = false
@@ -210,6 +211,10 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     func handleHeaderShufflePlayButtonTapped() {
         isShuffle = true
         playShuffleSong()
+    }
+    
+    func handleBulletListTapped() {
+        showBulletList.toggle()
     }
     
     private func playNextFromThePlayNextList() {
