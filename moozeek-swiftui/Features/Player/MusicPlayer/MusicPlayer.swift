@@ -30,7 +30,11 @@ struct MusicPlayer: View {
     private var subviews: some View {
         VStack {
             Spacer()
-            trackLogo
+            if viewModel.showBulletList {
+                tempList
+            } else {
+                trackLogo
+            }
             Spacer()
             songControls
             progressView
@@ -39,6 +43,10 @@ struct MusicPlayer: View {
             volumeControlView
             footerControlView
         }
+    }
+    
+    private var tempList: some View {
+        PlayNextListView()
     }
     
     private var trackLogo: some View {

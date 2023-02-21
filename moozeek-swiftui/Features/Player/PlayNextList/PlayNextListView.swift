@@ -9,10 +9,9 @@ import SwiftUI
 
 struct PlayNextListView: View {
     var body: some View {
-        VStack {
-            Text("PlayNextListView")
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.green)
+        Rectangle()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .foregroundColor(Color.red)
+            .aspectRatio(1.0, contentMode: .fit)
     }
 }
