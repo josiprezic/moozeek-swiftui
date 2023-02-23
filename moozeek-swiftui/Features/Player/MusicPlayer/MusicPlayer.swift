@@ -47,6 +47,7 @@ struct MusicPlayer: View {
     
     private var tempList: some View {
         PlayNextListView()
+            .cornerRadius(Style.Size.playerTrackIconRadius)
     }
     
     private var trackLogo: some View {

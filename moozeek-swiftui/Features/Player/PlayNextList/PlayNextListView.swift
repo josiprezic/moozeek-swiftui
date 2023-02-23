@@ -11,7 +11,7 @@ struct PlayNextListView: View {
     var body: some View {
         Rectangle()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundColor(Color.red)
+            .foregroundColor(.gray)
             .aspectRatio(1.0, contentMode: .fit)
     }
 }
