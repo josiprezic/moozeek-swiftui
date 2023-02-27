@@ -10,20 +10,34 @@ import SwiftUI
 struct PlayNextListView: View {
     var body: some View {
         ScrollView {
-            VStack {
-                Text("Song")
-                Text("Song")
-                Text("Song")
-                Text("Song")
-                Text("Song")
-                Text("Song")
-                Text("Song")
-                Text("Song")
-                Text("Song")
+            ForEach(1..<30) { _ in
+                playNextSongCell
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .foregroundColor(.gray)
         .aspectRatio(1.0, contentMode: .fit)
+    }
+    
+    var playNextSongCell: some View {
+        Button(action: { }) {
+            HStack {
+                thumbnailView
+                songTitle
+                Spacer()
+            }
+            .contentShape(Rectangle())
+        }
+    }
+    
+    var thumbnailView: some View {
+        Rectangle()
+            .frame(height: 40)
+            .aspectRatio(1, contentMode: .fit)
+    }
+    
+    var songTitle: some View {
+        Text("Song name")
+            .lineLimit(1)
     }
 }
