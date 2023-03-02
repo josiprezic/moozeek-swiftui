@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayNextListView: View {
     var body: some View {
         ScrollView {
-            ForEach(1..<30) { _ in
+            ForEach(1..<50) { _ in
                 playNextSongCell
             }
         }
