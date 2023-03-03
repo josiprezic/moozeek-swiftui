@@ -11,15 +11,18 @@ struct PlayNextListView: View {
     var body: some View {
         ScrollView {
             ForEach(1..<50) { _ in
-                playNextSongCell
+                PlayNextSongCell()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .foregroundColor(.gray)
         .aspectRatio(1.0, contentMode: .fit)
     }
-    
-    var playNextSongCell: some View {
+}
+
+
+struct PlayNextSongCell: View {
+    var body: some View {
         Button(action: { }) {
             HStack {
                 thumbnailView
