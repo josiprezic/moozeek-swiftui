@@ -86,4 +86,3 @@ struct SongCell_Previews: PreviewProvider {
             menuAction: { _ in })
     }
 }
-
