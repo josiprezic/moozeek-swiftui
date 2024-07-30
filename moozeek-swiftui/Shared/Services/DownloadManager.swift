@@ -107,6 +107,8 @@ final class DownloadManager {
         } catch let error {
             print("Invalid regex: \(error.localizedDescription)")
         }
+        
+        return nil
     }
     
     private func downloadYouTubeVideo(videoID: String) -> AnyPublisher<Bool, AudioError> {

@@ -17,6 +17,7 @@ struct HeaderButton: View {
             HStack {
                 Image(systemName: imageSystemName)
                 Text(title)
+                    .fontWeight(.bold)
                     .textCase(.none)
             }
             .frame(height: 50)
@@ -24,7 +25,7 @@ struct HeaderButton: View {
             .background(Color.gray.opacity(0.1))
             .foregroundColor(.pink)
             .cornerRadius(10)
-            .fontWeight(.bold)
+            
             
         })
     }
