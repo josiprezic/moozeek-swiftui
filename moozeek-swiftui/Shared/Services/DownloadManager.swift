@@ -42,15 +42,20 @@ final class DownloadManager {
                     filesToConvert.forEach { cos in
                         let name: String = "\(cos.lastPathComponent.split(separator: ".").first ?? "\(UUID().uuidString)")"
                         let destinationUrl = cos.deletingLastPathComponent().appendingPathComponent(name + ".m4a")
-                        ConverterManager.shared.convertMP4ToM4A(mp4URL: cos, m4aURL: destinationUrl, completion: { _, _ in print("DONE!") })
-                        
-                        ConverterManager.shared.extractThumbnail(from: cos, completion: { image, _ in
-                            print("ALSO DONE!")
-                            if let image {
-                                self?.saveImage(image, to: .documentDirectory, with: name)
-                            }
+                        ConverterManager.shared.convertMP4ToM4A(mp4URL: cos, m4aURL: destinationUrl, completion: { _, _ in
+                            print("DONE!")
+                            
+                            ConverterManager.shared.extractThumbnail(from: cos, completion: { image, _ in
+                                print("ALSO DONE!")
+                                if let image {
+                                    self?.saveImage(image, to: .documentDirectory, with: name)
+                                }
+                                
+                                DispatchQueue.main.async {
+                                    Self.didDownloadPublisher.send()
+                                }
+                            })
                         })
-
                     }
                 }
             })
