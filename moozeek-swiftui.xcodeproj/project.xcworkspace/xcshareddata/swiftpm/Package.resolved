@@ -1,4 +1,5 @@
 {
+  "originHash" : "50c18a2e3aacf6ed2bf58d8d4dc1f7c167c9cfc66e0f0098f3d6720778ee8105",
   "pins" : [
     {
       "identity" : "resolver",
@@ -12,12 +13,12 @@
     {
       "identity" : "xcdyoutubekit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cbg-dev-k/XCDYouTubeKit",
+      "location" : "https://github.com/Coppertino/XCDYouTubeKit",
       "state" : {
-        "revision" : "f2b1b685c375edca711cc2b229f6bf2bb4588611",
+        "revision" : "450d01794140ff62284fd6d035dba1f577bd7dd2",
         "version" : "2.16.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

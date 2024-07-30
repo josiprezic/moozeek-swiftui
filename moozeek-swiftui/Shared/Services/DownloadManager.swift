@@ -32,12 +32,58 @@ final class DownloadManager {
                 // TODO: JR handle
             }, receiveValue: { _ in
                 Task { [weak self] in
-                    // handle completion
-                    await self?.convertVideosToSongs()
+                    let path = LocalFilesManager.documentDirectoryUrl.absoluteURL
+                    let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
+                    
+                    let filesToConvert = directoryContents.filter {
+                        $0.lastPathComponent.split(separator: ".").last! == "mp4"
+                    }
+                    
+                    filesToConvert.forEach { cos in
+                        let name: String = "\(cos.lastPathComponent.split(separator: ".").first ?? "\(UUID().uuidString)")"
+                        let destinationUrl = cos.deletingLastPathComponent().appendingPathComponent(name + ".m4a")
+                        ConverterManager.shared.convertMP4ToM4A(mp4URL: cos, m4aURL: destinationUrl, completion: { _, _ in print("DONE!") })
+                        
+                        ConverterManager.shared.extractThumbnail(from: cos, completion: { image, _ in
+                            print("ALSO DONE!")
+                            if let image {
+                                self?.saveImage(image, to: .documentDirectory, with: name)
+                            }
+                        })
+
+                    }
                 }
             })
             .store(in: &cancellables)
     }
+    
+    func saveImage(_ image: UIImage, to directory: FileManager.SearchPathDirectory, with name: String) -> URL? {
+        // Convert UIImage to Data
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Error converting image to data")
+            return nil
+        }
+        
+        // Create a URL for the destination
+        let fileManager = FileManager.default
+        guard let directoryURL = fileManager.urls(for: directory, in: .userDomainMask).first else {
+            print("Error accessing directory")
+            return nil
+        }
+        
+        let fileURL = directoryURL.appendingPathComponent("\(name).jpg")
+        
+        // Write the data to the file system
+        do {
+            try imageData.write(to: fileURL)
+            print("Image saved successfully at \(fileURL)")
+            return fileURL
+        } catch {
+            print("Error saving image: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
     
     private func getVideoId(from urlString: String) -> String {
         // TODO: JR add missing checks
@@ -59,7 +105,7 @@ final class DownloadManager {
                 songTitle: video.title,
                 songUrl: video.streamURL!,
                 songExtension: "mp4",
-                thumbnailUrl: video.thumbnailURLs![video.thumbnailURLs!.count/2],
+                thumbnailUrl: video.thumbnailURLs?[video.thumbnailURLs!.count/2],
                 songID: videoID
             ) {
                 publisher.send(true)
@@ -68,95 +114,56 @@ final class DownloadManager {
         
         return publisher.eraseToAnyPublisher()
     }
+}
+
+
+// TODO: JR move audio converter
+
+import AVFoundation
+import UIKit
+
+class ConverterManager {
+    static let shared = ConverterManager()
     
+    private init() {}
     
-    func convertVideosToSongs() async {
-        do {
-            let path = LocalFilesManager.documentDirectoryUrl.absoluteURL
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
-            
-            let filesToConvert = directoryContents.filter {
-                $0.lastPathComponent.split(separator: ".").last! == "mp4"
+    func convertMP4ToM4A(mp4URL: URL, m4aURL: URL, completion: @escaping (Bool, Error?) -> Void) {
+        let asset = AVURLAsset(url: mp4URL)
+        guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A) else {
+            completion(false, NSError(domain: "ConverterManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Cannot create export session"]))
+            return
+        }
+        
+        exportSession.outputFileType = .m4a
+        exportSession.outputURL = m4aURL
+        
+        exportSession.exportAsynchronously {
+            switch exportSession.status {
+            case .completed:
+                completion(true, nil)
+            case .failed, .cancelled:
+                completion(false, exportSession.error)
+            default:
+                completion(false, NSError(domain: "ConverterManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown error"]))
             }
-            
-            await convertToAudio(url: filesToConvert.first!)
-                .sink(receiveCompletion: { error in
-                    // handle error
-                    print(error)
-                }, receiveValue: { url in
-                    Self.didDownloadPublisher.send(())
-                })
-                .store(in: &self.cancellables)
-        } catch {
-            // TODO: JR handle
         }
     }
     
-    
-    func convertToAudio(url: URL) async -> AnyPublisher<URL, AudioError> {
-        let publisher = PassthroughSubject<URL, AudioError>()
+    func extractThumbnail(from mp4URL: URL, completion: @escaping (UIImage?, Error?) -> Void) {
+        let asset = AVAsset(url: mp4URL)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
         
-        let composition = AVMutableComposition()
+        let time = CMTime(seconds: 1, preferredTimescale: 60)
+        var actualTime = CMTime.zero
+        
         do {
-            let asset = AVURLAsset(url: url)
-            guard let audioAssetTrack = try await asset.loadTracks(withMediaType: AVMediaType.audio).first else {
-                throw AudioError.unableToConvertVideo(error: nil)
-            }
-            
-            guard let audioCompositionTrack = composition.addMutableTrack(
-                withMediaType: AVMediaType.audio,
-                preferredTrackID: kCMPersistentTrackID_Invalid
-            ) else {
-                throw AudioError.unableToConvertVideo(error: nil)
-            }
-            
-            try await audioCompositionTrack.insertTimeRange(
-                audioAssetTrack.load(.timeRange),
-                of: audioAssetTrack, at: CMTime.zero
-            )
+            let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
+            let image = UIImage(cgImage: cgImage)
+            completion(image, nil)
         } catch {
-            publisher.send(completion: .failure(.unableToConvertVideo(error: error)))
-            return publisher.eraseToAnyPublisher()
+            completion(nil, error)
         }
-        
-        let outputFileName = url.lastPathComponent.dropLast(3) + "m4a"
-        let outputUrl = URL(fileURLWithPath: NSTemporaryDirectory() + outputFileName)
-        
-        if FileManager.default.fileExists(atPath: outputUrl.path) {
-            try? FileManager.default.removeItem(atPath: outputUrl.path)
-        }
-        
-        // Create an export session
-        let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetPassthrough)!
-        exportSession.outputFileType = AVFileType.m4a
-        exportSession.outputURL = outputUrl
-        
-        // Export file
-        await exportSession.export()
-        guard case exportSession.status = AVAssetExportSession.Status.completed else {
-            publisher.send(completion: .failure(.unableToConvertVideo(error: nil)))
-            return publisher.eraseToAnyPublisher()
-        }
-        
-        DispatchQueue.main.async {
-            guard let outputURL = exportSession.outputURL else {
-                publisher.send(completion: .failure(.unableToConvertVideo(error: nil)))
-                return
-            }
-            var newURL = LocalFilesManager.documentDirectoryUrl
-            newURL.appendPathComponent(outputURL.lastPathComponent)
-            
-            do {
-                if FileManager.default.fileExists(atPath: newURL.path) {
-                    try FileManager.default.removeItem(atPath: newURL.path)
-                }
-                try FileManager.default.moveItem(atPath: outputURL.path, toPath: newURL.path)
-                try FileManager.default.removeItem(atPath: url.path)
-                publisher.send(newURL)
-            } catch {
-                publisher.send(completion: .failure(.unableToConvertVideo(error: error)))
-            }
-        }
-        return publisher.eraseToAnyPublisher()
     }
 }
+

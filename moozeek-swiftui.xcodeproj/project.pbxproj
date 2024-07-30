@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,10 +15,10 @@
 		740824222924C4A400B42E81 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824212924C4A400B42E81 /* DependencyResolver.swift */; };
 		740824242924CAC200B42E81 /* View+Resolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824232924CAC200B42E81 /* View+Resolved.swift */; };
 		740824262924CEA300B42E81 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824252924CEA300B42E81 /* ViewModel.swift */; };
-		7408242D2924F2A500B42E81 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7408242C2924F2A500B42E81 /* XCDYouTubeKit */; };
 		7408242F2925119600B42E81 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7408242E2925119600B42E81 /* DownloadManager.swift */; };
 		74082431292511D500B42E81 /* LibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74082430292511D500B42E81 /* LibraryManager.swift */; };
 		740824332925120B00B42E81 /* LocalFilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740824322925120B00B42E81 /* LocalFilesManager.swift */; };
+		7424E1F92C597D3500B73B94 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7424E1F82C597D3500B73B94 /* XCDYouTubeKit */; };
 		7452D52B291D63ED0069008A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452D52A291D63ED0069008A /* AudioManager.swift */; };
 		7452D530291D930F0069008A /* Int+TimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452D52F291D930F0069008A /* Int+TimeString.swift */; };
 		7456DC512928CFA70049C0A6 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456DC502928CFA70049C0A6 /* ThumbnailView.swift */; };
@@ -94,7 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7408241F2924C41C00B42E81 /* Resolver in Frameworks */,
-				7408242D2924F2A500B42E81 /* XCDYouTubeKit in Frameworks */,
+				7424E1F92C597D3500B73B94 /* XCDYouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +363,7 @@
 			name = "moozeek-swiftui";
 			packageProductDependencies = (
 				7408241E2924C41C00B42E81 /* Resolver */,
-				7408242C2924F2A500B42E81 /* XCDYouTubeKit */,
+				7424E1F82C597D3500B73B94 /* XCDYouTubeKit */,
 			);
 			productName = "moozeek-swiftui";
 			productReference = D760FA62260FFBBF0029AA1F /* moozeek-swiftui.app */;
@@ -394,7 +394,7 @@
 			mainGroup = D760FA59260FFBBF0029AA1F;
 			packageReferences = (
 				7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */,
-				7408242B2924F2A500B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
+				7424E1F72C597D3500B73B94 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
 			);
 			productRefGroup = D760FA63260FFBBF0029AA1F /* Products */;
 			projectDirPath = "";
@@ -654,12 +654,12 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		7408242B2924F2A500B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
+		7424E1F72C597D3500B73B94 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cbg-dev-k/XCDYouTubeKit";
+			repositoryURL = "https://github.com/Coppertino/XCDYouTubeKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.16.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -670,9 +670,9 @@
 			package = 7408241D2924C41C00B42E81 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
 		};
-		7408242C2924F2A500B42E81 /* XCDYouTubeKit */ = {
+		7424E1F82C597D3500B73B94 /* XCDYouTubeKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7408242B2924F2A500B42E81 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
+			package = 7424E1F72C597D3500B73B94 /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
 			productName = XCDYouTubeKit;
 		};
 /* End XCSwiftPackageProductDependency section */
