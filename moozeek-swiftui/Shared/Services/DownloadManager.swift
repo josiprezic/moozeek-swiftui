@@ -27,7 +27,7 @@ final class DownloadManager {
     
     func downloadYouTubeSong(from urlString: String) {
         let videoId = getVideoId(from: urlString)
-        downloadYouTubeVideo(videoID: videoId)
+        downloadYouTubeVideo(videoID: videoId ?? "")
             .sink(receiveCompletion: { completion in
                 // TODO: JR handle
             }, receiveValue: { _ in
@@ -90,9 +90,23 @@ final class DownloadManager {
     }
 
     
-    private func getVideoId(from urlString: String) -> String {
-        // TODO: JR add missing checks
-        String(urlString.suffix(11))
+    private func getVideoId(from urlString: String) -> String? {
+        let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=\\?v=)|(?<=&v=)|(?<=embed/)|(?<=watch\\?v=)|(?<=\\?feature=player_embedded&v=)|(?<=youtu.be/)|(?<=\\?v%3D))([\\w-]{11})"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+            let nsString = urlString as NSString
+            let results = regex.matches(in: urlString, options: [], range: NSMakeRange(0, nsString.length))
+            
+            if let result = results.first {
+                let videoID = nsString.substring(with: result.range)
+                if videoID.count == 11 {
+                    return videoID
+                }
+            }
+        } catch let error {
+            print("Invalid regex: \(error.localizedDescription)")
+        }
     }
     
     private func downloadYouTubeVideo(videoID: String) -> AnyPublisher<Bool, AudioError> {
@@ -171,4 +185,3 @@ class ConverterManager {
         }
     }
 }
-
