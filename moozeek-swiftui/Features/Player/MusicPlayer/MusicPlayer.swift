@@ -244,14 +244,16 @@ struct MusicPlayer: View {
                 Image(systemName: Style.Image.quoteBubble)
             }
             Spacer()
-            Button(action: { }) {
-                Image(systemName: Style.Image.airplay)
-            }
+            
+            AirPlayButton()
+                .frame(width: 40, height: 40)
+            
             Spacer()
             Button(action: viewModel.handleBulletListTapped) {
                 Image(systemName: Style.Image.bulletList)
             }
         }
+        .tint(.white.opacity(0.5))
         .foregroundColor(.white.opacity(0.5))
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
@@ -262,4 +264,14 @@ struct MusicPlayer: View {
 
 #Preview {
     MusicPlayer.resolved
+}
+
+
+// TODO: JR move
+import SwiftUI
+import AVKit
+
+struct AirPlayButton: UIViewRepresentable {
+    func makeUIView(context: Context) -> AVRoutePickerView { AVRoutePickerView() }
+    func updateUIView(_ uiView: AVRoutePickerView, context: Context) {}
 }

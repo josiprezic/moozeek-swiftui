@@ -62,6 +62,7 @@ final class DownloadManager {
             .store(in: &cancellables)
     }
     
+    @discardableResult
     func saveImage(_ image: UIImage, to directory: FileManager.SearchPathDirectory, with name: String) -> URL? {
         // Convert UIImage to Data
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {
