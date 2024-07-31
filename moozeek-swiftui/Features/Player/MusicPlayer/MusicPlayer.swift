@@ -23,9 +23,12 @@ struct MusicPlayer: View {
             subviews
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.horizontal, 30)
-                .background()
-                .background(Gradient(colors: [.black.opacity(0.2), .black.opacity(0.6)]))
+                .background(background)
         }
+    }
+    
+    private var background: some ShapeStyle {
+        Gradient(colors: [.black.opacity(0.2), .black.opacity(0.6)])
     }
     
     private var subviews: some View {
