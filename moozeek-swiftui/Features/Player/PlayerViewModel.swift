@@ -156,6 +156,7 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     
     func handleSongSelected(_ song: Song) {
         currentSong = song
+        audioManager.play(song)
         isPlaying = true
     }
     
