@@ -23,7 +23,7 @@ struct MusicPlayer: View {
             subviews
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.horizontal, 30)
-                .background(Gradient(colors: [.gray, .black.opacity(0.6)]))
+                .background(Gradient(colors: [.black.opacity(0.2), .black.opacity(0.6)]))
         }
     }
     
@@ -256,8 +256,6 @@ struct MusicPlayer: View {
 
 // MARK: - Previews -
 
-struct MusicPlayer_Previews: PreviewProvider {
-    static var previews: some View {
-        MusicPlayer.resolved
-    }
+#Preview {
+    MusicPlayer.resolved
 }

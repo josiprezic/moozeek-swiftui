@@ -10,7 +10,6 @@ import SwiftUI
 struct SongListView: View {
     
     @ObservedObject var viewModel: PlayerViewModel
-    @Namespace private var namespace
     @Environment(\.colorScheme) var colorScheme
     
     @State private var showDetails: Bool = false
@@ -131,8 +130,6 @@ struct SongListView: View {
     }
 }
 
-struct SongListView_Previews: PreviewProvider {
-    static var previews: some View {
-        SongListView.resolved
-    }
+#Preview {
+    SongListView.resolved
 }
