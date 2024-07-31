@@ -18,13 +18,27 @@ struct SongListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                songListView
-                musicPlayerBar
+                content
             }
             .navigationTitle("Songs")
         }
         .searchable(text: $viewModel.searchText, prompt: "Find in Songs")
         .fullScreenCover(isPresented: $showDetails) { MusicPlayer.resolved }
+    }
+    
+    @ViewBuilder private var content: some View {
+        if viewModel.shouldShowEmptyView {
+            emptyView
+        } else {
+            songListView
+        }
+        musicPlayerBar
+    }
+    
+    private var emptyView: some View {
+        Text("No Results")
+            .font(.title)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private var songListView: some View {
@@ -44,7 +58,7 @@ struct SongListView: View {
             .listRowBackground(colorScheme == .dark ? Color.black : Color.white)
         }
         .padding(.bottom, -8)
-        .listStyle(GroupedListStyle())
+        .listStyle(.grouped)
         .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
     }
     

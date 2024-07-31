@@ -33,6 +33,10 @@ final class PlayerViewModel: ViewModel, ObservableObject {
     private let libraryManager: LibraryManager
     private var cancellables = Set<AnyCancellable>()
     
+    var shouldShowEmptyView: Bool {
+        filteredSongs.isEmpty
+    }
+    
     // MARK: - Initializers
     
     init(libraryManager: LibraryManager, audioManager: AudioManager) {
