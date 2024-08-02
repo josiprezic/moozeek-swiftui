@@ -265,13 +265,3 @@ struct MusicPlayer: View {
 #Preview {
     MusicPlayer.resolved
 }
-
-
-// TODO: JR move
-import SwiftUI
-import AVKit
-
-struct AirPlayButton: UIViewRepresentable {
-    func makeUIView(context: Context) -> AVRoutePickerView { AVRoutePickerView() }
-    func updateUIView(_ uiView: AVRoutePickerView, context: Context) {}
-}
